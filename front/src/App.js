@@ -1,24 +1,37 @@
-import logo from './logo.svg';
+import React from "react";
 import './App.css';
+import NavMenu from './components/NavMenu/NavMenu'
+
+//Роутеры
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <NavMenu/>
+      <Switch>
+          {/* Добавлять в копонент через кавычки {} */}
+
+          <Route exact path="/login" component=''/>
+          <Route exact path="/registration" component=''/>
+          <Route exact path="/createAd" component=''/>
+          {/* Мои обьявления */}
+          <Route exact path="/myAds" component=''/>
+          <Route exact path="/offers" component=''/>
+          <Route exact path="/message" component=''/>
+          <Route exact path="/reviews" component=''/>
+          {/* Мои отзывы */}
+          <Route exact path="/myReviews" component=''/>
+          <Route exact path="/setting" component=''/>
+          <Route exact path="/exit" component=''/>
+
+        </Switch>
+    </Router>
   );
 }
 
