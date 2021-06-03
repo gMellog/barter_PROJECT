@@ -39,8 +39,8 @@ export default function Searcher() {
       {products && (
         <div className="d-flex ">
           {products.map((product) => (
-            <div key={product.id} style={{width: '205px', height: '215px'}}>
-              <img src={product.photoUrl} style={{width: '205px', height: '215px'}}></img>
+            <div key={product._id} style={{width: '205px', height: '215px'}}>
+              <img src={product.photoUrl} style={{width: '205px', height: '215px'}} alt={product.name}></img>
 
               {/*
           Photo
