@@ -4,7 +4,7 @@ const productsSchema = new Schema({
   name: String,
   photoUrl: String,
   address: String,
-  infoOwner: Array,
+  infoOwner: String,
   exchange: String,
   description: String,
   actual: Boolean,
