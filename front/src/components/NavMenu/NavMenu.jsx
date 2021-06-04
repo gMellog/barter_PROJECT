@@ -14,7 +14,10 @@ export default function NavMenu() {
 
   // для открытия модального окна
   const [modal, setModal] = useState(true);
-  const toggle = () => setModal(!modal);
+  const toggle = () => { 
+    setModal(!modal)
+  
+  };
 
   //функция для раскрытия и закрытия меню 
   function toggleMenu(e) {
