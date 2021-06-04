@@ -8,6 +8,8 @@ const productsSchema = new Schema({
   exchange: String,
   description: String,
   actual: Boolean,
+  createdAt: {type: Date, default: Date.now},
+  categories: { type: Schema.Types.ObjectId, ref: 'Categories' }
 })
 
 const Products = model('Products', productsSchema);

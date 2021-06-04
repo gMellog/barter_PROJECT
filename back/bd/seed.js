@@ -30,7 +30,8 @@ function productsFabric() {
       infoOwner: uuidv4(),
       exchange: "product_2",
       description: "cool product_1",
-      actual: true
+      actual: true,
+      createdAt: Date.now(),
     },
     {
       name: "product_2",
@@ -39,7 +40,8 @@ function productsFabric() {
       infoOwner: uuidv4(),
       exchange: "product_3",
       description: "cool product_2",
-      actual: true
+      actual: true,
+      createdAt: Date.now(),
     },
     {
       name: "product_3",
@@ -48,7 +50,8 @@ function productsFabric() {
       infoOwner: uuidv4(),
       exchange: "product_4",
       description: "cool product_3",
-      actual: true
+      actual: true,
+      createdAt: Date.now(),
     },
     {
       name: "product_4",
@@ -57,7 +60,8 @@ function productsFabric() {
       infoOwner: uuidv4(),
       exchange: "product_5",
       description: "cool product_4",
-      actual: true
+      actual: true,
+      createdAt: Date.now(),
     },
     {
       name: "product_5",
@@ -66,7 +70,8 @@ function productsFabric() {
       infoOwner: uuidv4(),
       exchange: "product_6",
       description: "cool product_5",
-      actual: true
+      actual: true,
+      createdAt: Date.now(),
     },
     {
       name: "product_6",
@@ -75,7 +80,8 @@ function productsFabric() {
       infoOwner: uuidv4(),
       exchange: "product_7",
       description: "cool product_6",
-      actual: true
+      actual: true,
+      createdAt: Date.now(),
     },
     {
       name: "product_7",
@@ -84,7 +90,8 @@ function productsFabric() {
       infoOwner: uuidv4(),
       exchange: "product_8",
       description: "cool product_7",
-      actual: true
+      actual: true,
+      createdAt: Date.now(),
     },
     {
       name: "product_8",
@@ -93,7 +100,8 @@ function productsFabric() {
       infoOwner: uuidv4(),
       exchange: "product_9",
       description: "cool product_8",
-      actual: true
+      actual: true,
+      createdAt: Date.now(),
     },
     {
       name: "product_9",
@@ -102,7 +110,8 @@ function productsFabric() {
       infoOwner: uuidv4(),
       exchange: "product_10",
       description: "cool product_9",
-      actual: true
+      actual: true,
+      createdAt: Date.now(),
     },
     {
       name: "product_10",
@@ -111,7 +120,8 @@ function productsFabric() {
       infoOwner: uuidv4(),
       exchange: "product_11",
       description: "cool product_10",
-      actual: true
+      actual: true,
+      createdAt: Date.now(),
     },
     {
       name: "product_11",
@@ -120,7 +130,8 @@ function productsFabric() {
       infoOwner: uuidv4(),
       exchange: "product_12",
       description: "cool product_11",
-      actual: true
+      actual: true,
+      createdAt: Date.now(),
     },
     {
       name: "product_12",
@@ -129,7 +140,8 @@ function productsFabric() {
       infoOwner: uuidv4(),
       exchange: "product_13",
       description: "cool product_12",
-      actual: true
+      actual: true,
+      createdAt: Date.now(),
     },
   ]
   return Promise.all(products.map((data) => productsModel.create(data)))
