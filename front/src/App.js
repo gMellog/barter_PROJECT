@@ -1,7 +1,9 @@
 import React from "react";
 import './App.css';
 import NavMenu from './components/NavMenu/NavMenu'
-import Login from './components/Login/Login'
+import Searcher from "./components/Searcher/Searcher"
+import ShowProducts from "./components/ShowProducts/ShowProducts";
+import ProductCard from "./components/ProductCard/ProductCard";
 //Роутеры
 import {
   BrowserRouter as Router,
@@ -10,28 +12,19 @@ import {
   Link
 } from "react-router-dom";
 
+
 function App() {
   return (
-    <Router>
+    <div className="App">
+      <Router>
       <NavMenu/>
+      <Searcher/>
       <Switch>
-          {/* Добавлять в копонент через кавычки {} */}
-
-          <Route exact path="/login" component=''/>
-          <Route exact path="/registration" component=''/>
-          <Route exact path="/createAd" component=''/>
-          {/* Мои обьявления */}
-          <Route exact path="/myAds" component=''/>
-          <Route exact path="/offers" component=''/>
-          <Route exact path="/message" component=''/>
-          <Route exact path="/reviews" component=''/>
-          {/* Мои отзывы */}
-          <Route exact path="/myReviews" component=''/>
-          <Route exact path="/setting" component=''/>
-          <Route exact path="/exit" component=''/>
-
-        </Switch>
+        <Route exact path="/product/:name" component={ProductCard} />
+        <Route exact path="/" component={ShowProducts} />
+      </Switch>
     </Router>
+    </div>
   );
 }
 
