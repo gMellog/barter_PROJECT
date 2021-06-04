@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const productsModel = require('./bd/products')
+const categoriesModel = require("./bd/categories");
 const { dbConnect, dbConnectionURL } = require("./bd/connect")
 
 
@@ -19,10 +20,15 @@ app.get("/products", async (req,res) => {
 })
 
 app.post("/search", async (req,res) => {
-  console.log("===>1",req.body);
   const {name} = req.body
   let products = await productsModel.find({name: name});
-  console.log(products);
+  res.json(products)
+})
+
+app.get("/:category", async (req,res) => {
+  const {category} = req.params
+  let categoryId = await categoriesModel.findOne({name: category})
+  let products = await productsModel.find({categories: categoryId._id});
   res.json(products)
 })
 

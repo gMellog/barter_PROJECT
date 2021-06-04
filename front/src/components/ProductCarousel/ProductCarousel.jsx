@@ -52,8 +52,7 @@ export default function TextMobileStepper() {
     <div className={classes.root}>
       <div className={styles.wrapper}>{stuffArray.slice(activeStep, activeStep+countOfShownProduct).map(stuff => {
       return (
-        <>
-      
+        <div key={stuff._id}>
       <Paper square elevation={0} className={classes.header}>
         <Typography>{stuff.name}</Typography>
       </Paper>
@@ -62,7 +61,7 @@ export default function TextMobileStepper() {
         src={stuff.photoUrl}
         alt={stuff.name}
       /> 
-      </>
+      </div>
       )
     })}
     </div>

@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ProductCard from "./components/ProductCard/ProductCard";
 import NavMenu from './components/NavMenu/NavMenu'
 import ProductCarousel from "./components/ProductCarousel/ProductCarousel"
+import CategoriesFilter from "./components/CategoriesFilter/CategoriesFilter"
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Router>
       <NavMenu/>
       <ProductCarousel/>
+      <CategoriesFilter/>
       <Searcher/>
       <Switch>
         <Route exact path="/product/:name" component={ProductCard} />
