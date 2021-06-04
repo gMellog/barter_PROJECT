@@ -18,6 +18,13 @@ app.get("/products", async (req,res) => {
   res.json(products)
 })
 
+app.post("/search", async (req,res) => {
+  console.log("===>1",req.body);
+  const {name} = req.body
+  let products = await productsModel.find({name: name});
+  console.log(products);
+  res.json(products)
+})
 
 app.listen(PORT, () => {
   console.log("Server on port ", PORT);
