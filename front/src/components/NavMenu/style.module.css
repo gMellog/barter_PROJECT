@@ -26,7 +26,7 @@
 
 .arrow{
   z-index: 99;
-  /* content: ''; */
+  content: '';
   position: absolute;
   top: 35%;
   left: 89%;
@@ -89,5 +89,5 @@
 }
 .back{
   background-color: black;
-  height: 100vh;
+  /* height: 100vh; */
 }

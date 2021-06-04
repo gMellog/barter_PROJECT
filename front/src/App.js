@@ -1,37 +1,22 @@
-import React from "react";
-import './App.css';
-import NavMenu from './components/NavMenu/NavMenu'
 
-//Роутеры
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import Searcher from "./components/Searcher/Searcher"
+import ShowProducts from "./components/ShowProducts/ShowProducts";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import ProductCard from "./components/ProductCard/ProductCard";
+import NavMenu from './components/NavMenu/NavMenu'
 
 function App() {
   return (
-    <Router>
+    <div className="App">
+      <Router>
       <NavMenu/>
+      <Searcher/>
       <Switch>
-          {/* Добавлять в копонент через кавычки {} */}
-
-          <Route exact path="/login" component=''/>
-          <Route exact path="/registration" component=''/>
-          <Route exact path="/createAd" component=''/>
-          {/* Мои обьявления */}
-          <Route exact path="/myAds" component=''/>
-          <Route exact path="/offers" component=''/>
-          <Route exact path="/message" component=''/>
-          <Route exact path="/reviews" component=''/>
-          {/* Мои отзывы */}
-          <Route exact path="/myReviews" component=''/>
-          <Route exact path="/setting" component=''/>
-          <Route exact path="/exit" component=''/>
-
-        </Switch>
+        <Route exact path="/product/:name" component={ProductCard} />
+        <Route exact path="/" component={ShowProducts} />
+      </Switch>
     </Router>
+    </div>
   );
 }
 
