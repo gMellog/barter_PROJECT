@@ -1,8 +1,6 @@
 import React from "react";
 import Input from "../Input/Input";
-import ShowProducts from "../ShowProducts/ShowProducts";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import ProductCard from "../ProductCard/ProductCard";
+
 
 export default function Searcher() {
   // const [input, setInput] = useState("");
@@ -22,12 +20,7 @@ export default function Searcher() {
   // };
 
   return (
-    <Router>
       <Input />
-      <Switch>
-        <Route exact path="/product/:name" component={ProductCard} />
-        <Route exact path="/" component={ShowProducts} />
-      </Switch>
-    </Router>
+      
   );
 }
