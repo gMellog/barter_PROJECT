@@ -1,7 +1,6 @@
 import React from "react";
 import './App.css';
 import NavMenu from './components/NavMenu/NavMenu'
-import Searcher from "./components/Searcher/Searcher"
 import ShowProducts from "./components/ShowProducts/ShowProducts";
 import ProductCard from "./components/ProductCard/ProductCard";
 //Роутеры
@@ -18,7 +17,7 @@ function App() {
     <div className="App">
       <Router>
       <NavMenu/>
-      <Searcher/>
+      {/* <Searcher/> */}
       <Switch>
         <Route exact path="/product/:name" component={ProductCard} />
         <Route exact path="/" component={ShowProducts} />

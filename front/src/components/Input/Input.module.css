@@ -1,7 +1,16 @@
-.searcher {
-  width: 40vw;
+.searcher form {
+  display: flex;
 } 
-
+.searcher form input{
+  background: #242631;
+  border: 1px solid #E5E5E5;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+.searcher form input:focus{
+  background: #242631;
+  color: wheat;
+}
 .searcherIndent {
-  margin-top: 7rem;
+  /* margin-top: 7rem; */
 } 
