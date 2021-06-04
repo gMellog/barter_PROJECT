@@ -3,10 +3,10 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import style from './style.module.css'
 import InputMask from 'react-input-mask';
 
-const ModalExample = ({ modal, toggle }) => {
+const ModalExample = ({toggle }) => {
 
   //показать регистрацию
-  const [showRegistr, setShowRegistr] = useState(true)
+  const [showRegistr, setShowRegistr] = useState(false)
   //показать поле для принятия смс
   const [showSms, setShowSms] = useState(true)
   //форма инфомации о пользователе
@@ -17,6 +17,11 @@ const ModalExample = ({ modal, toggle }) => {
   const [forgotPasswordShowSMS, setForgotPasswordShowSMS] = useState(false)
   //Номер лежаший в input при регистрации
   const [number, setNumber] = useState()
+  useEffect( () => {
+    return () => {
+      console.log('MODAL KILLED');
+    }
+  }, []);
 
   //Переключение между регистраицей и входом
   const toggleReg = () => setShowRegistr(!showRegistr);
@@ -24,7 +29,7 @@ const ModalExample = ({ modal, toggle }) => {
 
   return (
     <div>
-      <Modal isOpen={modal} toggle={toggle} >
+      <Modal isOpen={true} toggle={toggle} >
         {showRegistr ?
           //Регистрация
           showSms ?

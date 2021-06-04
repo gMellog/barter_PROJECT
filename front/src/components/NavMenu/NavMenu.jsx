@@ -13,10 +13,9 @@ export default function NavMenu() {
   const [user, setUser] = useState(true)
 
   // для открытия модального окна
-  const [modal, setModal] = useState(true);
+  const [modal, setModal] = useState(false);
   const toggle = () => { 
     setModal(!modal)
-  
   };
 
   //функция для раскрытия и закрытия меню 
@@ -34,9 +33,12 @@ export default function NavMenu() {
       <div className={style.block}>
 
         {/* Активатор и модальное окно */}
-        <span onClick={toggle} >Вход и регистраиция!</span>
-        <Login modal={modal} toggle={toggle} />
-      </div>
+        <span onClick={() => { toggle() } } >Вход и регистраиция!</span>
+        { 
+        
+          modal && <Login toggle={toggle} />
+        }
+       </div>
 
       <div className={user ? `${style.menu} ${style.close}` : `${style.none}`}>
         <div onClick={(e) => { toggleMenu(e.target) }} className={style.arrow} data-arrow="arrow"></div>
