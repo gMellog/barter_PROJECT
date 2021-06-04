@@ -31,16 +31,20 @@ export default function NavMenu() {
 
   return (
     <div className={style.header}>
+      <div className={style.logo}>
+        logo
+      </div>
       <div className={style.left} >
-        <Searcher />
-        <div className={style.linkReg} >
-          {/* Активатор и модальное окно */}
-          <span onClick={() => { toggle() }} >Вход и регистраиция!</span>
-          {
-            modal && <Login toggle={toggle} />
-          }
-
+        <div className={style.row} >
+          <div className={style.linkReg} >
+            {/* Активатор и модальное окно */}
+            <span onClick={() => { toggle() }} >Вход и регистрация!</span>
+            {
+              modal && <Login toggle={toggle} />
+            }
+          </div>
         </div>
+        <Searcher />
       </div>
       <div className={style.headerImg} >
         <img src="/headerImg.png" alt="" />

@@ -13,11 +13,6 @@
   min-height: 100%;
   width: 100%;
 }
-.block{
-  height: 100px;
-  background-color: red;
-  width: 1000px;
-}
 .back{
   background-color: black;
   /* height: 100vh; */
@@ -34,6 +29,22 @@
   letter-spacing: 0em;
   text-align: left;
   color: #E5E5E5;
-
 }
 
+.left{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  flex-grow: 1;
+}
+
+
+.logo{
+  width: 20%;
+  height: 100%;
+  background-color: red;
+}
+.row{
+  margin-bottom: 3%;
+}
