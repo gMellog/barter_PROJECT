@@ -49,6 +49,11 @@
   cursor: pointer;
 }
 
+.controls h5:hover {
+  color: gold;
+  transition: 0.5s;
+}
+
 .text_section {
   width: 90%;
   margin: 0 auto;
