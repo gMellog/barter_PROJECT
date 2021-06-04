@@ -1,0 +1,116 @@
+import React, { useEffect, useState } from 'react';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import style from './style.module.css'
+import InputMask from 'react-input-mask';
+
+const ModalExample = ({ modal, toggle }) => {
+
+  //показать регистрацию
+  const [showRegistr, setShowRegistr] = useState(true)
+  //показать поле для принятия смс
+  const [showSms, setShowSms] = useState(true)
+  //забыл пароль
+  const [forgotPasswordShow, setForgotPasswordShow] = useState(false)
+  //Номер лежаший в input при регистрации
+  const [number, setNumber] = useState()
+
+  //Переключение между регистраицей и входом
+  const toggleReg = () => setShowRegistr(!showRegistr);
+
+
+  return (
+    <div>
+      <Modal isOpen={modal} toggle={toggle} >
+        {showRegistr ?
+          //Регистрация
+          showSms ?
+            //Принятие смс
+            <div className={style.modalRegistration}>
+
+              <div className={style.title}>
+                <h2>Подтвердите номер телефона</h2>
+                <p>В течение 2 минут вы получите смс с кодом подтверждения</p>
+              </div>
+              <div className={style.body}>
+                <form action="">
+                  <input autoFocus type="text" className='mask-phone' required placeholder='Код подтверждения' />
+                  <span className={style.link}>Получить новый код</span>
+                  <div className="d-flex mt-2">
+                    <button type="button" className="btn btn-primary w-40 " >Подтвердить</button>
+                    <button onClick={() => setShowSms(!showSms)} type="button" className="btn w-40  btn-secondary"  >Изменить номер </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            :
+            //Ввод номера
+            <div className={style.modalRegistration}>
+              <div className={style.title}>
+                <h2>Регистраиция</h2>
+              </div>
+              <div onSubmit={
+                (e) => {
+                  console.log(e.target);
+                }
+              }
+                className={style.body}>
+                <form action="">
+                  <InputMask autoFocus mask="+7\(999)-999-99-99" maskChar="_" className='mask-phone' type="tel" required placeholder='+7(___)-___-__-__'
+                    value={number}
+                    onChange={() => {
+                      setNumber(number)
+                    }}
+                  />
+                  {/* /!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  переделать */}
+                  <button onClick={() => setShowSms(!showSms)} type="button" className="btn btn-primary w-40 " >Продолжить</button>
+                </form>
+              </div>
+              <ModalFooter >
+                <div className={style.footer}>
+                  <span>У вас уже есть профиль ?</span><p onClick={toggleReg}>Войти</p>
+                </div>
+              </ModalFooter>
+            </div>
+          :
+          // Вход
+          <div className={style.modal}>
+            <div className={style.title}>
+              <h2>Вход</h2>
+            </div>
+            <div className={style.body}>
+              <form action="">
+                <input type="text" className='mask-phone' required placeholder='Телефон или электронная почта' />
+                <input type="text" required placeholder='Пароль' />
+                <div className={style.bottomSettng}>
+
+                  <div className="form-check">
+                    <input className={`form-check-input ${style.checkbox}`} type="checkbox" value="" id="flexCheckChecked" />
+                    <label className="form-check-label h-10" for="flexCheckChecked">
+                      Запомнить пароль
+                  </label>
+                  </div>
+                  <div className={style.forgotPassword}>
+                    <p>Забыли пароль ?</p>
+                  </div>
+                </div>
+                <button type="button" class="btn btn-primary w-50 " >Войти</button>
+              </form>
+            </div>
+            <ModalFooter >
+              <div className={style.footer}>
+                <p onClick={toggleReg}>Зарегистрироваться</p>
+              </div>
+            </ModalFooter>
+          </div>
+          //Забыл пароль
+          // {forgotPasswordShow ??
+          
+
+        }
+      </Modal>
+    </div >
+  );
+
+}
+
+export default ModalExample;

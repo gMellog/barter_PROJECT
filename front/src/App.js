@@ -1,7 +1,7 @@
 import React from "react";
 import './App.css';
 import NavMenu from './components/NavMenu/NavMenu'
-
+import Login from './components/Login/Login'
 //Роутеры
 import {
   BrowserRouter as Router,
