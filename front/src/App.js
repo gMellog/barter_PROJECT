@@ -1,12 +1,21 @@
 
 import ProfilePanel from "./components/ProfilePanel/ProfilePanel";
 import SearchResult from "./components/SearchResult/SearchResult";
+import React from "react";
+import './App.css';
+import NavMenu from './components/NavMenu/NavMenu'
+
 import Searcher from "./components/Searcher/Searcher"
 import ShowProducts from "./components/ShowProducts/ShowProducts";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ProductCard from "./components/ProductCard/ProductCard";
-import NavMenu from './components/NavMenu/NavMenu'
->>>>>>> test
+
+//Роутеры
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 function App() {
   return (
