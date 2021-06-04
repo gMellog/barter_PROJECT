@@ -12,10 +12,10 @@
   border-bottom-right-radius: 7px;
   transform: translateX(-1%);
   transition: 0.6s all;
- }
- .none{
-   display: none;
- }
+  }
+  .none{
+    display: none;
+  }
 .menu,
 .arrow{
   background-color: #313340;
@@ -40,22 +40,6 @@
   margin-bottom: 20%;
 }
 
-/* .arrow,
-.arrow:after{
-  width: 30px;
-  height: 30px;
-}
-
-.arrow:after{
-  content: '';
-  position: absolute;
-  top: 5px;
-  right: 5px;
-
-  background-color:   rgb(175, 175, 175);
-  cursor: pointer;
-  
-} */
 .close{
   transform: translateX(-95%);
   

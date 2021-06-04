@@ -45,7 +45,7 @@ const ModalExample = ({toggle }) => {
                 }
               }
                 className={style.body}>
-                <form action="">
+                <form  action="">
                   <InputMask autoFocus mask="+7\(999)-999-99-99" maskChar="_" className='mask-phone' type="tel" required placeholder='+7(___)-___-__-__'
                     value={number}
                     onChange={() => {
