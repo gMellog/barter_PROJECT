@@ -36,6 +36,72 @@ const SearchResult = () => {
         "В хорошем состоянии. Почти не использовался, только по праздникам.",
       actual: true,
     },
+    {
+      name: "Ершик туалетный",
+      photoUrl:
+        "https://lemikids.ru/upload/iblock/8d5/8d5d191e10c010b74f03ae516d40fcee.jpg",
+      address: "Москва, ул. Генерала Пилюли д.8",
+      infoOwner: "Саша",
+      exchange: "Вантус",
+      description:
+        "В хорошем состоянии. Почти не использовался, только по праздникам.",
+      actual: true,
+    },
+    {
+      name: "Ершик туалетный",
+      photoUrl:
+        "https://lemikids.ru/upload/iblock/8d5/8d5d191e10c010b74f03ae516d40fcee.jpg",
+      address: "Москва, ул. Генерала Пилюли д.8",
+      infoOwner: "Саша",
+      exchange: "Вантус",
+      description:
+        "В хорошем состоянии. Почти не использовался, только по праздникам.",
+      actual: true,
+    },
+    {
+      name: "Ершик туалетный",
+      photoUrl:
+        "https://lemikids.ru/upload/iblock/8d5/8d5d191e10c010b74f03ae516d40fcee.jpg",
+      address: "Москва, ул. Генерала Пилюли д.8",
+      infoOwner: "Саша",
+      exchange: "Вантус",
+      description:
+        "В хорошем состоянии. Почти не использовался, только по праздникам.",
+      actual: true,
+    },
+    {
+      name: "Ершик туалетный",
+      photoUrl:
+        "https://lemikids.ru/upload/iblock/8d5/8d5d191e10c010b74f03ae516d40fcee.jpg",
+      address: "Москва, ул. Генерала Пилюли д.8",
+      infoOwner: "Саша",
+      exchange: "Вантус",
+      description:
+        "В хорошем состоянии. Почти не использовался, только по праздникам.",
+      actual: true,
+    },
+    {
+      name: "Ершик туалетный",
+      photoUrl:
+        "https://lemikids.ru/upload/iblock/8d5/8d5d191e10c010b74f03ae516d40fcee.jpg",
+      address: "Москва, ул. Генерала Пилюли д.8",
+      infoOwner: "Саша",
+      exchange: "Вантус",
+      description:
+        "В хорошем состоянии. Почти не использовался, только по праздникам.",
+      actual: true,
+    },
+    {
+      name: "Ершик туалетный",
+      photoUrl:
+        "https://lemikids.ru/upload/iblock/8d5/8d5d191e10c010b74f03ae516d40fcee.jpg",
+      address: "Москва, ул. Генерала Пилюли д.8",
+      infoOwner: "Саша",
+      exchange: "Вантус",
+      description:
+        "В хорошем состоянии. Почти не использовался, только по праздникам.",
+      actual: true,
+    },
   ]);
 
   return (
@@ -43,6 +109,10 @@ const SearchResult = () => {
       <div className={style.content_wrapper}>
         <div className={style.filter_wrapper}>
           {/* Левая панель с фильтрами */}
+          <ul>
+            <li>По дате размещения</li>
+            <li></li>
+          </ul>
         </div>
 
         <div className={style.search_result_wrapper}>
@@ -54,7 +124,7 @@ const SearchResult = () => {
                   <img src={el.photoUrl} />
                 </div>
                 <div className={style.info_area}>
-                  <h3>{el.name}</h3>
+                  <h4>{el.name}</h4>
                   <p>{el.description}</p>
                 </div>
                 <div className={style.control_panel}>
