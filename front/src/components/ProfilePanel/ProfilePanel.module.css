@@ -50,8 +50,48 @@
 }
 
 .text_section {
-  padding: 20px 20px;
+  width: 90%;
+  margin: 0 auto;
+  padding: 0;
   text-align: center;
+  position: relative;
+}
+
+.pencil {
+  position: absolute;
+  top: 0;
+  right: 5px;
+  opacity: 0;
+}
+
+.text_section p {
+  margin: 20px 10px;
+}
+
+.text_section:hover {
+  background-color: #3e404b;
+  border-radius: 10px;
+  transition: 0.5s;
+}
+
+.text_section:hover .pencil {
+  opacity: 1;
+  transition: 0.5s;
+}
+
+.text_section_textarea {
+  width: 100%;
+  height: 100%;
+  background-color: #3e404b;
+  border: 0;
+  border-radius: 10px;
+  text-align: center;
+  color: rgba(229, 229, 229, 1);
+  outline: none;
+}
+
+.text_section_textarea:focus {
+  border: 1px solid rgba(229, 229, 229, 0.5);
 }
 
 .control_line {
