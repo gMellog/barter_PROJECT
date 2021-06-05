@@ -30,7 +30,7 @@ const ModalExample = ({toggle }) => {
 
   return (
     <div>
-      <Modal isOpen={true} toggle={toggle} >
+      <Modal isOpen={true} toggle={toggle}  >
         {showRegistr ?
           //Регистрация
           showSms ?
