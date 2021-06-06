@@ -1,4 +1,4 @@
-import style from './style.module.css'
+import style from './NavMenu.module.css'
 import React, { useState } from "react";
 import Login from '../Login/Login'
 import Searcher from "../Searcher/Searcher"
