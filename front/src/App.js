@@ -9,7 +9,7 @@ import ShowProducts from "./components/ShowProducts/ShowProducts";
 import ProductCard from "./components/ProductCard/ProductCard";
 import Loader from "./components/Loader/Loader";
 
-//Роутеры
+//Роутерыn
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function App() {
