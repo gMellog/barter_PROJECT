@@ -18,7 +18,6 @@
 .watch_ad_content {
   display: flex;
   flex-direction: row;
-  /* align-items: center; */
 }
 
 .watch_ad_content_product {
