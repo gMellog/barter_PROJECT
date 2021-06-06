@@ -30,12 +30,22 @@ router.post('/reg', async (req, res) => {
             const onlyNumbers = getOnlyNumbers(number);
             const user = await User.findOne({ phone: onlyNumbers });
 
-            if (user) {
+            if (user && user.hash !== undefined) {
                 console.log('THERE IS USER WITH THIS NUMBER');
                 res.status(409).json();
             }
-            else {
-                const newUser = await User.create({ phone: onlyNumbers });
+            else
+            {
+                let newUser;
+
+                if(!user)
+                {
+                    newUser = await User.create({ phone: onlyNumbers });
+                }
+                else
+                {
+                    newUser = user;
+                }
 
                 vonage.verify.request({
                     number: onlyNumbers,
@@ -47,7 +57,7 @@ router.post('/reg', async (req, res) => {
                     } else {
                         newUser.verifyID = result.request_id;
                         await newUser.save();
-                        res.json();
+                        res.json(newUser._id);
                     }
                 });
         
@@ -166,6 +176,11 @@ router.post('/login', async (req,res) => {
     }
 });
 
+router.delete('/:id', (req, res) => {
+    const {id} = req.params;
+
+    console.log(id);
+});
 
 router.get('/hello', () => {
     console.log('hello123123123');
