@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function TextMobileStepper() {
   const stuffArray = useSelector((state) => state.stuffArray);
-
+  const carousel = [...stuffArray]
   const classes = useStyles();
   const theme = useTheme();
   const [activeStep, setActiveStep] = useState(0);
@@ -50,7 +50,7 @@ export default function TextMobileStepper() {
 
   return (
     <div className={classes.root}>
-      <div className={styles.wrapper}>{stuffArray.slice(activeStep, activeStep+countOfShownProduct).map(stuff => {
+      <div className={styles.wrapper}>{carousel.slice(activeStep, activeStep+countOfShownProduct).map(stuff => {
       return (
         <div key={stuff._id}>
       <Paper square elevation={0} className={classes.header}>

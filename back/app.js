@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 app.get("/products", async (req,res) => {
-  let products = await productsModel.find();
+  let products = await productsModel.find().populate("categories");
   res.json(products)
 })
 
