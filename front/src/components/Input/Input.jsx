@@ -26,16 +26,10 @@ export default function Input() {
             value={input}
             onChange={(e) => onChangeHandler(e)}
             className="form-control"
-<<<<<<< HEAD
-            placeholder="Поиск..."
-          />
-            <button className="btn btn-primary">Найти</button>
-=======
             placeholder=""
             
           />
           <ReactSVG className={styles.iconSharch} src={iconSearch}/>
->>>>>>> navMenu
         </form>
       </div>
     </div>
