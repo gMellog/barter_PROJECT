@@ -29,7 +29,11 @@ const ModalExample = ({toggle }) => {
 
   return (
     <div>
+<<<<<<< HEAD
       <Modal isOpen={true} toggle={toggle} >
+=======
+      <Modal isOpen={true} toggle={toggle}  >
+>>>>>>> navMenu
         {showRegistr ?
           //Регистрация
           showSms ?
@@ -45,7 +49,11 @@ const ModalExample = ({toggle }) => {
                 }
               }
                 className={style.body}>
+<<<<<<< HEAD
                 <form action="">
+=======
+                <form  action="">
+>>>>>>> navMenu
                   <InputMask autoFocus mask="+7\(999)-999-99-99" maskChar="_" className='mask-phone' type="tel" required placeholder='+7(___)-___-__-__'
                     value={number}
                     onChange={() => {

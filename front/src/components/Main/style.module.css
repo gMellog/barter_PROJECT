@@ -15,12 +15,6 @@
   font-weight: bold;
   margin-bottom: 5%;
 }
-<<<<<<< HEAD
-.body{
-
-}
-=======
->>>>>>> navMenu
 .body form{
   display: flex;
   flex-direction: column;
@@ -43,11 +37,6 @@
 .bottomSettng{
   display: flex;
   justify-content: space-between;
-<<<<<<< HEAD
-
-
-=======
->>>>>>> navMenu
 }
 /* .bottomSettng input{
   margin: 0;
