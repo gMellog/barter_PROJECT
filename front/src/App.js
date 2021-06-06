@@ -21,13 +21,13 @@ function App() {
     <div className="App">
       <Router>
         <NavMenu />
-        <ProfilePanel />
+        {/* <ProfilePanel />
         {/* <Searcher/> */}
-        <Switch>
+        {/* <Switch>
           <Route exact path="/product/:name" component={ProductCard} />
           <Route exact path="/" component={ShowProducts} />
           <Route exact path="/profile" component="" />
-        </Switch>
+        </Switch> */}
       </Router>
     </div>
   );
