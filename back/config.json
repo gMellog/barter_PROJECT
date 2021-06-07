@@ -1,0 +1,5 @@
+﻿{
+    "connectionString": "mongodb+srv://Alex:9Y780UY8XZZnVM0L@cluster0.fmjcz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    "secret": "ponny",
+    "saltRounds": 8
+}

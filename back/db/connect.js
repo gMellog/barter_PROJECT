@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const config = require('../config.json');
 
 const options = {
   useNewUrlParser: true, // говорим mongoose, что строка подключения будет в новом формате (новый формат должен обязательно содеражт порт)
@@ -10,14 +11,13 @@ const options = {
   // В противном случае mongoose пытается дождаться восстановления соездинения, для завершения  операций
 }
 
-const dbConnectionURL = "mongodb+srv://Alex:9Y780UY8XZZnVM0L@cluster0.fmjcz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
-
+const path = process.env.MONGODB_URI || config.connectionString;
 
 function dbConnect() {
-  mongoose.connect(dbConnectionURL, options, (err) => {
+  mongoose.connect(path, options, (err) => {
     if (err) return console.log(err)
     console.log("Success connected to mongo")
   })
 }
 
-module.exports = { dbConnect, dbConnectionURL }
+module.exports = { dbConnect }
