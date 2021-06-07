@@ -18,6 +18,8 @@ const Message = require('./db/messageModel');
 const app = express();
 const userRouter = require('./routers/userRouter');
 const chatRouter = require('./routers/chatRouter');
+const productRouter = require("./routers/productRouter");
+const { env } = require("process");
 
 
 const server = http.createServer(app);
@@ -30,15 +32,13 @@ const io = socketIo(server,
 
 );
 
-app.use((req, res, next) => {
-  console.log('helloo123');
-  next();
-})
 app.use(morgan('dev'));
 app.use(cors());
 app.use(jwt());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+console.log(process.env.PWD)
+app.use(express.static(path.join(process.env.PWD, 'public')));
 
 //Описание хранилища
 const storage = multer.diskStorage({
@@ -68,8 +68,15 @@ const uploadOne = multer({
 // })
 
 
+app.get('/user', async (req, res) => {
+  const result = await User.findById(req.user.id)
+  res.json(result)
+})
+
+
 app.post('/photo/avatar', (req, res) => {
   try {
+    console.log(req.user.id);
     let imagePath = "abc";
     uploadOne(req, res, (err) => {
       if (err) {
@@ -79,10 +86,13 @@ app.post('/photo/avatar', (req, res) => {
         if (req.file == undefined) {
           res.status(301).send("image upload failed.");
         } else {
-          //image uploaded successfully
-          imagePath = "dododo/" + req.file.filename;
-          // storeImageLink(res, imagePath);
-          res.status(200).json();
+
+          User.findById(req.user.id)
+          .then(r => {
+            r.avatar = '/avatar/' + req.file.filename;
+            r.save().then(()=> res.status(200).json())
+          })
+          
         }
       }
     });
@@ -96,6 +106,8 @@ app.post('/photo/avatar', (req, res) => {
 
 app.use('/user', userRouter);
 app.use('/chat', chatRouter);
+app.use("/product", productRouter)
+
 
 io.on('connect', socket => {
   socket.on('join', async ({ id, roomID }, callback) => {
@@ -151,16 +163,21 @@ io.on('connect', socket => {
 })
 
 
-app.get("/products", async (req, res) => {
-  let products = await productsModel.find();
+app.get("/products", async (req,res) => {
+  let products = await productsModel.find().populate("categories");
   res.json(products)
 })
 
-app.post("/search", async (req, res) => {
-  console.log("===>1", req.body);
-  const { name } = req.body
-  let products = await productsModel.find({ name: name });
-  console.log(products);
+app.post("/search", async (req,res) => {
+  const {name} = req.body
+  let products = await productsModel.find({name: name});
+  res.json(products)
+})
+
+app.get("/:category", async (req,res) => {
+  const {category} = req.params
+  let categoryId = await categoriesModel.findOne({name: category})
+  let products = await productsModel.find({categories: categoryId._id});
   res.json(products)
 })
 

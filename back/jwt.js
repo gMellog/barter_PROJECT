@@ -11,7 +11,9 @@ function jwt() {
             // public routes that don't require authentication
             '/user/code',
             '/user/reg',
-            '/user/login'
+            '/user/login',
+            /\/product\/[A-Za-z\d]+/
+
         ]
     });
 }
