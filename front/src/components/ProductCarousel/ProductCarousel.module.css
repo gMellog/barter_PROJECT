@@ -1,4 +1,37 @@
-.wrapper {
+.wrapper_carousel {
   display: flex;
-  justify-content: center; 
+  flex-direction: column;
+  width: 1274px;
+  height: 367px;
+  border-radius: 30px;
+  background: #313340;
+  align-items: center;
+}
+
+.wrapper_carousel_text {
+  display: flex;
+  justify-content: space-around;
+  color: #e5e5e5;
+  font-size: 18px;
+}
+
+.collection_wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.item_icon {
+  width: 205px;
+  height: 215px;
+  border-radius: 10px;
+  border: 2px solid #e5e5e5;
+}
+
+.item_text {
+  color: #e5e5e5;
+  font-size: 18px;
+}
+
+.item_wrapper {
+  margin: 10px 10px 10px 10px;
 }
