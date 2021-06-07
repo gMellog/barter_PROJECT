@@ -9,8 +9,8 @@ import ShowProducts from "./components/ShowProducts/ShowProducts";
 import ProductCard from "./components/ProductCard/ProductCard";
 import AddProduct from "./components/AddProduct/AddProduct"
 import OfferProduct from "./components/OfferProduct/OfferProduct"
-import ProductCarousel from "./components/ProductCarousel/ProductCarousel"
-import CategoriesFilter from "./components/CategoriesFilter/CategoriesFilter"
+// import ProductCarousel from "./components/ProductCarousel/ProductCarousel"
+// import CategoriesFilter from "./components/CategoriesFilter/CategoriesFilter"
 
 
 import Message from "./components/Message/Message";
@@ -22,7 +22,7 @@ import Offers from "./components/Offers/Offers";
 
 
 
-import Chat from './components/Chat/Chat';
+// import Chat from './components/Chat/Chat';
 
 //Роутеры
 import {
@@ -36,15 +36,13 @@ function App() {
   return (
     <div className="App">
 
-      <Router>
-      {/* <Chat/> */}
         {/* <ProductCarousel/> */}
       {/* <CategoriesFilter/> */}
         
 
-      <Chat/>
-      <ProfilePanel />
+      {/* <Chat/> */}
       <Router>
+      <ProfilePanel />
         <NavMenu />
         <div className='wrapperApp' >
           <ProfilePanel />
@@ -64,7 +62,6 @@ function App() {
           </Switch>
             <Route exact path="/ad/:id" component={MyAd} />
             <Route exact path="/ad" component={Ad} />
-          </Switch>
 
 
         </div>

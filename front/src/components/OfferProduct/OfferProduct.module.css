@@ -9,8 +9,8 @@
   border: 1px solid #e5e5e5;
   text-align: center;
   position: absolute;
-  left: 288px;
-  top: 250px;
+  left: calc(50% - 132px);
+  bottom: -29px;
 }
 
 .wrapper_available_offer_products {
