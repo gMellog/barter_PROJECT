@@ -3,6 +3,10 @@
 }
 .modalRegistration{
   padding: 20px 50px;
+  background-color: black;
+}
+.modalColor{
+  background-color: black;
 }
 .title{
   text-align: center;
@@ -10,9 +14,6 @@
 .title h2{
   font-weight: bold;
   margin-bottom: 5%;
-}
-.body{
-
 }
 .body form{
   display: flex;
@@ -36,8 +37,6 @@
 .bottomSettng{
   display: flex;
   justify-content: space-between;
-
-
 }
 /* .bottomSettng input{
   margin: 0;
