@@ -15,14 +15,15 @@ import SearchResult from "./components/SearchResult/SearchResult";
 
 import "./App.css";
 import Main from "./components/Main/Main";
+import AddProduct from "./components/AddProduct/AddProduct";
 
 function App() {
   return (
     <div className="App">
       <Router>
         <NavMenu />
-        {/* <ProfilePanel />
-        {/* <Searcher/> */}
+        <ProfilePanel />
+        <AddProduct />
         {/* <Switch>
           <Route exact path="/product/:name" component={ProductCard} />
           <Route exact path="/" component={ShowProducts} />
