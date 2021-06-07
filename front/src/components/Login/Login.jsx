@@ -3,7 +3,6 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import style from './style.module.css'
 import InputMask from 'react-input-mask';
 
-const ModalExample = ({toggle }) => {
 
 //Simply checks Russian Number
 function isValidNumber(number) {

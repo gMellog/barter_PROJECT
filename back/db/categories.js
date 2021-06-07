@@ -1,9 +1,8 @@
 const { Schema, model } = require('mongoose');
 
-const productsSchema = new Schema({
+const categoriesSchema = new Schema({
   name: String,
-  photoUrl: Array,
-
+  photoUrl: String,
   address: String,
   infoOwner: String,
   exchange: String,
@@ -13,5 +12,5 @@ const productsSchema = new Schema({
   categories: { type: Schema.Types.ObjectId, ref: 'Categories' }
 })
 
-const Products = model('Products', productsSchema);
-module.exports = Products
+const Categories = model('Categories', categoriesSchema);
+module.exports = Categories
