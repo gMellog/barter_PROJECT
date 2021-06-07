@@ -53,7 +53,10 @@ const ProfilePanel = () => {
           <img />
           :
           <>
-
+            {/* <form onSubmit={e => uploadImageOne(e)}>
+              <h1>One</h1>
+              <input type="file" name="image" />
+            </form> */}
             <form onSubmit={e => uploadImageOne(e)}>
               <h1>One</h1>
               <input type="file" name="image" />
