@@ -5,7 +5,7 @@ import product from "./image/product-icon-big.png";
 import product_small from "./image/product-icon-small.png";
 import { useParams } from "react-router-dom";
 
-export default function AddProduct() {
+export default function WatchProduct() {
   const [product, setProduct] = useState({});
   const { id } = useParams();
   useEffect(async () => {
