@@ -13,6 +13,7 @@ const Message = require('./db/messageModel');
 const app = express();
 const userRouter = require('./routers/userRouter');
 const chatRouter = require('./routers/chatRouter');
+const productRouter = require("./routers/productRouter")
 
 
 const server = http.createServer(app);
@@ -22,7 +23,6 @@ const io = socketIo(server,
         origin: '*'
       }
     }
-
   );
 
 app.use((req,res,next) => {
@@ -37,6 +37,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/user', userRouter);
 app.use('/chat', chatRouter);
+app.use("/product", productRouter)
+
 
 io.on('connect', socket => {
         socket.on('join', async ({ id, roomID }, callback) => {
@@ -96,15 +98,20 @@ io.on('connect', socket => {
 
 
 app.get("/products", async (req,res) => {
-  let products = await productsModel.find();
+  let products = await productsModel.find().populate("categories");
   res.json(products)
 })
 
 app.post("/search", async (req,res) => {
-  console.log("===>1",req.body);
   const {name} = req.body
   let products = await productsModel.find({name: name});
-  console.log(products);
+  res.json(products)
+})
+
+app.get("/:category", async (req,res) => {
+  const {category} = req.params
+  let categoryId = await categoriesModel.findOne({name: category})
+  let products = await productsModel.find({categories: categoryId._id});
   res.json(products)
 })
 
