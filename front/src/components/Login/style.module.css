@@ -1,26 +1,26 @@
-.modal{
+.modal {
   padding: 30px 50px;
 }
-.modalRegistration{
+.modalRegistration {
   padding: 20px 50px;
   background-color: black;
 }
-.modalColor{
+.modalColor {
   background-color: black;
 }
-.title{
+.title {
   text-align: center;
 }
-.title h2{
+.title h2 {
   font-weight: bold;
   margin-bottom: 5%;
 }
-.body form{
+.body form {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-.body form input{
+.body form input {
   font-size: 16px;
   line-height: 24px;
   min-height: 40px;
@@ -31,10 +31,10 @@
   border: 1px solid rgb(136, 132, 132);
   margin-bottom: 5%;
 }
-.body form button{
+.body form button {
   margin: 5px auto 5% auto;
 }
-.bottomSettng{
+.bottomSettng {
   display: flex;
   justify-content: space-between;
 }
@@ -43,7 +43,7 @@
   padding: 0;
 } */
 
-.rememberPassword{
+.rememberPassword {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -55,20 +55,19 @@
 }
 .link,
 .footer p,
-.forgotPassword p{
+.forgotPassword p {
   line-height: none;
   cursor: pointer;
   color: blue;
   user-select: none;
   margin-bottom: 0;
-
 }
 .link:hover,
 .footer p:hover,
-.forgotPassword p:hover{
+.forgotPassword p:hover {
   color: rgb(48, 48, 240);
 }
-.footer{
+.footer {
   width: 100%;
   text-align: center;
 }
