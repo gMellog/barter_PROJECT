@@ -12,6 +12,7 @@ import OfferProduct from "./components/OfferProduct/OfferProduct"
 import ProductCarousel from "./components/ProductCarousel/ProductCarousel"
 import CategoriesFilter from "./components/CategoriesFilter/CategoriesFilter"
 
+
 import Message from "./components/Message/Message";
 import Like from "./components/Like/Like";
 import Notify from "./components/Notify/Notify";
@@ -20,7 +21,8 @@ import MyAd from "./components/MyAd/MyAd";
 import Offers from "./components/Offers/Offers";
 
 
-// import Chat from './components/Chat/Chat';
+
+import Chat from './components/Chat/Chat';
 
 //Роутеры
 import {
@@ -40,6 +42,9 @@ function App() {
       {/* <CategoriesFilter/> */}
         
 
+      <Chat/>
+      <ProfilePanel />
+      <Router>
         <NavMenu />
         <div className='wrapperApp' >
           <ProfilePanel />
@@ -57,6 +62,11 @@ function App() {
           <Route exact path="/ad/:id" component={AddProduct} />
           <Route exact path="/offer" component={OfferProduct} />
           </Switch>
+            <Route exact path="/ad/:id" component={MyAd} />
+            <Route exact path="/ad" component={Ad} />
+          </Switch>
+
+
         </div>
         {/* <Searcher/> */}
       </Router>
