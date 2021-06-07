@@ -45,7 +45,7 @@ function App() {
       <Router>
         <NavMenu />
         <div className='wrapperApp' >
-          <ProfilePanel />
+          {/* <ProfilePanel /> */}
           <Switch>
             <Route exact path="/product/:name" component={ProductCard} />
             <Route exact path="/" component={ShowProducts} />

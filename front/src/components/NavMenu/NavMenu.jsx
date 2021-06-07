@@ -11,7 +11,7 @@ import logoSvg from './img/Logo.svg'
 import like from './img/like.svg'
 import message from './img/message.svg'
 
-import {getUserThunks} from '../../redux/actions/userAC';
+import { getUserThunks } from '../../redux/actions/userAC';
 import { useSelector, useDispatch } from 'react-redux';
 
 import {
@@ -57,19 +57,20 @@ export default function NavMenu() {
         </Link>
       </div>
       <div className={style.left} >
-        
+
         <div className={style.row} >
 
-          {JSON.stringify(user) === '{}' ? 
-          
-          <UserPanel user={user} />
+          {JSON.stringify(user) === '{}' ?
+
+            <div className={style.linkReg} >
+              {/* Активатор и модальное окно */}
+              <span onClick={() => { toggle() }} >Вход и регистрация!</span>
+              {modal && <Login toggle={toggle} />}
+            </div>
             :
-          <div className={style.linkReg} >
-            {/* Активатор и модальное окно */}
-            <span onClick={() => { toggle() }} >Вход и регистрация!</span>
-            {modal && <Login toggle={toggle} />}
-          </div>
-        }
+            <UserPanel user={user} />
+
+          }
         </div>
         <Searcher />
       </div>
