@@ -32,25 +32,24 @@ async function productsFabric() {
 
   const products = [
     {
-      name: "product_1",
-      photoUrl:
-        "https://delaidengi.boltai.com/wp-content/uploads/sites/28/2016/07/JETvGD9PHlgypwzPQAq5yQ1.jpg",
+      name: "Корзина соломенная",
+      photoUrl:["https://i.pinimg.com/564x/f7/ed/0a/f7ed0aba7ce29bbc9a039978388d5eb2.jpg"],
       address: "Moscow",
       infoOwner: uuidv4(),
-      exchange: "product_2",
-      description: "cool product_1",
+      exchange: "Обувь",
+      description: "Корзина для пикника соломенная",
       actual: true,
       createdAt: Date.now(),
       categories: id1,
     },
     {
-      name: "product_2",
+      name: "Стул лофт",
       photoUrl:
-        "https://delaidengi.boltai.com/wp-content/uploads/sites/28/2016/07/JETvGD9PHlgypwzPQAq5yQ1.jpg",
+        ["https://i.pinimg.com/564x/d0/f8/b1/d0f8b19a4908c0730720fd7bc84b0f21.jpg"],
       address: "Moscow",
       infoOwner: uuidv4(),
-      exchange: "product_3",
-      description: "cool product_2",
+      exchange: "Стол",
+      description: "Стул лофт",
       actual: true,
       createdAt: Date.now(),
       categories: id1,
@@ -58,7 +57,45 @@ async function productsFabric() {
     {
       name: "product_3",
       photoUrl:
-        "https://delaidengi.boltai.com/wp-content/uploads/sites/28/2016/07/JETvGD9PHlgypwzPQAq5yQ1.jpg",
+        ["https://delaidengi.boltai.com/wp-content/uploads/sites/28/2016/07/JETvGD9PHlgypwzPQAq5yQ1.jpg"],
+=======
+  bufferMaxEntries: 0
+}
+
+const dbConnectionURL = "mongodb+srv://Alex:9Y780UY8XZZnVM0L@cluster0.fmjcz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+
+function dbConnect() {
+  mongoose.connect(dbConnectionURL, options, (err) => {
+    if (err) return console.log(err)
+    console.log('Success connected to mongo')
+  })
+}
+
+dbConnect()
+
+function productsFabric() {
+  const products = [
+    {
+      name: "product_1",
+      photoUrl: "https://delaidengi.boltai.com/wp-content/uploads/sites/28/2016/07/JETvGD9PHlgypwzPQAq5yQ1.jpg",
+      address: "Moscow",
+      infoOwner: uuidv4(),
+      exchange: "product_2",
+      description: "cool product_1",
+      actual: true
+    },
+    {
+      name: "product_2",
+      photoUrl: "https://delaidengi.boltai.com/wp-content/uploads/sites/28/2016/07/JETvGD9PHlgypwzPQAq5yQ1.jpg",
+      address: "Moscow",
+      infoOwner: uuidv4(),
+      exchange: "product_3",
+      description: "cool product_2",
+      actual: true
+    },
+    {
+      name: "product_3",
+      photoUrl: "https://delaidengi.boltai.com/wp-content/uploads/sites/28/2016/07/JETvGD9PHlgypwzPQAq5yQ1.jpg",
       address: "Moscow",
       infoOwner: uuidv4(),
       exchange: "product_4",
@@ -69,8 +106,7 @@ async function productsFabric() {
     },
     {
       name: "product_4",
-      photoUrl:
-        "https://delaidengi.boltai.com/wp-content/uploads/sites/28/2016/07/JETvGD9PHlgypwzPQAq5yQ1.jpg",
+      photoUrl: "https://delaidengi.boltai.com/wp-content/uploads/sites/28/2016/07/JETvGD9PHlgypwzPQAq5yQ1.jpg",
       address: "Moscow",
       infoOwner: uuidv4(),
       exchange: "product_5",
@@ -81,8 +117,7 @@ async function productsFabric() {
     },
     {
       name: "product_5",
-      photoUrl:
-        "https://delaidengi.boltai.com/wp-content/uploads/sites/28/2016/07/JETvGD9PHlgypwzPQAq5yQ1.jpg",
+      photoUrl: "https://delaidengi.boltai.com/wp-content/uploads/sites/28/2016/07/JETvGD9PHlgypwzPQAq5yQ1.jpg",
       address: "Moscow",
       infoOwner: uuidv4(),
       exchange: "product_6",
@@ -93,8 +128,7 @@ async function productsFabric() {
     },
     {
       name: "product_6",
-      photoUrl:
-        "https://delaidengi.boltai.com/wp-content/uploads/sites/28/2016/07/JETvGD9PHlgypwzPQAq5yQ1.jpg",
+      photoUrl: "https://delaidengi.boltai.com/wp-content/uploads/sites/28/2016/07/JETvGD9PHlgypwzPQAq5yQ1.jpg",
       address: "Moscow",
       infoOwner: uuidv4(),
       exchange: "product_7",
@@ -105,8 +139,7 @@ async function productsFabric() {
     },
     {
       name: "product_7",
-      photoUrl:
-        "https://delaidengi.boltai.com/wp-content/uploads/sites/28/2016/07/JETvGD9PHlgypwzPQAq5yQ1.jpg",
+      photoUrl: "https://delaidengi.boltai.com/wp-content/uploads/sites/28/2016/07/JETvGD9PHlgypwzPQAq5yQ1.jpg",
       address: "Moscow",
       infoOwner: uuidv4(),
       exchange: "product_8",
@@ -117,8 +150,7 @@ async function productsFabric() {
     },
     {
       name: "product_8",
-      photoUrl:
-        "https://delaidengi.boltai.com/wp-content/uploads/sites/28/2016/07/JETvGD9PHlgypwzPQAq5yQ1.jpg",
+      photoUrl: "https://delaidengi.boltai.com/wp-content/uploads/sites/28/2016/07/JETvGD9PHlgypwzPQAq5yQ1.jpg",
       address: "Moscow",
       infoOwner: uuidv4(),
       exchange: "product_9",
@@ -129,8 +161,7 @@ async function productsFabric() {
     },
     {
       name: "product_9",
-      photoUrl:
-        "https://delaidengi.boltai.com/wp-content/uploads/sites/28/2016/07/JETvGD9PHlgypwzPQAq5yQ1.jpg",
+      photoUrl: "https://delaidengi.boltai.com/wp-content/uploads/sites/28/2016/07/JETvGD9PHlgypwzPQAq5yQ1.jpg",
       address: "Moscow",
       infoOwner: uuidv4(),
       exchange: "product_10",
@@ -141,8 +172,7 @@ async function productsFabric() {
     },
     {
       name: "product_10",
-      photoUrl:
-        "https://delaidengi.boltai.com/wp-content/uploads/sites/28/2016/07/JETvGD9PHlgypwzPQAq5yQ1.jpg",
+      photoUrl: "https://delaidengi.boltai.com/wp-content/uploads/sites/28/2016/07/JETvGD9PHlgypwzPQAq5yQ1.jpg",
       address: "Moscow",
       infoOwner: uuidv4(),
       exchange: "product_11",
@@ -153,8 +183,7 @@ async function productsFabric() {
     },
     {
       name: "product_11",
-      photoUrl:
-        "https://delaidengi.boltai.com/wp-content/uploads/sites/28/2016/07/JETvGD9PHlgypwzPQAq5yQ1.jpg",
+      photoUrl: "https://delaidengi.boltai.com/wp-content/uploads/sites/28/2016/07/JETvGD9PHlgypwzPQAq5yQ1.jpg",
       address: "Moscow",
       infoOwner: uuidv4(),
       exchange: "product_12",
@@ -165,8 +194,7 @@ async function productsFabric() {
     },
     {
       name: "product_12",
-      photoUrl:
-        "https://delaidengi.boltai.com/wp-content/uploads/sites/28/2016/07/JETvGD9PHlgypwzPQAq5yQ1.jpg",
+      photoUrl: "https://delaidengi.boltai.com/wp-content/uploads/sites/28/2016/07/JETvGD9PHlgypwzPQAq5yQ1.jpg",
       address: "Moscow",
       infoOwner: uuidv4(),
       exchange: "product_13",
@@ -185,3 +213,4 @@ async function main() {
 main().then(() => console.log("its work+"));
 
 module.exports = { productsFabric };
+

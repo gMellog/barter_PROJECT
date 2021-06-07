@@ -1,15 +1,16 @@
+import Searcher from "./components/Searcher/Searcher";
 
-import Searcher from "./components/Searcher/Searcher"
-import ShowProducts from "./components/ShowProducts/ShowProducts";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import ProductCard from "./components/ProductCard/ProductCard";
+import ProfilePanel from "./components/ProfilePanel/ProfilePanel";
+import SearchResult from "./components/SearchResult/SearchResult";
+import React from "react";
+import './App.css';
 import NavMenu from './components/NavMenu/NavMenu'
+import ShowProducts from "./components/ShowProducts/ShowProducts";
+import ProductCard from "./components/ProductCard/ProductCard";
 import ProductCarousel from "./components/ProductCarousel/ProductCarousel"
 // import ProfilePanel from "./components/ProfilePanel/ProfilePanel";
 // import SearchResult from "./components/SearchResult/SearchResult";
-import React from "react";
-import './App.css';
-import AddProduct from "./components/AddProduct/AddProduct"
+import WatchProduct from "./components/WatchProduct/WatchProduct"
 import OfferProduct from "./components/OfferProduct/OfferProduct"
 import CategoriesFilter from "./components/CategoriesFilter/CategoriesFilter"
 // import Message from "./components/Message/Message";
@@ -22,7 +23,12 @@ import CategoriesFilter from "./components/CategoriesFilter/CategoriesFilter"
 
 
 // import Chat from './components/Chat/Chat';
-
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 
 function App() {
@@ -48,7 +54,7 @@ function App() {
             {/* <Route exact path="/like/:id" component={Like} /> */}
             <Route exact path="/profile" component='' />
           <Route exact path="/" component={ShowProducts} />
-          <Route exact path="/ad/:id" component={AddProduct} />
+          <Route exact path="/ad/:id" component={WatchProduct} />
           <Route exact path="/offer" component={OfferProduct} />
           </Switch>
             {/* <Route exact path="/ad/:id" component={MyAd} /> */}

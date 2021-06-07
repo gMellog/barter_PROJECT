@@ -2,6 +2,14 @@
   margin: 0;
   padding: 0;
 }
+a{
+  color: whitesmoke;
+  text-decoration: none
+}
+a{
+  color: whitesmoke;
+  text-decoration: none
+}
 
 .App {
   text-align: center;
@@ -40,4 +48,7 @@
   to {
     transform: rotate(360deg);
   }
+}
+.wrapperApp{
+  display: flex;
 }
