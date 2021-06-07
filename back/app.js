@@ -2,7 +2,6 @@ const express = require("express");
 const { dbConnect } = require("./db/connect")
 const productsModel = require('./db/products')
 const cors = require("cors");
-
 const jwt = require('./jwt');
 const morgan = require('morgan')
 const http = require('http');
@@ -24,7 +23,6 @@ const io = socketIo(server,
         origin: '*'
       }
     }
-
   );
 
 app.use((req,res,next) => {
@@ -40,6 +38,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/user', userRouter);
 app.use('/chat', chatRouter);
 app.use("/product", productRouter)
+
 
 io.on('connect', socket => {
         socket.on('join', async ({ id, roomID }, callback) => {

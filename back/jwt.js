@@ -13,6 +13,7 @@ function jwt() {
             '/user/reg',
             '/user/login',
             /\/product\/[A-Za-z\d]+/
+
         ]
     });
 }
