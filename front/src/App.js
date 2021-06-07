@@ -2,7 +2,8 @@ import Searcher from "./components/Searcher/Searcher";
 
 import ProfilePanel from "./components/ProfilePanel/ProfilePanel";
 import SearchResult from "./components/SearchResult/SearchResult";
-import React from "react";
+import React, { useEffect, useState } from "react";
+
 import './App.css';
 import NavMenu from './components/NavMenu/NavMenu'
 import ShowProducts from "./components/ShowProducts/ShowProducts";
@@ -33,41 +34,35 @@ import {
 } from "react-router-dom";
 
 function App() {
+
   return (
     <div className="App">
-
-      <Router>
       {/* <Chat/> */}
-        {/* <ProductCarousel/> */}
+      {/* <ProductCarousel/> */}
       {/* <CategoriesFilter/> */}
-        
 
-      <Chat/>
-      <ProfilePanel />
+      {/* <Chat /> */}
       <Router>
         <NavMenu />
         <div className='wrapperApp' >
           <ProfilePanel />
           <Switch>
             <Route exact path="/product/:name" component={ProductCard} />
-            <Route exact path="/" >
-              <ShowProducts />
-            </Route>
+            <Route exact path="/" component={ShowProducts} />
             <Route exact path="/message/:id" component={Message} />
             <Route exact path="/notify/:id" component={Notify} />
             <Route exact path="/offers/:id" component={Offers} />
             <Route exact path="/like/:id" component={Like} />
             <Route exact path="/profile" component='' />
-          <Route exact path="/" component={ShowProducts} />
-          <Route exact path="/ad/:id" component={AddProduct} />
-          <Route exact path="/offer" component={OfferProduct} />
-          </Switch>
+            <Route exact path="/" component={ShowProducts} />
+            <Route exact path="/ad/:id" component={AddProduct} />
+            <Route exact path="/offer" component={OfferProduct} />
             <Route exact path="/ad/:id" component={MyAd} />
             <Route exact path="/ad" component={Ad} />
           </Switch>
-
-
         </div>
+
+
         {/* <Searcher/> */}
       </Router>
     </div>
