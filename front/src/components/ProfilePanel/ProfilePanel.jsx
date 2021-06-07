@@ -9,6 +9,8 @@ import pencil from "./bytesize_edit.svg";
 import { Link } from "react-router-dom";
 
 const ProfilePanel = () => {
+  const [avatar, setAvatar] = useState()
+
   const user = {
     name: "Aleksandr Khabarov",
     stars: 5,
@@ -29,11 +31,37 @@ const ProfilePanel = () => {
   //   if (document.textarea.value)
   // };
 
+
+  //Загрузка одного изображения
+  async function uploadImageOne(e) {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('image', e.target.image.files[0])
+    await fetch('http://localhost:3001/photo/avatar', {
+      method: 'POST',
+      body: formData,
+    });
+  }
+
+
   return (
     <div className={style.profile_panel_wrapper}>
       {/* -------------------------------------------------------- */}
       <div className={style.avatar_area}>
-        <img src={avatara} />
+        {/* Проверка на аватар и выставления стандартной позиции */}
+        {avatar ?
+          <img />
+          :
+          <>
+
+            <form onSubmit={e => uploadImageOne(e)}>
+              <h1>One</h1>
+              <input type="file" name="image" />
+              <button type="submit">Upload</button>
+            </form>
+            <i class="fas fa-camera"></i>
+          </>
+        }
       </div>
       {/* -------------------------------------------------------- */}
       <div className={style.user_name}>
@@ -80,7 +108,7 @@ const ProfilePanel = () => {
         <div className={style.control_line}></div>
         <Link to="/ad"><h5>Мои объявления</h5></Link>
         <div className={style.control_line}></div>
-        
+
         <Link to="/offers/id"><h5>Предложения</h5></Link>
 
         <div className={style.control_line}></div>
