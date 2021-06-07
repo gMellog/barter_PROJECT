@@ -33,8 +33,8 @@ function App() {
    
       <Router>
       {/* <Chat/> */}
-        <ProductCarousel/>
-      <CategoriesFilter/>
+        {/* <ProductCarousel/> */}
+      {/* <CategoriesFilter/> */}
         <NavMenu />
         <div className="wrapperApp">
           <ProfilePanel />
