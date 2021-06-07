@@ -24,6 +24,7 @@ function App() {
         <NavMenu />
         <ProfilePanel />
         <AddProduct />
+
         {/* <Switch>
           <Route exact path="/product/:name" component={ProductCard} />
           <Route exact path="/" component={ShowProducts} />
