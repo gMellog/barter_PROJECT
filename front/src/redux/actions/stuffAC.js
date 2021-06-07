@@ -14,7 +14,13 @@ export const searchAll = (stuff) => {
   };
 };
 
-export const getAllSearchThunksearchAll = (name) => async (dispatch) => {
+export const getSearchCategoriesThunks = (category) => async (dispatch) => {
+  const responseUser = await fetch(`http://localhost:3001/${category}`)
+  const resultRes = await responseUser.json();
+  dispatch(searchAll(resultRes));
+};
+
+export const getAllSearchThunk = (name) => async (dispatch) => {
   const responseUser = await fetch("http://localhost:3001/search", {
     method: "POST",
     headers: {

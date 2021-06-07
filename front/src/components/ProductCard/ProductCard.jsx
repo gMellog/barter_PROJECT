@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {getAllSearchThunksearchAll} from "../../redux/actions/stuffAC"
+import {getAllSearchThunk} from "../../redux/actions/stuffAC"
 
 export default function ProductCard() {
   const { name } = useParams();
@@ -10,7 +10,7 @@ export default function ProductCard() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllSearchThunksearchAll(name));
+    dispatch(getAllSearchThunk(name));
   }, [name]);
 
   return (

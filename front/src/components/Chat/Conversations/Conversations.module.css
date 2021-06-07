@@ -1,0 +1,5 @@
+
+.conversations{
+    overflow: auto;
+    flex: auto;
+}
