@@ -6,6 +6,7 @@ import { ReactSVG } from "react-svg";
 // Подключение SVG элементов для UI
 import star from "./star.svg";
 import pencil from "./bytesize_edit.svg";
+import { Link } from "react-router-dom";
 
 const ProfilePanel = () => {
   const user = {
@@ -75,15 +76,17 @@ const ProfilePanel = () => {
       )}
       {/* -------------------------------------------------------- */}
       <div className={style.controls}>
-        <h5>Создать объявление</h5>
+        <Link to="/ad/id"><h5>Создать объявление</h5></Link>
         <div className={style.control_line}></div>
-        <h5>Мои объявления</h5>
+        <Link to="/ad"><h5>Мои объявления</h5></Link>
         <div className={style.control_line}></div>
-        <h5>Предложения</h5>
+        
+        <Link to="/offers/id"><h5>Предложения</h5></Link>
+
         <div className={style.control_line}></div>
-        <h5>Сообщения</h5>
+        <Link to="/message/id"><h5>Сообщения</h5></Link>
         <div className={style.control_line}></div>
-        <h5>Выйти</h5>
+        <Link to="/exit"><h5>Выйти</h5></Link>
       </div>
       {/* -------------------------------------------------------- */}
       {/* -------------------------------------------------------- */}

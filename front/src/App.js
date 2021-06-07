@@ -6,7 +6,13 @@ import './App.css';
 import NavMenu from './components/NavMenu/NavMenu'
 import ShowProducts from "./components/ShowProducts/ShowProducts";
 import ProductCard from "./components/ProductCard/ProductCard";
-import Main from "./components/Main/Main";
+import Message from "./components/Message/Message";
+import Like from "./components/Like/Like";
+import Notify from "./components/Notify/Notify";
+import Ad from "./components/Ad/Ad";
+import MyAd from "./components/MyAd/MyAd";
+import Offers from "./components/Offers/Offers";
+
 
 //Роутеры
 import {
@@ -20,15 +26,27 @@ function App() {
   return (
     <div className="App">
       <Router>
-      <NavMenu/>
-        <ProfilePanel />
-      {/* <Searcher/> */}
-      <Switch>
-        <Route exact path="/product/:name" component={ProductCard} />
-        <Route exact path="/" component={ShowProducts} />
-        <Route exact path="/profile" component='' />
-      </Switch>
-    </Router>
+        <NavMenu />
+        <div className='wrapperApp' >
+          <ProfilePanel />
+          <Switch>
+            <Route exact path="/product/:name" component={ProductCard} />
+            <Route exact path="/" >
+              <ShowProducts />
+            </Route>
+            <Route exact path="/message/:id" component={Message} />
+            <Route exact path="/notify/:id" component={Notify} />
+            <Route exact path="/offers/:id" component={Offers} />
+            <Route exact path="/like/:id" component={Like} />
+            <Route exact path="/profile" component='' />
+            <Route exact path="/ad/:id" component={MyAd} />
+            <Route exact path="/ad" component={Ad} />
+          </Switch>
+
+
+        </div>
+        {/* <Searcher/> */}
+      </Router>
     </div>
   );
 }
