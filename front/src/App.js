@@ -8,7 +8,7 @@ import NavMenu from './components/NavMenu/NavMenu'
 import Searcher from "./components/Searcher/Searcher"
 import ShowProducts from "./components/ShowProducts/ShowProducts";
 import ProductCard from "./components/ProductCard/ProductCard";
-
+import Chat from './components/Chat/Chat';
 //Роутеры
 import {
   BrowserRouter as Router,
@@ -20,6 +20,7 @@ import {
 function App() {
   return (
     <div className="App">
+      <Chat/>
       <ProfilePanel />
       <Router>
       <NavMenu/>

@@ -7,6 +7,9 @@ const schema = new Schema({
   phone: {type: String, unique: true, min: 10, required: true},
   hash: {type: String, min: 6},
   verifyID: {type: String, default: null},
+  socketID: {type: String, default: null},
+  roomID: {type:String, default: null},
+  chatHistory: {type: Schema.Types.ObjectId, ref: 'ChatHistory'},
   createdDate: {type: Date, default: Date.now()}
 });
 

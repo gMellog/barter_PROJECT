@@ -5,6 +5,7 @@ const Vonage = require('@vonage/server-sdk');
 const bcrypt = require('bcrypt');
 const config = require('../config.json');
 const jwt = require('jsonwebtoken');
+const ChatHistory = require('../db/chatHistoryModel');
 const vonage = new Vonage({
     apiKey: "ca23dd22",
     apiSecret: "fuTacPky0B7KPVyY"
@@ -26,7 +27,6 @@ router.post('/reg', async (req, res) => {
 
     if (number && !password) {
         if (checkNumber(number)) {
-            console.log('hello');
             const onlyNumbers = getOnlyNumbers(number);
             const user = await User.findOne({ phone: onlyNumbers });
 
@@ -77,6 +77,9 @@ router.post('/reg', async (req, res) => {
                 const hash = await bcrypt.hash(password, config.saltRounds);
                 user.name = name;
                 user.hash = hash;
+                const chatHistory = new ChatHistory();
+                await chatHistory.save();
+                user.chatHistory = chatHistory._id;
                 await user.save();
                 res.json();
             }
@@ -157,7 +160,7 @@ router.post('/login', async (req,res) => {
             {
                 const token = jwt.sign({ id: user.id }, config.secret, { expiresIn: '1d' });
                 console.log(token.id);
-                res.json({id: user._id, token});
+                res.json({id: user._id, name: user.name, token});
             }
             else
             {

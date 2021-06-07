@@ -8,3 +8,8 @@ export function authHeader() {
         return {};
     }
 }
+
+export function getOnlyToken() {
+    const user = JSON.parse(localStorage.getItem('user'));
+    return user.token;
+}
