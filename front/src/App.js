@@ -6,6 +6,7 @@ import './App.css';
 import NavMenu from './components/NavMenu/NavMenu'
 import ShowProducts from "./components/ShowProducts/ShowProducts";
 import ProductCard from "./components/ProductCard/ProductCard";
+
 import Message from "./components/Message/Message";
 import Like from "./components/Like/Like";
 import Notify from "./components/Notify/Notify";
@@ -13,6 +14,8 @@ import Ad from "./components/Ad/Ad";
 import MyAd from "./components/MyAd/MyAd";
 import Offers from "./components/Offers/Offers";
 
+
+import Chat from './components/Chat/Chat';
 
 //Роутеры
 import {
@@ -25,6 +28,9 @@ import {
 function App() {
   return (
     <div className="App">
+
+      <Chat/>
+      <ProfilePanel />
       <Router>
         <NavMenu />
         <div className='wrapperApp' >
