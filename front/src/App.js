@@ -4,18 +4,18 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ProductCard from "./components/ProductCard/ProductCard";
 import AddProduct from "./components/AddProduct/AddProduct"
 import OfferProduct from "./components/OfferProduct/OfferProduct"
-// import NavMenu from './components/NavMenu/NavMenu'
-// import ProductCarousel from "./components/ProductCarousel/ProductCarousel"
-// import CategoriesFilter from "./components/CategoriesFilter/CategoriesFilter"
+import NavMenu from './components/NavMenu/NavMenu'
+import ProductCarousel from "./components/ProductCarousel/ProductCarousel"
+import CategoriesFilter from "./components/CategoriesFilter/CategoriesFilter"
 
 function App() {
   return (
     <div className="App">
       <Router>
-        {/* <NavMenu/> */}
-        {/* <ProductCarousel/>
+        <NavMenu/>
+        <ProductCarousel/>
       <CategoriesFilter/>
-      <Searcher/> */}
+      <Searcher/>
         <Switch>
           <Route exact path="/add" component={AddProduct} />
           <Route exact path="/offer" component={OfferProduct} />
