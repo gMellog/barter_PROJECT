@@ -100,7 +100,7 @@ const ProfilePanel = () => {
       ) : (
         <div className={style.text_section}>
           <textarea
-            rows="5"
+            rows="6"
             className={style.text_section_textarea}
             onChange={(e) => {
               setHello(e.target.value);
