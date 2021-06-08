@@ -11,6 +11,18 @@ const vonage = new Vonage({
     apiSecret: "fuTacPky0B7KPVyY"
 });
 
+var messagebird = require('messagebird')('test_gshuPaZoeEG6ovbc8M79w0QyM');
+var params = {
+    originator: 'CHANGER'
+    };
+
+messagebird.verify.create('79850592945', params, function (err, response) {
+        if (err) {
+            return console.log(err);
+            }
+            console.log(response);
+        });
+
 
 function checkNumber(number) {
     const numberRegex = /\+7\(?\d{3}\)?-?\d{3}-?\d{2}-?\d{2}/;
