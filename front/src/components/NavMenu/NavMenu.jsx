@@ -60,17 +60,19 @@ export default function NavMenu() {
 
         <div className={style.row} >
 
-          {JSON.stringify(user) === '{}' ?
+        {/* daladno753    79850592945 */}
+
+
 
             <div className={style.linkReg} >
               {/* Активатор и модальное окно */}
               <span onClick={() => { toggle() }} >Вход и регистрация!</span>
               {modal && <Login toggle={toggle} />}
             </div>
-            :
+            
             <UserPanel user={user} />
 
-          }
+          
         </div>
         <Searcher />
       </div>
@@ -78,7 +80,7 @@ export default function NavMenu() {
         <img src="/headerImg.png" alt="" />
       </div>
 
-    </div>
+    </div >
   )
 }
 

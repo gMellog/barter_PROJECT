@@ -15,27 +15,14 @@ import { useSelector, useDispatch } from 'react-redux';
 
 const ProfilePanel = () => {
 
+  console.log('hwe23414214124124');
   const user = useSelector(state => state.user);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getUserThunks())
-  }, [])
-
-  // const user = {
-  //   name: "Aleksandr Khabarov",
-  //   stars: 5,
-  //   hello:
-  //     "Привет всем!Часто меняю всяческие вещички. Рад открытым людям, пишите лучше в сообщения!",
-  // };
   const helloDefault =
     "Привет всем! Часто меняю всяческие вещички. Рад открытым людям, пишите лучше в сообщения!";
   const [flag_edit_hello, setFlag_edit_hello] = useState(true);
   const [hello, setHello] = useState(helloDefault);
-
-
-
-
 
   //Загрузка одного изображения
   async function uploadImageOne(e) {
@@ -48,7 +35,6 @@ const ProfilePanel = () => {
       body: formData,
     });
     dispatch(getUserThunks())
-
   }
 
 

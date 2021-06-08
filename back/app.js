@@ -76,6 +76,7 @@ const uploadOne = multer({
 
 
 app.get('/user', async (req, res) => {
+  console.log('555555');
   const result = await User.findById(req.user.id)
   res.json(result)
 })

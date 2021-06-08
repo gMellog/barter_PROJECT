@@ -1,4 +1,5 @@
 import { GET_STUFF, SEARCH_STUFF } from "../types/stuffTypes";
+import { authHeader } from "../../helpers/authHeader";
 
 export const getAllStuff = (stuff) => {
   return {
@@ -35,8 +36,11 @@ export const getAllSearchThunk = (name) => async (dispatch) => {
 };
 
 export const getAllStuffThunk = () => async (dispatch) => {
-  const response = await fetch("http://localhost:4000/products");
+  const response = await fetch("http://localhost:4000/products", {
+    headers: authHeader(),
+  });
   const stuff = await response.json();
+
 
   dispatch(getAllStuff(stuff));
 };

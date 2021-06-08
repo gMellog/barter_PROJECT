@@ -12,6 +12,7 @@ export default function ShowProducts() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log('PRODUCTS');
     dispatch(getAllStuffThunk());
   }, []);
 
