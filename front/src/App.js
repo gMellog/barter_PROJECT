@@ -6,17 +6,19 @@ import "./App.css";
 import NavMenu from "./components/NavMenu/NavMenu";
 import ShowProducts from "./components/ShowProducts/ShowProducts";
 import ProductCard from "./components/ProductCard/ProductCard";
-import ProductCarousel from "./components/ProductCarousel/ProductCarousel"
+import AddProduct from "./components/AddProduct/AddProduct";
 import WatchProduct from "./components/WatchProduct/WatchProduct"
-import OfferProduct from "./components/OfferProduct/OfferProduct"
-import CategoriesFilter from "./components/CategoriesFilter/CategoriesFilter"
+import OfferProduct from "./components/OfferProduct/OfferProduct";
+import ProductCarousel from "./components/ProductCarousel/ProductCarousel";
+import CategoriesFilter from "./components/CategoriesFilter/CategoriesFilter";
+
 import Message from "./components/Message/Message";
 import Like from "./components/Like/Like";
 import Notify from "./components/Notify/Notify";
 import Ad from "./components/Ad/Ad";
 import MyAd from "./components/MyAd/MyAd";
 import Offers from "./components/Offers/Offers";
-
+import styles from "./App.module.css"
 
 import Chat from "./components/Chat/Chat";
 
@@ -30,8 +32,7 @@ import SearchResult from "./components/SearchResult/SearchResult";
 function App() {
   return (
     <div className="App">
-   
-      <Router>
+         <Router>
       {/* <Chat/> */}
         {/* <ProductCarousel/> */}
       {/* <CategoriesFilter/> */}
@@ -51,6 +52,7 @@ function App() {
             <Route exact path="/ad/:id" component={MyAd} />
             <Route exact path="/ad" component={Ad} />
           </Switch>
+            <OfferProduct/>
         </div>
 
         {/* <Searcher/> */}

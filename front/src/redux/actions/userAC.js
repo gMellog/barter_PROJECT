@@ -1,13 +1,5 @@
-import { GET_USER, LOGOUT_USER } from "../types/userTypes";
+import { SET_USER, LOGOUT_USER } from "../types/userTypes";
 import { authHeader } from "../../helpers/authHeader";
-
-export const getOneUser = (user) => {
-  return {
-    type: GET_USER,
-    payload: user,
-  };
-};
-
 
 export const logoutUser = () => {
   return {
@@ -15,12 +7,21 @@ export const logoutUser = () => {
   };
 };
 
+export const setUser = (user) => {
+  return {
+    type: SET_USER,
+    payload: user
+  }
+}
+
 export const getUserThunks = () => async (dispatch) => {
   const resUser = await fetch('http://localhost:4000/user', {
     headers: authHeader(),
   })
+
+  console.log('xxxx123xxxx');
   const resultUser = await resUser.json();
   console.log(resultUser);
-  dispatch(getOneUser(resultUser));
+  dispatch(setUser(resultUser));
 };
 
