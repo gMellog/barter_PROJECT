@@ -1,0 +1,100 @@
+.btn_changer_green {
+  padding-top: 12px;
+  font-size: 20px;
+  color: #e5e5e5;
+  width: 265px;
+  height: 58px;
+  border-radius: 10px;
+  background: #4fb101;
+  border: 1px solid #e5e5e5;
+  text-align: center;
+  position: absolute;
+  left: calc(50% - 132px);
+  bottom: -29px;
+  cursor: pointer;
+}
+
+.wrapper_available_offer_products_hide {
+  /* position: relative; */
+  position: absolute;
+  bottom: 30px;
+  left: -100%;
+  width: 872px;
+  height: 284px;
+  border-radius: 30px;
+  background: #313340;
+  transition: .8s all;
+}
+
+.wrapper_available_offer_products_show {
+  /* position: relative; */
+  position: absolute;
+  bottom: 30px;
+  left: 31%;
+  width: 872px;
+  height: 284px;
+  border-radius: 30px;
+  background: #313340;
+  transition: .8s all;
+}
+
+.available_offer_title {
+  font-size: 20px;
+  color: #e5e5e5;
+  text-align: center;
+  margin-bottom: 12px;
+  padding-top: 21px;
+}
+
+.available_offer_product_item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  padding-top: 12px;
+}
+
+.wrapper_available_offer_product_content {
+  display: flex;
+  justify-content:space-around;
+  overflow: hidden;
+}
+
+.available_product_icon {
+  width: 122px;
+  height: 100px;
+  border-radius: 10px;
+  border-width: 2px solid #e5e5e5;
+  margin: 0 auto;
+}
+
+.watch_ad_change_line {
+  border-width: 1px;
+  color: #e5e5e5;
+  margin: 0 0 35px 0;
+}
+
+.available_product_sign {
+  width: 181px;
+  height: 32px;
+  font-size: 14px;
+  color: #e5e5e5;
+  padding-top: 5px;
+}
+
+.available_product_sign_offer_text {
+  width: 190px;
+  height: 29px;
+  font-size: 14px;
+  color: #e5e5e5;
+  float: right;
+  margin-top: 20px;
+  text-align: center
+}
+
+.select {
+  background-color: #434557;
+  border-radius: 10px;
+
+}

@@ -1,0 +1,155 @@
+.profile_panel_wrapper {
+  margin-top: 235px;
+  margin-left: 40px;
+  width: 250px;
+  height: 535px;
+  background-color: rgba(49, 51, 64, 1);
+  border-radius: 30px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 9999;
+}
+.avatar_area {
+  position: absolute;
+  top: -50px;
+  left: 22%;
+  width: 105px;
+  height: 105px;
+  border-radius: 50%;
+  border: 2px solid rgba(229, 229, 229, 1);
+  background-color: rgba(49, 51, 64, 1);
+  overflow: hidden;
+}
+.avatar_area form input {
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.avatar_area form {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+.avatar_area{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 150px;
+  z-index: 1;
+}
+.avatar_area img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.user_name {
+  margin: 0 auto;
+  margin-top: 70px;
+  display: inline-block;
+  border-bottom: 2px solid rgba(229, 229, 229, 1);
+}
+
+.user_name h4 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: goldenrod;
+}
+
+.stars_section {
+  display: flex;
+  flex-direction: row;
+  margin: 10px auto;
+}
+
+.controls {
+  width: 100%;
+  text-align: center;
+  color: rgba(229, 229, 229, 1);
+}
+.controls h5 {
+  cursor: pointer;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+.controls h5:hover {
+  color: goldenrod;
+  transition: 0.5s;
+}
+
+.text_section {
+  width: 90%;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+  position: relative;
+}
+
+.pencil {
+  position: absolute;
+  top: 0;
+  right: 5px;
+  opacity: 0;
+}
+
+.text_section p {
+  margin: 20px 10px;
+}
+
+.text_section:hover {
+  background-color: #3e404b;
+  border-radius: 10px;
+  transition: 0.5s;
+}
+
+.text_section:hover .pencil {
+  opacity: 1;
+  transition: 0.5s;
+}
+
+.text_section_textarea {
+  width: 100%;
+  height: 100%;
+  background-color: #3e404b;
+  border: 0;
+  border-radius: 10px;
+  text-align: center;
+  color: rgba(229, 229, 229, 1);
+  outline: none;
+}
+
+.text_section_textarea:focus {
+  border: 1px solid rgba(229, 229, 229, 0.5);
+}
+
+.control_line {
+  margin: 10px auto;
+  width: 30%;
+  border-bottom: 1px solid rgba(229, 229, 229, 1);
+}
+
+.avatar_icon {
+  margin: auto;
+  font-size: 4em;
+  margin: auto;
+}
+
+.avatar_icon_mini {
+  font-size: 4em;
+}

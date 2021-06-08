@@ -1,0 +1,73 @@
+.modal {
+  padding: 30px 50px;
+}
+.modalRegistration {
+  padding: 20px 50px;
+  background-color: black;
+}
+.modalColor {
+  background-color: black;
+}
+.title {
+  text-align: center;
+}
+.title h2 {
+  font-weight: bold;
+  margin-bottom: 5%;
+}
+.body form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.body form input {
+  font-size: 16px;
+  line-height: 24px;
+  min-height: 40px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-width: 1px;
+  border-radius: 3px;
+  border: 1px solid rgb(136, 132, 132);
+  margin-bottom: 5%;
+}
+.body form button {
+  margin: 5px auto 5% auto;
+}
+.bottomSettng {
+  display: flex;
+  justify-content: space-between;
+}
+/* .bottomSettng input{
+  margin: 0;
+  padding: 0;
+} */
+
+.rememberPassword {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.checkbox {
+  cursor: pointer;
+  min-height: 0 !important;
+  padding: 0 !important;
+}
+.link,
+.footer p,
+.forgotPassword p {
+  line-height: none;
+  cursor: pointer;
+  color: blue;
+  user-select: none;
+  margin-bottom: 0;
+}
+.link:hover,
+.footer p:hover,
+.forgotPassword p:hover {
+  color: rgb(48, 48, 240);
+}
+.footer {
+  width: 100%;
+  text-align: center;
+}

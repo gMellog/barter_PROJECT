@@ -1,12 +1,12 @@
 import { combineReducers } from "redux";
-import userReducer from "./userReducer";
 import stuffReducer from "./stuffReducer";
-import themeReducer from "./themeReducer";
+import userReducer from "./userReducer";
+import dealsReducer from './dealsReducer';
 
 const rootReducer = combineReducers({
-  user: userReducer,
   stuffArray: stuffReducer,
-  theme: themeReducer
+  user: userReducer,
+  deals: dealsReducer
 });
 
 export default rootReducer;

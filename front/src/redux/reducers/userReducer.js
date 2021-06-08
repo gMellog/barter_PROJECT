@@ -1,24 +1,13 @@
-import { ADD_USER, GET_USER, USER_BUY, USER_REMOVE } from "../types/userTypes";
+import { LOGOUT_USER, SET_USER } from "../types/userTypes";
 
-const userReducer = (state = [], action) => {
+const stuffReducer = (state = {}, action) => {
   switch (action.type) {
-    case ADD_USER:
+    case SET_USER:
       return action.payload;
-
-    case GET_USER:
-      return action.payload;
-
-    case USER_BUY:
-      return action.payload;
-
-    case USER_REMOVE:
-      return {
-        ...state,
-        stuff: state.stuff.filter((id) => id !== action.payload),
-      };
-
+    case LOGOUT_USER:
+      return null;
     default:
       return state;
   }
 };
-export default userReducer;
+export default stuffReducer;
