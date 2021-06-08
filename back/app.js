@@ -19,6 +19,7 @@ const app = express();
 const userRouter = require('./routers/userRouter');
 const chatRouter = require('./routers/chatRouter');
 const productRouter = require("./routers/productRouter");
+const dealRouter = require("./routers/dealRouter");
 const { env } = require("process");
 
 
@@ -96,11 +97,11 @@ app.post('/photo/avatar', (req, res) => {
         } else {
 
           User.findById(req.user.id)
-          .then(r => {
-            r.avatar = '/avatar/' + req.file.filename;
-            r.save().then(()=> res.status(200).json())
-          })
-          
+            .then(r => {
+              r.avatar = '/avatar/' + req.file.filename;
+              r.save().then(() => res.status(200).json())
+            })
+
         }
       }
     });
@@ -115,18 +116,16 @@ app.post('/photo/avatar', (req, res) => {
 app.use('/user', userRouter);
 app.use('/chat', chatRouter);
 app.use("/product", productRouter)
-
+app.use('/deal', dealRouter);
 
 io.on('connect', socket => {
   socket.on('join', async ({ id, roomID }, callback) => {
 
+    console.log('JOOOOIN13');
     const user = await User.findById(id);
     user.socketID = socket.id;
     user.roomID = roomID;
     await user.save();
-
-    console.log('heyy123');
-
     socket.join(roomID);
 
     const roomDB = await Room.findOne({ roomID }).populate('messages');
@@ -154,12 +153,10 @@ io.on('connect', socket => {
     callback();
   });
 
-  socket.on('disconnect', async () => {
-
-    console.log('disconnect!!!!!');
-
+  socket.on('left', async () => {
     const user = await User.findOne({ socketID: socket.id });
     if (user) {
+      console.log('user left');
       user.socketID = null
       user.roomID = null;
       await user.save();
@@ -167,25 +164,25 @@ io.on('connect', socket => {
     else {
       console.log('Cant disconnect empty user');
     }
+    socket.disconnect();
   })
-})
+});
 
-
-app.get("/products", async (req,res) => {
+app.get("/products", async (req, res) => {
   let products = await productsModel.find().populate("categories");
   res.json(products)
 })
 
-app.post("/search", async (req,res) => {
-  const {name} = req.body
-  let products = await productsModel.find({name: name});
+app.post("/search", async (req, res) => {
+  const { name } = req.body
+  let products = await productsModel.find({ name: name });
   res.json(products)
 })
 
-app.get("/:category", async (req,res) => {
-  const {category} = req.params
-  let categoryId = await categoriesModel.findOne({name: category})
-  let products = await productsModel.find({categories: categoryId._id});
+app.get("/:category", async (req, res) => {
+  const { category } = req.params
+  let categoryId = await categoriesModel.findOne({ name: category })
+  let products = await productsModel.find({ categories: categoryId._id });
   res.json(products)
 })
 

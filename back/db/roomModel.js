@@ -1,9 +1,11 @@
 const { Schema, model } = require('mongoose');
 
 const schema = new Schema({
-  roomID: {type: String, required: true, min: 24},
-  messages: [{type: Schema.Types.ObjectId, ref: 'Message'}]
+  roomID: {type: String, required: true, unique: true, min: 24},
+  messages: [{type: Schema.Types.ObjectId, autopopulate: true, ref: 'Message'}]
 })
+
+schema.plugin(require('mongoose-autopopulate'));
 
 const Room = model('Room', schema);
 

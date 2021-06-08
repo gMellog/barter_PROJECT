@@ -186,7 +186,7 @@ router.delete('/:id', (req, res) => {
     console.log(id);
 });
 
-router.get('/user/deals', async (req,res) => {
+router.get('/deals', async (req,res) => {
     try{
         const userDeals = await Deal.find().elemMatch('participants', { userID: req.user.id });
         res.json(userDeals);
