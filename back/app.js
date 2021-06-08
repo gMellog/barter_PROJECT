@@ -1,6 +1,8 @@
 const express = require("express");
 const { dbConnect } = require("./db/connect")
 const productsModel = require('./db/products')
+const Deal = require('./db/dealModel')
+
 const cors = require("cors");
 //Дла multer 
 const multer = require('multer')
@@ -177,6 +179,15 @@ app.post("/search", async (req, res) => {
   const { name } = req.body
   let products = await productsModel.find({ name: name });
   res.json(products)
+})
+app.post("/deal", async (req,res) => {
+  const {dealOne, dealTwo} = req.body
+
+  console.log(dealOne, dealTwo);
+
+  const deal = new Deal({participants: [dealOne,dealTwo]} );
+  await deal.save();
+  //await dealModel.create({participants: [{dealOne, dealTwo}]});
 })
 
 app.get("/:category", async (req, res) => {

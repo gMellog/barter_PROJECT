@@ -18,17 +18,17 @@ import Notify from "./components/Notify/Notify";
 import Ad from "./components/Ad/Ad";
 import MyAd from "./components/MyAd/MyAd";
 import Offers from "./components/Offers/Offers";
+import styles from "./App.module.css"
 
 import Chat from "./components/Chat/Chat";
-
 import { useSelector, useDispatch } from 'react-redux';
-//Роутеры
+
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import ProfilePanel from "./components/ProfilePanel/ProfilePanel";
 import SearchResult from "./components/SearchResult/SearchResult";
 
-import "./App.css";
+
 
 function App() {
   const user = useSelector(state => state.user);
@@ -36,21 +36,18 @@ function App() {
 
   return (
     <div className="App">
+         <Router>
       {/* <Chat/> */}
-      {/* <ProductCarousel/> */}
+        {/* <ProductCarousel/> */}
       {/* <CategoriesFilter/> */}
-
-      {/* <Chat /> */}
-      <Router>
         <NavMenu />
         <div className="wrapperApp">
+
+          <ProfilePanel />
+          {/* <AddProduct /> */}
           <Switch>
-            <Route exact path="/product/:name" component={ProductCard} /> 
-            <Route exact path="/" component={ShowProducts} />
-            <Route exact path="/message" >
-              <ProfilePanel/>
-              <Chat/>
-            </Route>
+            <Route exact path="/product/:name" component={ProductCard} />
+            <Route exact path="/message" component={Chat} />
             <Route exact path="/notify/:id" component={Notify} />
             <Route exact path="/offers/:id" component={Offers} />
             <Route exact path="/like/:id" component={Like} />

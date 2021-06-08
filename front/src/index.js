@@ -9,6 +9,7 @@ import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import initState from "./redux/initState";
+import BarterProvider from './context/barterContext';
 
 const store = createStore(
   rootReducer,
@@ -18,9 +19,12 @@ const store = createStore(
 
 ReactDOM.render(
   <React.StrictMode>
+   <BarterProvider>
     <Provider store={store}>
       <App />
     </Provider>
+   </BarterProvider>
+
   </React.StrictMode>,
   document.getElementById("root")
 );
