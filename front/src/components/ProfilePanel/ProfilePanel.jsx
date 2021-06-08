@@ -37,14 +37,13 @@ const ProfilePanel = () => {
     dispatch(getUserThunks())
   }
 
-
   return (
     <div className={style.profile_panel_wrapper}>
       {/* {JSON.stringify(user)} */}
       {/* -------------------------------------------------------- */}
       <div className={style.avatar_area}>
         {/* Проверка на аватар и выставления стандартной позиции */}
-        {user.avatar ?
+        {user && user.avatar ?
           <img src={`http://localhost:4000${user.avatar}`} />
           // <img src={`http://localhost:4000/avatar/image-1623061042832.png`} />
           :
@@ -63,7 +62,7 @@ const ProfilePanel = () => {
       </div>
       {/* -------------------------------------------------------- */}
       <div className={style.user_name}>
-        <h4>{user.name}</h4>
+        <h4>{user && user.name}</h4>
       </div>
       {/* -------------------------------------------------------- */}
       <div className={style.stars_section}>
@@ -80,7 +79,7 @@ const ProfilePanel = () => {
           className={style.text_section}
           onClick={() => setFlag_edit_hello(false)}
         >
-          <p>{user.description}</p>
+          <p>{user && user.description}</p>
           <ReactSVG src={pencil} className={style.pencil} />
         </div>
       ) : (
@@ -110,7 +109,7 @@ const ProfilePanel = () => {
         <Link to="/offers"><h5>Предложения</h5></Link>
 
         <div className={style.control_line}></div>
-        <Link to="/message/id"><h5>Сообщения</h5></Link>
+        <Link to="/message"><h5>Сообщения</h5></Link>
         <div className={style.control_line}></div>
         <Link onClick={()=>{
           localStorage.removeItem('user');

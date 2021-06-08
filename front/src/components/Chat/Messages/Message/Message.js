@@ -3,14 +3,15 @@ import React from 'react';
 import styles from './Message.module.css';
 
 import ReactEmoji from 'react-emoji';
+import { useSelector } from 'react-redux';
 
 const Message = ({name, message}) => {
   
   let isSentByCurrentUser = false;
 
-  const currUsername = JSON.parse(localStorage.getItem('user')).name;
+  const currUser = useSelector(state => state.user);
 
-  if(name === currUsername) {
+  if(name === currUser.name) {
     isSentByCurrentUser = true;
   }
 

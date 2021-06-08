@@ -47,9 +47,9 @@ function App() {
           <Switch>
             <Route exact path="/product/:name" component={ProductCard} /> 
             <Route exact path="/" component={ShowProducts} />
-            <Route exact path="/message/:id" >
+            <Route exact path="/message" >
               <ProfilePanel/>
-              <Message/>
+              <Chat/>
             </Route>
             <Route exact path="/notify/:id" component={Notify} />
             <Route exact path="/offers/:id" component={Offers} />
@@ -57,9 +57,10 @@ function App() {
             <Route exact path="/profile" component={ProfilePanel} />
             <Route exact path="/" component={ShowProducts} />
             <Route exact path="/watch/:id" component={WatchProduct} />
-            <Route exact path="/offers" ><ProfilePanel/><Offers/></Route>
+            <Route exact path="/offers" ><ProfilePanel/><OfferProduct/></Route>
             <Route exact path="/ad/add" > <ProfilePanel/>  <AddProduct /></Route>
             <Route exact path="/ad" > <ProfilePanel/> <Ad/></Route>
+            <Route exact path="/chat" component={Chat} />
           </Switch>
         </div>
 

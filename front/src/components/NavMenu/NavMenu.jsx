@@ -62,7 +62,7 @@ export default function NavMenu() {
 
           {/* daladno753    79850592945 */}
 
-          { user.id ?
+          { user ?
               <UserPanel user={user} />
             :
             <>
