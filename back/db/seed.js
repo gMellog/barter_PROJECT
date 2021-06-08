@@ -58,7 +58,6 @@ async function productsFabric() {
       name: "product_3",
       photoUrl:
         ["https://delaidengi.boltai.com/wp-content/uploads/sites/28/2016/07/JETvGD9PHlgypwzPQAq5yQ1.jpg"],
-=======
   bufferMaxEntries: 0
 }
 
