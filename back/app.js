@@ -51,6 +51,12 @@ const storage = multer.diskStorage({
     );
   },
 });
+//Товары  -------------------------------------------------------------------------------------------------
+
+app.get('/products', async (req, res) => {
+  const result = await productsModel.find()
+  res.json(result)
+})
 
 
 //Multer---------------------------------------------------------------------------
@@ -68,7 +74,9 @@ const uploadOne = multer({
 // })
 
 
+
 app.get('/user', async (req, res) => {
+  console.log('555555');
   const result = await User.findById(req.user.id)
   res.json(result)
 })

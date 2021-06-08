@@ -160,7 +160,7 @@ router.post('/login', async (req,res) => {
             {
                 const token = jwt.sign({ id: user.id }, config.secret, { expiresIn: '1d' });
                 console.log(token.id);
-                res.json({id: user._id, name: user.name, token});
+                res.json({user, token});
             }
             else
             {
