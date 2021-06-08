@@ -8,7 +8,6 @@ import product_offer_4 from "./image/productOffer-4.png";
 export default function OfferProduct() {
   return (
     <>
-      <div>
         <div className={styles.wrapper_available_offer_products}>
           <h3 className={styles.available_offer_title}>
             Доступны для предложения:
@@ -59,9 +58,8 @@ export default function OfferProduct() {
           <span className={styles.available_product_sign_offer_text}>
             предложено 2/3
           </span>
-        </div>
           <div className={styles.btn_changer_green}>Предложить</div>
-      </div>
+        </div>
     </>
   );
 }

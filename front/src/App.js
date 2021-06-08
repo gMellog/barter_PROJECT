@@ -7,6 +7,7 @@ import NavMenu from "./components/NavMenu/NavMenu";
 import ShowProducts from "./components/ShowProducts/ShowProducts";
 import ProductCard from "./components/ProductCard/ProductCard";
 import AddProduct from "./components/AddProduct/AddProduct";
+import WatchProduct from "./components/WatchProduct/WatchProduct"
 import OfferProduct from "./components/OfferProduct/OfferProduct";
 import ProductCarousel from "./components/ProductCarousel/ProductCarousel";
 import CategoriesFilter from "./components/CategoriesFilter/CategoriesFilter";
@@ -50,7 +51,7 @@ function App() {
             <Route exact path="/like/:id" component={Like} />
             <Route exact path="/profile" component="" />
             <Route exact path="/" component={ShowProducts} />
-            <Route exact path="/ad/:id" component={AddProduct} />
+            <Route exact path="/watch/:id" component={WatchProduct} />
             <Route exact path="/offer" component={OfferProduct} />
             <Route exact path="/ad/:id" component={MyAd} />
             <Route exact path="/ad" component={Ad} />

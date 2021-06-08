@@ -6,6 +6,7 @@ const bcrypt = require('bcrypt');
 const config = require('../config.json');
 const jwt = require('jsonwebtoken');
 const ChatHistory = require('../db/chatHistoryModel');
+const Deal = require('../db/dealModel');
 const vonage = new Vonage({
     apiKey: "ca23dd22",
     apiSecret: "fuTacPky0B7KPVyY"
@@ -160,7 +161,7 @@ router.post('/login', async (req,res) => {
             {
                 const token = jwt.sign({ id: user.id }, config.secret, { expiresIn: '1d' });
                 console.log(token.id);
-                res.json({id: user._id, name: user.name, token});
+                res.json({user, token});
             }
             else
             {
@@ -185,8 +186,15 @@ router.delete('/:id', (req, res) => {
     console.log(id);
 });
 
-router.get('/hello', () => {
-    console.log('hello123123123');
+router.get('/user/deals', async (req,res) => {
+    try{
+        const userDeals = await Deal.find().elemMatch('participants', { userID: req.user.id });
+        res.json(userDeals);
+    }
+    catch(e)
+    {
+        res.status(400).json({errorMessage: e.message});
+    }
 })
 
 module.exports = router
