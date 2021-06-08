@@ -1,80 +1,89 @@
-import React, { useEffect, useState } from "react";
-import styles from "./AddProduct.module.css";
-import map from "./image/maps.png";
-import product from "./image/product-icon-big.png";
-import product_small from "./image/product-icon-small.png";
-import { useParams } from "react-router-dom";
+import style from "./AddProduct.module.css";
+import plus_mini from "./svg/plus_small.svg";
+import { ReactSVG } from "react-svg";
+import {useEffect} from "react";
+import init from "../YandexMap/ymaps";
 
-export default function AddProduct() {
-  const [product, setProduct] = useState({});
-  const { id } = useParams();
-  useEffect(async () => {
-    const response = await fetch(`http://localhost:4000/product/${id}`);
-    const productDB = await response.json();
-    setProduct(productDB);
-    console.log(productDB);
-  }, []);
+const AddProduct = () => {
 
-  const thereIsPhotos = product.photoUrl && product.photoUrl.length;
-  const moreThanOnePhoto = product.photoUrl && product.photoUrl.length > 1;
-  const onlyOneProduct = product.photoUrl && product.photoUrl.length === 1;
+  useEffect(() => {
+    window.ymaps.ready(init)
+  }, [])
+
+
 
   return (
-    <>
-      <div className={styles.wrapper_section_watch_ad}>
-        <div className={styles.title_ad}>Просмотр объявления</div>
-        <hr className={styles.title_ad_line} />
-        <div className={styles.watch_ad_content}>
-          <div className={styles.watch_ad_content_product}>
-            <div className={styles.watch_ad_product_title}>{product.name}</div>
-
-            <img
-              src={thereIsPhotos ? product.photoUrl[0] : null} //TODO вставить default picture(фотоаппарат)
-              alt="product-icon"
-              className={styles.icon_watch_ad_product}
-            />
-
-            {moreThanOnePhoto && (
-              <div className={styles.wrapper_visual_watch_ad_product}>
-                {product.photoUrl.slice(1).map((photo) => {
-                  return (
-                    <img
-                      src={photo}
-                      alt="product-icon-small"
-                      className={styles.icon_visual_ad_product_small}
-                    />
-                  );
-                })}
-              </div>
-            )}
-            <div
-              className={`${styles.btn_changer_green} ${
-                onlyOneProduct ? styles.one_product_offset : ""
-              }`}
-            >
-              Предложить
+    <div className={style.add_product_wrapper}>
+      {/* ------------------------------------- */}
+      <div className={style.title}>
+        <h4>Новое объявление</h4>
+      </div>
+      {/* ------------------------------------- */}
+      <div className={style.content_area}>
+        <div className={style.left_side}>
+          <div className={style.product_title}>
+            Кроссовки BUCCI ROCKETS
+          </div>
+          {/* Большая фотография */}
+          <div className={style.large_image_area}>
+            <input id="field_max_file" type="file" className={style.add_file_input}/>
+            <label for="field_max_file"><i className={"fas fa-camera " + style.photo_icon}/></label>
+          </div>
+          {/* Блок маленьких фотографий */}
+          <div className={style.mini_images_area}>
+            <div className={style.add_mini_img}>
+              <input id="field_mini_file-1" type="file" className={style.add_file_input}/>
+              <label for="field_mini_file-1"><i className={"fas fa-plus " + style.plus}/></label>
+            </div>
+            <div className={style.add_mini_img}>
+              <input id="field_mini_file-2" type="file" className={style.add_file_input}/>
+              <label for="field_mini_file-2"><i className={"fas fa-plus " + style.plus}/></label>
+            </div>
+            <div className={style.add_mini_img}>
+              <input id="field_mini_file-3" type="file" className={style.add_file_input}/>
+              <label for="field_mini_file-3"><i className={"fas fa-plus " + style.plus}/></label>
             </div>
           </div>
-
-          <div className={styles.watch_ad_description}>
-            <p className={styles.watch_ad_text}>{product.description}</p>
-
-            <h3 className={styles.watch_ad_change_title}>
-              Готов поменяться на:
-            </h3>
-            <hr className={styles.watch_ad_change_line} />
-            <div className={styles.wrapper_watch_ad_changes}>
-              <div className={styles.watch_ad_change_item_blue}>велосипед</div>
-              <div className={styles.watch_ad_change_item_yellow}>книги</div>
-              <div className={styles.watch_ad_change_item_green}>кальян</div>
-              <div className={styles.watch_ad_change_item_red}>
-                на все что угодно
-              </div>
-            </div>
-            <img src={map} alt="map" className={styles.watch_ad_change_map} />
+          {/* Селектор выбора на что меняться плюс кнопка*/}
+          <div className={style.selector_area}>
+            <select name="" id="">
+              <option value="велосипед">велосипед</option>
+              <option value="самокат">самокат</option>
+              <option value="на все что угодно">на все что угодно</option>
+            </select>
+            {/* Кнопка добавления тега */}
+            <button><ReactSVG src={plus_mini}/></button>
+          </div>
+          {/* Область отображения тегов */}
+          <div className={style.tags_area}>
+            <div className={style.tag_button + " " + style.blue_bg}>Велосипед</div>
+            <div className={style.tag_button + " " + style.green_bg}>Самокат</div>
+            <div className={style.tag_button + " " + style.yellow_bg}>Пивко</div>
+            <div className={style.tag_button + " " + style.red_bg}>Все что угодно</div>
           </div>
         </div>
+        {/* ------------------------------------- */}
+        <div className={style.right_side}>     
+          <div className={style.product_description}>
+            <p>Данная модель отлично сохраняет тепло благодаря сочетанию в отделке искусственного меха в качестве утеплителя и натуральной кожи. Такой тандем обезопасит стопы от промозглого ветра, влаги и подтаявшего снега. Цельная и гладкая кожа предотвращает попадание пыли. В изделии нет лишних деталей и украшений, которые могли бы потерять первоначальный вид или оторваться, эти кроссовки исключительно функциональны и хороши для города или поездок. </p>
+          </div>
+          <div id="map" className={style.map}>
+          {/* YandexMap */}
+          </div>
+          <div></div>
+        </div>
+        <div className={style.switch_wrapper}>
+            <i class="fas fa-keyboard"></i>
+            <i class="fas fa-map-marked-alt"></i>
+          </div>
       </div>
-    </>
-  );
+      {/* ------------------------------------- */}
+      <div className={style.controls}>
+
+      </div>
+      {/* ------------------------------------- */}
+    </div>
+  )
 }
+
+export default AddProduct;

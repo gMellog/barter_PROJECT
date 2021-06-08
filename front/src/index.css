@@ -1,11 +1,8 @@
 body {
   margin: 0;
-  font-family: 'Montserrat', sans-serif;  /* подключение шрифта монтсерат*/
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: "Montserrat", sans-serif; /* подключение шрифта монтсерат*/
 }
-
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }

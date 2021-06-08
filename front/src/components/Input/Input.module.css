@@ -2,28 +2,28 @@
   width: 100%;
   position: relative;
   display: flex;
-} 
-.searcher form input{
+}
+.searcher form input {
   position: relative;
   background: #242631;
-  border: 1px solid #E5E5E5;
+  border: 1px solid #e5e5e5;
   box-sizing: border-box;
   border-radius: 10px;
   color: wheat;
   padding-left: 40px;
 }
-.iconSharch svg{
+.iconSharch svg {
   position: absolute;
   top: 6px;
   left: 10px;
   width: 25px;
   height: 25px;
 }
-.searcher form input:focus{
+.searcher form input:focus {
   color: wheat;
   background: #242631;
 }
 .searcherIndent {
   /* margin-top: 7rem; */
   width: 70%;
-} 
+}

@@ -1,7 +1,4 @@
-
-
-
-import style from '../style.module.css'
+import style from "../NavMenu.module.css"
 import {
   BrowserRouter as Router,
   Link
