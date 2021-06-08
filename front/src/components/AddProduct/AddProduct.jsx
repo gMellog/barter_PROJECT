@@ -49,6 +49,47 @@ const AddProduct = () => {
     setColors((prev) => [...prev, obj.style]);
   };
 
+  //Для загрузки прьевю фото
+  function previewFile(e) {
+    console.log('loooool');
+
+    const preview = document.querySelector(`.${style.large_image_area}`).childNodes[0];
+    // const pl = document.querySelector(`.${style.large_image_area}`).childNodes[0];
+
+    // mini_images_area
+    console.log(preview.childNodes[0]);
+    const mini = document.querySelectorAll(`.${style.add_mini_img}`);
+    // console.log(mini);
+    // const photo1 = document.querySelector('#img');
+    // const photo2 = document.querySelector('#img');
+    // const photo3 = document.querySelector('#img');
+
+    const file    = e.target.files[0];
+    const file1    = e.target.files[1];
+    const file2    = e.target.files[2];
+    const file3    = e.target.files[3];
+    const reader  = new FileReader();
+
+
+    reader.onloadend = function () {
+
+      // console.log(reader.result);
+      preview.src = reader.result;
+      mini[0].childNodes[0].src = reader.result;
+      mini[1].childNodes[0].src = reader.result;
+      mini[2].childNodes[0].src = reader.result;
+    }
+
+      if (file) {
+        reader.readAsDataURL(file); 
+        // reader.readAsDataURL(file1);
+        // reader.readAsDataURL(file2);
+        // reader.readAsDataURL(file3);
+      } else {
+        preview.src = "";
+      }
+  }
+
   return (
     <div className={style.add_product_wrapper}>
       {/* ------------------------------------- */}
@@ -77,10 +118,14 @@ const AddProduct = () => {
           )}
           {/* Большая фотография */}
           <div className={style.large_image_area}>
-            <input
+              <img src="" alt=""/>
+
+            <input multiple 
               id="field_max_file"
               type="file"
               className={style.add_file_input}
+              size='4'
+              onChange={(e)=>previewFile(e)}
             />
             <label for="field_max_file">
               <i className={"fas fa-camera " + style.photo_icon} />
