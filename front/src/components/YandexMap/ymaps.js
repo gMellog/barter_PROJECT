@@ -11,8 +11,8 @@ export default function init() {
       }
     );
 
-  myPlacemark = createPlacemark([55.74741048760227, 37.604411878173835]);
-  myMap.geoObjects.add(myPlacemark);
+  // myPlacemark = createPlacemark([55.74741048760227, 37.604411878173835]);
+  // myMap.geoObjects.add(myPlacemark);
 
   //для Свята
   // // myPlacemark = createPlacemark([55.73, 37.64]);
@@ -53,10 +53,8 @@ export default function init() {
       }
     );
   }
-
   // Определяем адрес по координатам (обратное геокодирование).
   function getAddress(coords) {
-    let adress;
     myPlacemark.properties.set("iconCaption", "поиск...");
     window.ymaps.geocode(coords).then(function (res) {
       var firstGeoObject = res.geoObjects.get(0);
