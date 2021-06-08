@@ -46,7 +46,7 @@ function App() {
             <Route exact path="/like/:id" component={Like} />
             <Route exact path="/profile" component="" />
             <Route exact path="/" component={ShowProducts} />
-            <Route exact path="/ad/:id" component={WatchProduct} />
+            <Route exact path="/watch/:id" component={WatchProduct} />
             <Route exact path="/offer" component={OfferProduct} />
             <Route exact path="/ad/:id" component={MyAd} />
             <Route exact path="/ad" component={Ad} />
