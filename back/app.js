@@ -178,6 +178,7 @@ app.get("/products", async (req,res) => {
 
 app.post("/search", async (req,res) => {
   const {name} = req.body
+  console.log('SEARSH CCCCAAARRRD' , name);
   let products = await productsModel.find({name: name});
   res.json(products)
 })
