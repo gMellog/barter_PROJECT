@@ -21,6 +21,7 @@ import Offers from "./components/Offers/Offers";
 import styles from "./App.module.css"
 
 import Chat from "./components/Chat/Chat";
+import { useSelector, useDispatch } from 'react-redux';
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
@@ -30,6 +31,9 @@ import SearchResult from "./components/SearchResult/SearchResult";
 
 
 function App() {
+  const user = useSelector(state => state.user);
+
+
   return (
     <div className="App">
          <Router>
@@ -38,6 +42,7 @@ function App() {
       {/* <CategoriesFilter/> */}
         <NavMenu />
         <div className="wrapperApp">
+
           <ProfilePanel />
           {/* <AddProduct /> */}
           <Switch>
@@ -46,12 +51,12 @@ function App() {
             <Route exact path="/notify/:id" component={Notify} />
             <Route exact path="/offers/:id" component={Offers} />
             <Route exact path="/like/:id" component={Like} />
-            <Route exact path="/profile" component="" />
+            <Route exact path="/profile" component={ProfilePanel} />
             <Route exact path="/" component={ShowProducts} />
             <Route exact path="/watch/:id" component={WatchProduct} />
-            <Route exact path="/offer" component={OfferProduct} />
-            <Route exact path="/ad/:id" component={MyAd} />
-            <Route exact path="/ad" component={Ad} />
+            <Route exact path="/offers" ><ProfilePanel/><OfferProduct/></Route>
+            <Route exact path="/ad/add" > <ProfilePanel/>  <AddProduct /></Route>
+            <Route exact path="/ad" > <ProfilePanel/> <Ad/></Route>
             <Route exact path="/chat" component={Chat} />
           </Switch>
         </div>

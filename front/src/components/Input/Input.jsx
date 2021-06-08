@@ -21,7 +21,7 @@ export default function Input() {
   return (
     <div className={`d-flex justify-content-center ${styles.searcherIndent}`}>
       <div className={`${styles.searcher} input-group mb-3`}>
-        <form action="post" onSubmit={(e) => onSearchHandler(e)}>
+        <form action="post" onChange={(e) => onSearchHandler(e)}>
           <input
             value={input}
             onChange={(e) => onChangeHandler(e)}
