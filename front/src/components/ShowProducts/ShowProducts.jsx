@@ -23,7 +23,6 @@ export default function ShowProducts() {
           <>
             <div className={style.product} >
               <Link to={`/${stuff._id}`}>
-                
                 <img src={stuff.photoUrl[0]} alt="" />
                 <div key={stuff._id}>
                   <h3>{stuff.name}</h3>
