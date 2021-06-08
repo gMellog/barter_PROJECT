@@ -6,13 +6,29 @@ a{
   color: whitesmoke;
   text-decoration: none
 }
-a{
-  color: whitesmoke;
-  text-decoration: none
+
+/* Нетрогать!!!!!!!!!!!!!!!!!! */
+.red_bg {
+  background-color: #af5555;
 }
-a{
+.green_bg {
+  background-color: #578153;
+}
+.blue_bg {
+  background-color: #3d5bc7;
+}
+.yellow_bg {
+  background-color: #eeba42;
+  color: rgba(34, 37, 48, 1);
+}
+/* Нетрогать!!!!!!!!!!!!!!!!!! */
+a {
   color: whitesmoke;
-  text-decoration: none
+  text-decoration: none;
+}
+a {
+  color: whitesmoke;
+  text-decoration: none;
 }
 
 .App {

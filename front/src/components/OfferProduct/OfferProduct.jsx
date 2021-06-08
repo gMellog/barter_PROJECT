@@ -10,7 +10,7 @@ export default function OfferProduct({id, offer}) {
   const stuffArray = useSelector((state) => state.stuffArray);
   const { count, setCount, selectMyProduct, addDealHandler } = useBarterContext();
 
-  const dealMan = stuffArray?.filter(stuff => stuff._id === id)[0]
+  const dealMan = stuffArray?.filter(stuff => stuff.id === id)[0]
   const onOfferHandler = () => {
     addDealHandler({userID: dealMan.infoOwner, productID: id}, {userID: user.id, productID: count[0]});
   }
@@ -25,7 +25,7 @@ export default function OfferProduct({id, offer}) {
           <hr className={styles.watch_ad_change_line} />
           <div className={styles.wrapper_available_offer_product_content}>
             {stuffArray.filter(stuff => stuff.infoOwner === user.id).map(stuff => {
-              return (<div onClick={(e) => selectMyProduct(e, stuff._id)} key={stuff._id} className={styles.available_offer_product_item}>
+              return (<div onClick={(e) => selectMyProduct(e, stuff.id)} key={stuff.id} className={styles.available_offer_product_item}>
                 <img
                   src={stuff.photoUrl[0]}
                   alt="product-icon"
