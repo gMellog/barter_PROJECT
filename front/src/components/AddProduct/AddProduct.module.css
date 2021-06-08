@@ -168,22 +168,25 @@
 
 .map {
   width: 495px;
-  height: 220px;
+  height: 300px;
   border: 2px solid whitesmoke;
   border-radius: 10px;
-  /* border: 1px solid red; */
   overflow: hidden;
 }
 
 .switch_wrapper {
   display: flex;
   flex-direction: row;
-  border: 1px solid whitesmoke;
-  justify-content: center;
-  padding: 10px;
+  /* border: 1px solid whitesmoke; */
+  justify-content: flex-end;
+  padding: 5px;
 }
 
 .switch_wrapper i {
-  margin: 0 30px;
   font-size: 2em;
+  cursor: pointer;
+}
+.switch_wrapper i:hover {
+  color: goldenrod;
+  transition: 0.5s;
 }
