@@ -58,9 +58,8 @@ function App() {
             <Route exact path="/" component={ShowProducts} />
             <Route exact path="/watch/:id" component={WatchProduct} />
             <Route exact path="/offers" ><ProfilePanel/><Offers/></Route>
-            <Route exact path="/ad/:id" > <ProfilePanel/> <MyAd/></Route>
+            <Route exact path="/ad/add" > <ProfilePanel/>  <AddProduct /></Route>
             <Route exact path="/ad" > <ProfilePanel/> <Ad/></Route>
-
           </Switch>
         </div>
 

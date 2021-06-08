@@ -102,7 +102,7 @@ const ProfilePanel = () => {
       )}
       {/* -------------------------------------------------------- */}
       <div className={style.controls}>
-        <Link to="/ad/id"><h5>Создать объявление</h5></Link>
+        <Link to="/ad/add"><h5>Создать объявление</h5></Link>
         <div className={style.control_line}></div>
         <Link to="/ad"><h5>Мои объявления</h5></Link>
         <div className={style.control_line}></div>

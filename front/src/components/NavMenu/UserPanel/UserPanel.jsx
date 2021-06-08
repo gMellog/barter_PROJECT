@@ -7,16 +7,17 @@ import {
 import { ReactSVG } from 'react-svg'
 import like from '.././img/like.svg'
 import message from '.././img/message.svg'
+import { useSelector } from "react-redux";
 
 
 export default function UserPanel({ user }) {
 
 
 
-
   return (
 
     <div className={style.row} >
+
       <div className={style.notify, style.icon} >
         <Link to='/notify/id'>
           <ReactSVG src={like} />

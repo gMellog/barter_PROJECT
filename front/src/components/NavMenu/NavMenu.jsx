@@ -60,19 +60,25 @@ export default function NavMenu() {
 
         <div className={style.row} >
 
-        {/* daladno753    79850592945 */}
+          {/* daladno753    79850592945 */}
+
+          { user.id ?
+              <UserPanel user={user} />
+            :
+            <>
+
+              <div className={style.linkReg} >
+                {/* Активатор и модальное окно */}
+                <span onClick={() => { toggle() }} >Вход и регистрация!</span>
+                {modal && <Login toggle={toggle} />}
+              </div>
+
+            </>
+          }
 
 
 
-            <div className={style.linkReg} >
-              {/* Активатор и модальное окно */}
-              <span onClick={() => { toggle() }} >Вход и регистрация!</span>
-              {modal && <Login toggle={toggle} />}
-            </div>
-            
-            <UserPanel user={user} />
 
-          
         </div>
         <Searcher />
       </div>
