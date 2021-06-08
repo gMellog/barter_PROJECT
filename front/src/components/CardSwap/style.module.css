@@ -16,7 +16,6 @@
 .img{
   width: 150px;
   height: 150px;
-  background: rosybrown;
   border-radius: 5px;
   border: 1px solid whitesmoke
 
@@ -35,7 +34,6 @@
   left: -10%;
   width: 80px;
   height: 80px;
-  background-color: silver;
   border-radius: 50%;
   border: 1px solid whitesmoke
 
