@@ -1,6 +1,6 @@
 const initState = {
   stuffArray: [],
-  user:{},
+  user:null,
   products:{}
 };
 

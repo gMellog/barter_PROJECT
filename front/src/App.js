@@ -44,7 +44,7 @@ function App() {
           <Switch>
             <Route exact path="/product/:name" component={ProductCard} />
             <Route exact path="/" component={ShowProducts} />
-            <Route exact path="/message/:id" component={Message} />
+            <Route exact path="/message" component={Chat} />
             <Route exact path="/notify/:id" component={Notify} />
             <Route exact path="/offers/:id" component={Offers} />
             <Route exact path="/like/:id" component={Like} />
