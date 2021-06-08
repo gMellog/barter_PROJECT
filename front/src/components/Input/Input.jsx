@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import styles from "./Input.module.css";
 import { useHistory } from "react-router-dom";
-
+import { ReactSVG } from 'react-svg'
+import iconSearch from './Vector.svg'
 
 export default function Input() {
   const [input, setInput] = useState("");
@@ -25,9 +26,10 @@ export default function Input() {
             value={input}
             onChange={(e) => onChangeHandler(e)}
             className="form-control"
-            placeholder="Поиск..."
+            placeholder=""
+            
           />
-            <button className="btn btn-primary">Найти</button>
+          <ReactSVG className={styles.iconSharch} src={iconSearch}/>
         </form>
       </div>
     </div>

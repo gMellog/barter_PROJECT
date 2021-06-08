@@ -4,7 +4,8 @@ const { Schema, model } = require('mongoose');
 
 const schema = new Schema({
   name: {type: String, min: 2},
-  avatar: {type, String, default: null},
+  avatar: {type: String, default: null},
+  description: {type: String, default: null},
   phone: {type: String, unique: true, min: 10, required: true},
   hash: {type: String, min: 6},
   verifyID: {type: String, default: null},

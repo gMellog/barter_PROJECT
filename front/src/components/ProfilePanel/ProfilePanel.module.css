@@ -1,7 +1,8 @@
 .profile_panel_wrapper {
-  margin-top: 100px;
-  width: 300px;
-  height: 615px;
+  margin-top: 235px;
+  margin-left: 40px;
+  width: 250px;
+  height: 535px;
   background-color: rgba(49, 51, 64, 1);
   border-radius: 30px;
   position: relative;
@@ -9,20 +10,39 @@
   flex-direction: column;
   justify-content: center;
 }
-
 .avatar_area {
   position: absolute;
-  top: -75px;
-  left: 75px;
-  width: 150px;
-  height: 150px;
+  top: -50px;
+  left: 22%;
+  width: 105px;
+  height: 105px;
   border-radius: 50%;
   border: 2px solid rgba(229, 229, 229, 1);
   background-color: rgba(49, 51, 64, 1);
   overflow: hidden;
 }
-
-.avatar_area img {
+.avatar_area form input{
+  opacity: 0;
+  width: 100%; 
+  height: 100%;
+  object-fit: cover;
+  
+}
+.avatar_area form {
+  position: absolute;
+  width: 100%; 
+  height: 100%;
+  z-index: 2;
+}
+.avatar_area{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 150px;
+  z-index: 1;
+}
+.avatar_area img{
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -30,8 +50,20 @@
 
 .user_name {
   margin: 0 auto;
+  margin-top: 70px;
   display: inline-block;
   border-bottom: 2px solid rgba(229, 229, 229, 1);
+}
+
+.user_name h4 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: goldenrod;
 }
 
 .stars_section {
@@ -47,10 +79,17 @@
 }
 .controls h5 {
   cursor: pointer;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-align: center;
 }
 
 .controls h5:hover {
-  color: gold;
+  color: goldenrod;
   transition: 0.5s;
 }
 
@@ -82,7 +121,7 @@
 .text_section:hover .pencil {
   opacity: 1;
   transition: 0.5s;
-}
+}людям
 
 .text_section_textarea {
   width: 100%;
@@ -103,4 +142,14 @@
   margin: 10px auto;
   width: 30%;
   border-bottom: 1px solid rgba(229, 229, 229, 1);
+}
+
+.avatar_icon{
+  margin: auto;
+  font-size: 4em;
+  margin: auto;
+}
+
+.avatar_icon_mini{
+  font-size: 4em;
 }

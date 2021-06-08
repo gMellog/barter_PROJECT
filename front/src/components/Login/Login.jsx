@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import style from './style.module.css'
 import InputMask from 'react-input-mask';
-
+import { useDispatch } from 'react-redux';
+import { getUserThunks, setUser } from '../../redux/actions/userAC';
 
 
 //Simply checks Russian Number
@@ -16,6 +17,7 @@ function isValidCode(code) {
 
 const ModalExample = ({ toggle }) => {
 
+  const dispatch = useDispatch();
 
   const [showRegistr, setShowRegistr] = useState(false)
   const [showSms, setShowSms] = useState(false);
@@ -131,8 +133,9 @@ const ModalExample = ({ toggle }) => {
         .then(async res => {
           if (res.status === 200) {
 
-            const r = await res.json();
-            localStorage.setItem('user', JSON.stringify(r));
+            const { user, token } = await res.json();
+            dispatch(setUser(user))
+            localStorage.setItem('user', JSON.stringify({id: user.id, token}));
             toggle()
           }
           else {
@@ -271,6 +274,7 @@ const ModalExample = ({ toggle }) => {
 
   return (
     <div>
+
       <Modal isOpen={true} toggle={toggle} >
         {
           showRegistr ?

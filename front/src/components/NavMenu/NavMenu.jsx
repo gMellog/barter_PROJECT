@@ -1,6 +1,18 @@
-import style from './style.module.css'
-import React, { useState } from "react";
+import style from './NavMenu.module.css'
+import React, { useEffect, useState } from "react";
 import Login from '../Login/Login'
+import Searcher from "../Searcher/Searcher"
+import UserPanel from "./UserPanel/UserPanel"
+
+
+//
+import { ReactSVG } from 'react-svg'
+import logoSvg from './img/Logo.svg'
+import like from './img/like.svg'
+import message from './img/message.svg'
+
+import { getUserThunks } from '../../redux/actions/userAC';
+import { useSelector, useDispatch } from 'react-redux';
 
 import {
   BrowserRouter as Router,
@@ -10,11 +22,18 @@ import {
 export default function NavMenu() {
   //Определяет регистраицю пользователя 
   // const [user, setUser] = useState(false)
-  const [user, setUser] = useState(true)
+
+  const user = useSelector(state => state.user);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUserThunks())
+  }, [])
+
 
   // для открытия модального окна
   const [modal, setModal] = useState(false);
-  const toggle = () => { 
+  const toggle = () => {
     setModal(!modal)
   };
 
@@ -29,60 +48,39 @@ export default function NavMenu() {
 
 
   return (
-    <div className={style.back} >
-      <div className={style.block}>
-
-        {/* Активатор и модальное окно */}
-        <span onClick={() => { toggle() } } >Вход и регистраиция!</span>
-        { 
-        
-          modal && <Login toggle={toggle} />
-        }
-       </div>
-
-      <div className={user ? `${style.menu} ${style.close}` : `${style.none}`}>
-        <div onClick={(e) => { toggleMenu(e.target) }} className={style.arrow} data-arrow="arrow"></div>
-
-        <nav className={user ? ' ' : style.navCener}>
-          {user &&
-            <ul>
-              <li>
-                <Link to='/createAd'>Создать объявление</Link>
-              </li>
-              <li>
-                <Link to='/myAds'>Мои объявления</Link>
-              </li>
-              <li>
-                <Link to='/offers'>Предложения</Link>
-              </li>
-              <li>
-                <Link to='/message'>Сообщения</Link>
-              </li>
-              <li>
-                <Link to='/myReviews'>Мои отзывы</Link>
-              </li>
-              <li>
-                <Link to='/reviews'>Отзывы обо мне</Link>
-              </li>
-              <li>
-                <Link to='/setting'>Настройки</Link>
-              </li>
-              <li>
-                <Link to='/exit'>Выйти</Link>
-              </li>
-            </ul>
-
-          }
 
 
-
-          {/* <li>
-            <div>Rating</div>
-          </li> */}
-
-        </nav>
+    <div className={style.header}>
+      <div className={style.logo}>
+        <Link to='/'>
+          <ReactSVG src={logoSvg} />
+        </Link>
       </div>
-    </div>
+      <div className={style.left} >
+
+        <div className={style.row} >
+
+        {/* daladno753    79850592945 */}
+
+
+
+            <div className={style.linkReg} >
+              {/* Активатор и модальное окно */}
+              <span onClick={() => { toggle() }} >Вход и регистрация!</span>
+              {modal && <Login toggle={toggle} />}
+            </div>
+            
+            <UserPanel user={user} />
+
+          
+        </div>
+        <Searcher />
+      </div>
+      <div className={style.headerImg} >
+        <img src="/headerImg.png" alt="" />
+      </div>
+
+    </div >
   )
 }
 

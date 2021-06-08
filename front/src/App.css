@@ -1,7 +1,17 @@
-*{
+* {
   margin: 0;
   padding: 0;
-  
+}
+.wrapperApp {
+  display: flex;
+}
+a{
+  color: whitesmoke;
+  text-decoration: none
+}
+a{
+  color: whitesmoke;
+  text-decoration: none
 }
 
 .App {
