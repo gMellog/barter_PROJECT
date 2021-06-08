@@ -24,7 +24,6 @@ const Chat = ({ location }) => {
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
 
-
   useEffect( () => {
 
     return () => {

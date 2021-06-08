@@ -43,7 +43,7 @@ const ProfilePanel = () => {
       {/* -------------------------------------------------------- */}
       <div className={style.avatar_area}>
         {/* Проверка на аватар и выставления стандартной позиции */}
-        {user ?
+        {user && user.avatar ?
           <img src={`http://localhost:4000${user.avatar}`} />
           // <img src={`http://localhost:4000/avatar/image-1623061042832.png`} />
           :

@@ -19,6 +19,7 @@ const app = express();
 const userRouter = require('./routers/userRouter');
 const chatRouter = require('./routers/chatRouter');
 const productRouter = require("./routers/productRouter");
+const dealRouter = require("./routers/dealRouter");
 const { env } = require("process");
 
 
@@ -115,7 +116,7 @@ app.post('/photo/avatar', (req, res) => {
 app.use('/user', userRouter);
 app.use('/chat', chatRouter);
 app.use("/product", productRouter)
-
+app.use('/deal', dealRouter);
 
 io.on('connect', socket => {
   socket.on('join', async ({ id, roomID }, callback) => {

@@ -54,6 +54,7 @@ function App() {
             <Route exact path="/offer" component={OfferProduct} />
             <Route exact path="/ad/:id" component={MyAd} />
             <Route exact path="/ad" component={Ad} />
+            <Route exact path="/chat" component={Chat} />
           </Switch>
         </div>
 
