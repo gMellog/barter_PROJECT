@@ -16,16 +16,18 @@ export default function ShowProducts() {
     dispatch(getAllStuffThunk());
   }, []);
 
+  console.log(stuffArray);
+
   return (
     <div className={style.wrapper}>
       <div className={style.products}>
         {stuffArray.map((stuff) => (
           <>
             <div className={style.product} >
-              <Link to={`/${stuff._id}`}>
+              <Link to={`/watch/${stuff.id}`}>
                 
                 <img src={stuff.photoUrl[0]} alt="" />
-                <div key={stuff._id}>
+                <div key={stuff.id}>
                   <h3>{stuff.name}</h3>
                 </div>
               </Link>

@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const productsSchema = new Schema({
+const schema = new Schema({
   name: String,
   photoUrl: Array,
   address: String,
@@ -12,4 +12,12 @@ const productsSchema = new Schema({
   categories: { type: Schema.Types.ObjectId, ref: 'Categories' }
 })
 
-module.exports = model('Products', productsSchema);
+schema.set('toJSON', {
+  virtuals: true,
+  versionKey: false,
+  transform: function (doc, ret) {
+      delete ret._id;
+  }
+});
+
+module.exports = model('Products', schema);

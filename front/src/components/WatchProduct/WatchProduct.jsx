@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import styles from "./WatchProduct.module.css";
 import map from "./image/maps.png";
-import product from "./image/product-icon-big.png";
-import product_small from "./image/product-icon-small.png";
 import { useParams } from "react-router-dom";
+import OfferProduct from "../OfferProduct/OfferProduct"
 
 export default function WatchProduct() {
+  const [offer, setOffer] = useState(false)
   const [product, setProduct] = useState({});
+  console.log(offer);
   const { id } = useParams();
   useEffect(async () => {
     const response = await fetch(`http://localhost:4000/product/${id}`);
@@ -47,12 +48,11 @@ export default function WatchProduct() {
                 })}
               </div>
             )}
-            <div
-              className={`${styles.btn_changer_green} ${
+            <div onClick={()=> offer ? setOffer(false) : setOffer(true)}
+              className={`${offer ? styles.btn_changer_red : styles.btn_changer_green} ${
                 onlyOneProduct ? styles.one_product_offset : ""
               }`}
-            >
-              Предложить
+            >{offer ? "Закрыть" : "Предложить"}
             </div>
           </div>
 
@@ -75,6 +75,7 @@ export default function WatchProduct() {
           </div>
         </div>
       </div>
+      <OfferProduct id={id} offer={offer}/>
     </>
   );
 }

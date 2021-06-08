@@ -11,9 +11,11 @@ const schema = new Schema({
   verifyID: {type: String, default: null},
   socketID: {type: String, default: null},
   roomID: {type:String, default: null},
-  chatHistory: {type: Schema.Types.ObjectId, ref: 'ChatHistory'},
+  chatHistory: {type: Schema.Types.ObjectId, autopopulate: true, ref: 'ChatHistory'},
   createdDate: {type: Date, default: Date.now()}
 });
+
+schema.plugin(require('mongoose-autopopulate'));
 
 schema.set('toJSON', {
   virtuals: true,
