@@ -34,12 +34,7 @@
   height: 100%;
   z-index: 2;
 }
-<<<<<<< HEAD
-.avatar_area {
-  position: relative;
-=======
 .avatar_area{
->>>>>>> test
   display: flex;
   justify-content: center;
   align-items: center;
