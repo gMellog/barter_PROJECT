@@ -14,12 +14,13 @@ export default function ProductCard() {
   }, [name]);
 
   return (
-    <div>
-      {stuffArray.map((stuff) => (
-        <div key={stuff._id}>
-          <h3>{stuff.name}</h3>
-        </div>
-      ))}
-    </div>
+    // <div>
+    //   {stuffArray.map((stuff) => (
+    //     <div key={stuff._id}>
+    //       <h3>{stuff.name}</h3>
+    //     </div>
+    //   ))}
+    // </div>
+    
   );
 }
