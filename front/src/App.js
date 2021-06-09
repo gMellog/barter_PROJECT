@@ -39,7 +39,7 @@ function App() {
         {/* <CategoriesFilter/> */}
         <NavMenu />
         <div className="wrapperApp">
-          <ProfilePanel />
+          {/* <ProfilePanel /> */}
           <AddProduct />
           <Switch>
             <Route exact path="/product/:name" component={ProductCard} />
@@ -48,7 +48,7 @@ function App() {
             <Route exact path="/offers/:id" component={Offers} />
             <Route exact path="/like/:id" component={Like} />
             <Route exact path="/profile" component={ProfilePanel} />
-            <Route exact path="/" component={ShowProducts} />
+            {/* <Route exact path="/" component={ShowProducts} /> */}
             <Route exact path="/watch/:id" component={WatchProduct} />
             <Route exact path="/offers">
               <ProfilePanel />
