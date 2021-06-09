@@ -337,6 +337,7 @@ const AddProduct = () => {
               </div>
 
               <div className={style.tags_area}>
+                <div className={style.tag_button}></div>
                 {tags.map((el, i) => {
                   return (
                     <div
