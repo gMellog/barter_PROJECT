@@ -6,9 +6,13 @@ import { useEffect, useCallback, useState, useRef } from "react";
 import YandexMap from "../YandexMap/YandexMap";
 import pencil from "./svg/bytesize_edit.svg";
 import ComboBox from "./ComboBox/ComboBox";
+import { authHeader } from "../../helpers/authHeader";
+import { useSelector } from "react-redux";
+import { env } from "process";
 
 
 const AddProduct = () => {
+  const user = useSelector(state => state.user)
   const [switchMapText, setSwitchMapText] = useState(true);
 
   //Значения по умолчанию для полей и в случае ввода пустых данных
@@ -72,22 +76,27 @@ const AddProduct = () => {
   };
 
   //Флаги отвечающие за показ превью картинок
+
   const [img_main_flag, setImg_main_flag] = useState(true);
   const [img_mini_flag_1, setImg_mini_flag_1] = useState(true);
   const [img_mini_flag_2, setImg_mini_flag_2] = useState(true);
   const [img_mini_flag_3, setImg_mini_flag_3] = useState(true);
 
-  const [imgMain, setImgMain] = useState("");
-  const [img1, setImg1] = useState("");
-  const [img2, setImg2] = useState("");
-  const [img3, setImg3] = useState("");
-
+  const [imgMain, setImgMain] = useState('');
+  const [img1, setImg1] = useState('');
+  const [img2, setImg2] = useState('');
+  const [img3, setImg3] = useState('');
+  const [files, setFiles] = useState([])
+  console.log(files);
   //Функция показывающая превью файла
   const previewFile = (e) => {
+
+
     const id = +e.target.dataset.id;
     const file = e.target.files[0];
     const reader = new FileReader();
 
+    setFiles(files => [...files, file])
     reader.addEventListener(
       "load",
       function () {
@@ -123,29 +132,54 @@ const AddProduct = () => {
         setImg_mini_flag_3(false);
       }
     }
-  };
+  }
 
-  const actionBlurCombo1 = useCallback(
-    () => {
+  const addProduct = async () => {
 
-      console.log('asdfasdfasdfasdf')
-      setFlag_edit_title(true)
+    let tagsId = []
 
-    },
-    [],
-  )
+    tags.map(el => tagsId.push(el.id))
 
-  return (
-    <div className={style.add_product_wrapper}>
-      {/* ------------------------------------- */}
-      <div className={style.title}>
-        <h4>Новое объявление</h4>
-      </div>
-      {/* ------------------------------------- */}
-      <div className={style.content_area}>
-        <div className={style.left_side}>
-          {/* Название товара */}
-          {flag_edit_title ? (
+    const formData = new FormData();
+
+
+    for (let i = 0; i < files.length; i++) {
+      formData.append('image', files[i])
+    }
+    formData.append('title', productTitle)
+    formData.append('describtion', describtion)
+    formData.append('tags', tagsId)
+    formData.append('id', user.id)
+
+
+
+    const res = await fetch('http://localhost:4000/ad', {
+      method: 'POST',
+      headers: authHeader(),
+      body: formData,
+    });
+
+  }
+
+const actionBlurCombo1 = useCallback(
+  () => {
+    setFlag_edit_title(true)
+  },
+  [],
+)
+
+
+return (
+  <div className={style.add_product_wrapper}>
+    {/* ------------------------------------- */}
+    <div className={style.title}>
+      <h4>Новое объявление</h4>
+    </div>
+    {/* ------------------------------------- */}
+    <div className={style.content_area}>
+      <div className={style.left_side}>
+        {/* Название товара */}
+        {flag_edit_title ? (
             <div
               className={style.product_title}
               onClick={() => {
@@ -171,145 +205,146 @@ const AddProduct = () => {
             //     setProduct_title(e.target.value);
             //   }}
             //   />
-              <ComboBox 
+              <ComboBox
                 id={1}
-                name={"название товара"} 
-                setFunction={setProductTitle} 
-                actionOnBlur={actionBlurCombo1} 
+                name={"название товара"}
+                setFunction={setProductTitle}
+                actionOnBlur={actionBlurCombo1}
               />
           )}
           {/* Большая фотография */}
           <div className={style.large_image_area}>
             {img_main_flag ? (
-              <>
-                <input
-                  data-id="0"
-                  id="field_max_file"
-                  type="file"
-                  className={style.add_file_input}
+            <>
+              <input
+                data-id="0"
+                id="field_max_file"
+                type="file"
+                className={style.add_file_input}
                   onChange={(e) => {
                     previewFile(e);
                   }}
-                />
-                <label for="field_max_file">
-                  <i className={"fas fa-camera " + style.photo_icon} />
-                </label>
-              </>
+              />
+              <label for="field_max_file">
+                <i className={"fas fa-camera " + style.photo_icon} />
+              </label>
+            </>
             ) : (
               <img src={imgMain} />
             )}
           </div>
-          {/* Блок маленьких фотографий */}
-          <div className={style.mini_images_area}>
-            <div className={style.add_mini_img}>
+        {/* Блок маленьких фотографий */}
+        <div className={style.mini_images_area}>
+          <div className={style.add_mini_img}>
               {img_mini_flag_1 ? (
-                <>
-                  <input
-                    data-id="1"
-                    id="field_mini_file-1"
-                    type="file"
-                    className={style.add_file_input}
+            <>
+              <input
+                data-id="1"
+                id="field_mini_file-1"
+                type="file"
+                className={style.add_file_input}
                     onChange={(e) => {
                       previewFile(e);
                     }}
-                  />
-                  <label for="field_mini_file-1">
-                    <i className={"fas fa-plus " + style.plus} />
-                  </label>
-                </>
+              />
+              <label for="field_mini_file-1">
+                <i className={"fas fa-plus " + style.plus} />
+              </label>
+            </>
               ) : (
                 <img src={img1} className={style.small_img} />
               )}
             </div>
             <div className={style.add_mini_img}>
               {img_mini_flag_2 ? (
-                <>
-                  <input
-                    data-id="2"
-                    id="field_mini_file-2"
-                    type="file"
-                    className={style.add_file_input}
+            <>
+              <input
+                data-id="2"
+                id="field_mini_file-2"
+                type="file"
+                className={style.add_file_input}
                     onChange={(e) => {
                       previewFile(e);
                     }}
-                  />
-                  <label for="field_mini_file-2">
-                    <i className={"fas fa-plus " + style.plus} />
-                  </label>
-                </>
+              />
+              <label for="field_mini_file-2">
+                <i className={"fas fa-plus " + style.plus} />
+              </label>
+            </>
               ) : (
                 <img src={img2} className={style.small_img} />
               )}
             </div>
             <div className={style.add_mini_img}>
               {img_mini_flag_3 ? (
-                <>
-                  <input
-                    data-id="3"
-                    id="field_mini_file-3"
-                    type="file"
-                    className={style.add_file_input}
+            <>
+              <input
+                data-id="3"
+                id="field_mini_file-3"
+                type="file"
+                className={style.add_file_input}
                     onChange={(e) => {
                       previewFile(e);
                     }}
-                  />
-                  <label for="field_mini_file-3">
-                    <i className={"fas fa-plus " + style.plus} />
-                  </label>
-                </>
+              />
+              <label for="field_mini_file-3">
+                <i className={"fas fa-plus " + style.plus} />
+              </label>
+            </>
               ) : (
                 <img src={img3} className={style.small_img} />
               )}
             </div>
-          </div>
-        </div>
-        {/* ------------------------------------- */}
-        <div className={style.right_side}>
-          {/* Переключатель карта/текст */}
-          <div className={style.switch_wrapper}>
-            {switchMapText ? (
-              <i
-                class="fas fa-map-marked-alt"
-                onClick={() => MapTextswitcher()}
-              />
-            ) : (
-              <i class="fas fa-keyboard" onClick={() => MapTextswitcher()} />
-            )}
-          </div>
-          {switchMapText ? (
-            <>
-              {flag_edit_description ? (
-                <div
-                  className={style.product_description}
-                  onClick={() => setFlag_edit_description(false)}
-                >
-                  <ReactSVG src={pencil} className={style.pencil} />
-                  <p>{describtion}</p>
-                </div>
-              ) : (
-                <textarea
-                  rows="8"
-                  maxlength="430"
-                  className={style.textarea_description}
-                  onChange={(e) => {
-                    setDescribtion(e.target.value);
-                  }}
-                  onBlur={(e) => {
-                    if (!describtion.trim()) {
-                      setDescribtion(defaultDescribtion);
-                    }
-                    setFlag_edit_description(true);
-                  }}
-                  onMouseOver={(e) => e.target.focus()}
-                >
-                  {describtion}
-                </textarea>
-              )}
+      </div>
+    </div>
+    {/* ------------------------------------- */}
+    <div className={style.right_side}>
+      {/* Переключатель карта/текст */}
+      <div className={style.switch_wrapper}>
+        {switchMapText ? (
+          <i
+            classname="fas fa-map-marked-alt"
+            onClick={() => MapTextswitcher()}
+          />
+        ) : (
+          <i classname="fas fa-keyboard" onClick={() => MapTextswitcher()} />
+        )}
+      </div>
+      {switchMapText ? (
+        <>
+          {flag_edit_description ? (
+            <div
+              className={style.product_description}
+              onClick={() => setFlag_edit_description(false)}
+            >
+              <ReactSVG src={pencil} className={style.pencil} />
+              <p>{describtion}</p>
+            </div>
+          ) : (
+            <textarea
+              required
+              rows="8"
+              maxlength="430"
+              className={style.textarea_description}
+              onChange={(e) => {
+                setDescribtion(e.target.value);
+              }}
+              onBlur={(e) => {
+                if (!describtion.trim()) {
+                  setDescribtion(defaultDescribtion);
+                }
+                setFlag_edit_description(true);
+              }}
+              onMouseOver={(e) => e.target.focus()}
+            >
+              {describtion}
+            </textarea>
+          )}
 
-              <div className={style.selector_area}>
-                <form name="tagAddForm" action="">
-                  {/* Данный функционал работает  если не нужен автокомплит - можно использовать*/}
-                  {/* <select
+          <div className={style.selector_area}>
+            <form name="tagAddForm" action="">
+              {/* Данный функционал работает  если не нужен автокомплит - можно использовать*/}
+              {/* <select
                     name=""
                     value={selectValue}
                     id=""
@@ -325,51 +360,49 @@ const AddProduct = () => {
                       );
                     })}
                   </select> */}
-                  <ComboBox 
-                  id={2}
-                    name={"на что готовы поменяться"} 
-                    setFunction={setSelectValue}
-                  />
-                  <button onClick={(e) => addTag(e)}>
-                    <i className={"fas fa-plus " + style.pplus} />
-                  </button>
-                </form>
-              </div>
+              <ComboBox
+                id={2}
+                name={"на что готовы поменяться"}
+                setFunction={setSelectValue}
+              />
+              <button onClick={(e) => addTag(e)}>
+                <i className={"fas fa-plus " + style.pplus} />
+              </button>
+            </form>
+          </div>
 
-              <div className={style.tags_area}>
-                <div className={style.tag_button}></div>
-                {tags.map((el, i) => {
-                  return (
-                    <div
-                      id={el.id}
-                      key={el.id}
-                      className={style.tag_button + " " + el.style}
-                      onClick={(e) => {
-                        delTag(e, el);
-                      }}
-                    >
-                      {el.text}
-                    </div>
-                  );
-                })}
-              </div>
-            </>
-          ) : (
-            <div className={style.map}>
-              <YandexMap />
-            </div>
-          )}
+          <div className={style.tags_area}>
+            <div className={style.tag_button}></div>
+            {tags.map((el, i) => {
+              return (
+                <div
+                  id={el.id}
+                  key={el.id}
+                  className={style.tag_button + " " + el.style}
+                  onClick={(e) => {
+                    delTag(e, el);
+                  }}
+                >
+                  {el.text}
+                </div>
+              );
+            })}
+          </div>
+        </>
+      ) : (
+        <div className={style.map}>
+          <YandexMap />
         </div>
-      </div>
-      {/* ------------------------------------- */}
-      <div className={style.controls}>
-        {/* <div className={style.delete_product + " " + style.control_btn}>Удалить все изменения</div> */}
-        <div className={style.save_product + " " + style.control_btn}>
-          Сохранить изменения
-        </div>
-      </div>
-      {/* ------------------------------------- */}
+      )}
     </div>
+  </div>
+      {/* ------------------------------------- */ }
+<div className={style.controls}>
+  {/* <div className={style.delete_product + " " + style.control_btn}>Удалить все изменения</div> */}
+<div onClick={() => addProduct()} className={style.save_product + " " + style.control_btn}>Сохранить изменения</div>
+      </div >
+  {/* ------------------------------------- */ }
+    </div >
   );
 };
 

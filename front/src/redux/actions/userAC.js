@@ -19,9 +19,7 @@ export const getUserThunks = () => async (dispatch) => {
     headers: authHeader(),
   })
 
-  console.log('xxxx123xxxx');
   const resultUser = await resUser.json();
-  console.log(resultUser);
   dispatch(setUser(resultUser));
 };
 

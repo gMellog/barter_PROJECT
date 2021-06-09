@@ -10,7 +10,6 @@ export default function Input() {
 
   const onSearchHandler = (e) => {
     e.preventDefault();
-    console.log(input);
     history.push(`/product/${input}`);
   };
 
