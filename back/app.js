@@ -89,18 +89,10 @@ app.post('/ad', (req, res) => {
       res.status(300).send(err);
       console.log(err);
     } else {
-      console.log(req.body.image);
-      let title = req.body.image[3];
-      let discription = req.body.image[4];
-      let tags = req.body.image[5];
-      let idUser = req.body.image[6];
-
-      let fileGroup0 = `/product/${req.files[0].filename}`;
-      let fileGroup1 = `/product/${req.files[0].filename}`;
-      let fileGroup2 = `/product/${req.files[0].filename}`;
-      let fileGroup3 = `/product/${req.files[0].filename}`;
-
-      await productsModel.create({ name: title, description: discription, photoUrl: [fileGroup0, fileGroup1, fileGroup2, fileGroup3], exchange: tags, infoOwner: idUser })
+      
+      const fileName = req.files.map(el => `/product/` + el.filename)
+      console.log(req.body);
+      await productsModel.create({ name: req.body.title, description: req.body.describtion, photoUrl: fileName , exchange: req.body.tags, infoOwner: req.body.id })
     }
   });
   res.status(200)
