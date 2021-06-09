@@ -303,7 +303,7 @@ return (
       <div className={style.switch_wrapper}>
         {switchMapText ? (
           <i
-            classname="fas fa-map-marked-alt"
+            className="fas fa-map-marked-alt"
             onClick={() => MapTextswitcher()}
           />
         ) : (

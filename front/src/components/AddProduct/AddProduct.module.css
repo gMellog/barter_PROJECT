@@ -235,6 +235,7 @@
 }
 
 .switch_wrapper {
+  height: 40px;
   display: flex;
   flex-direction: row;
   /* border: 1px solid whitesmoke; */
@@ -244,6 +245,7 @@
 
 .switch_wrapper i {
   font-size: 2em;
+  color: whitesmoke;
   cursor: pointer;
 }
 .switch_wrapper i:hover {
