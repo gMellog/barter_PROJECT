@@ -45,7 +45,8 @@ export default function UserPanel({ user }) {
       <div className={style.profile, style.icon} >
         <Link  to='/profile'>
           <div className={style.profileLink} >
-            {user.avatar ?
+            {user ?
+
               <img src={`http://localhost:4000${user.avatar}`} alt="" />
               :
               <i className={"fas fa-camera " + style.avatar_icon_mini} ></i>

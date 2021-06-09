@@ -25,6 +25,8 @@ export default function ShowProducts() {
           <>
             <div className={style.product} >
               <Link to={`/watch/${stuff.id}`}>
+   
+                
                 <img src={stuff.photoUrl[0]} alt="" />
                 <div key={stuff.id}>
                   <h3>{stuff.name}</h3>
