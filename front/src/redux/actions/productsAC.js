@@ -1,9 +1,9 @@
-import { GET_PROCUCTS} from "../types/productsType";
+import { GET_PRODUCTS} from "../types/productsType";
 import { authHeader } from "../../helpers/authHeader";
 
 export const getAllProducts = (products) => {
   return {
-    type: GET_PROCUCTS,
+    type: GET_PRODUCTS,
     payload: products,
   };
 };

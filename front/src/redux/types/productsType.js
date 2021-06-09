@@ -1,2 +1,1 @@
-export const GET_PROCUCTS = "GET_PROCUCTS";
-products
+export const GET_PRODUCTS = "GET_PRODUCTS";

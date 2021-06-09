@@ -1,8 +1,9 @@
 const initState = {
   stuffArray: [],
   user:null,
-  products:{},
-  deals:[]
+  products:[],
+  deals:[],
+  categories:[],
 };
 
 export default initState;

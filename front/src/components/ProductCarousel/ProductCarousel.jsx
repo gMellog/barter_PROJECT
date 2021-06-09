@@ -5,42 +5,41 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from "react-responsive-carousel";
 
 const CarouselProduct = () => {
-  const stuffArray = useSelector((state) => state.stuffArray);
+  const products = useSelector((state) => state.products);
 
   return (
-    <div className={styles.wrapper_carousel}>
-      <div className={styles.wrapper_carousel_text}>
-        <div>Новые предложения</div>
-        <div>все...</div>
-        <div className={styles.collection_wrapper}>
+    // <div className={styles.wrapper_carousel}>
+    //   <div className={styles.wrapper_carousel_text}>
+    //     <div>Новые предложения</div>
+    //     <div>все...</div>
+    //     <div className={styles.collection_wrapper}>
         <Carousel
+        width={1200}
           swipeable={true}
           centerMode={true}
-          autoPlay={true}
           infiniteLoop={true}
-          interval={10000}
-          showArrows={true}
+          showArrows={false}
           emulateTouch={true}
           showThumbs={false}
           showStatus={false}
-          swipeScrollTolerance={5}
+          // swipeScrollTolerance={5}
           centerSlidePercentage={20}
           showIndicators={false}
         >
-          {stuffArray.map((stuff) => {
-            return (<div key={stuff._id} className={styles.item_wrapper}>
+          {products.map((product) => {
+            return (<div key={product.id} className={styles.item_wrapper}>
               <img
-                src={stuff.photoUrl[0]}
+                src={product.photoUrl[0]}
                 alt="item_icon"
                 className={styles.item_icon}
               />
-              <div className={styles.item_text}>{stuff.name}</div>
+              <div className={styles.item_text}>{product.name}</div>
             </div>)
           })}
         </Carousel>
-        </div>
-      </div>
-    </div>
+    //     </div>
+    //   </div>
+    // </div>
   );
 };
 

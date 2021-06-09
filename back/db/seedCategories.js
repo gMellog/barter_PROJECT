@@ -28,27 +28,22 @@ function dbConnect() {
     mongoose.connect(dbConnectionURL, options, async (err) => {
         if (err) return console.log(err)
         
-        await Category.remove({});
+        await Category.deleteMany({});
 
         const categories = [
             new Category({name: 'Транспорт'}),
-            new Category({name: 'Недвижимость'}),
-            new Category({name: 'Личные вещи'}),
-            new Category({name: 'Для дома и дачи'}),
-            new Category({name: 'Бытовая электроника'}),
-            new Category({name: 'Хобби и отдых'}),
-            new Category({name: 'Животные'})
+            new Category({name: 'Электроника'}),
+            new Category({name: 'Животные'}),
+            new Category({name: 'Одежда'}),
+            new Category({name: 'Мебель'}),
+            new Category({name: 'Кухонная утварь'}),
+            new Category({name: 'Другое'}),
+            new Category({name: 'Садоводство'}),
+            new Category({name: 'Все что угодно'}),
+            new Category({name: 'Антиквариат'})
         ];
 
-
-        const furnitureAndInterior = new Category({name: 'Мебель и интерьер'});
-        const basket = new Category({name: 'Корзинка'});
-
-        categories[3].nodes.push(furnitureAndInterior._id);
-        furnitureAndInterior.nodes.push(basket._id);
-
-        await Promise.all(categories.map(category => category.save()));
-        
+        await Promise.all(categories.map(category => category.save()));        
         mongoose.disconnect();
     })
 }

@@ -15,6 +15,9 @@ function jwt() {
       /\/product\/[A-Za-z\d]+/,
       /\/avatar\/[A-Za-z\d]+/,
       '/deal',
+      /\/product\/category\/[A-Za-z\d]+/,
+      "/searchcategory",
+      "/search"
     ]
   });
 }

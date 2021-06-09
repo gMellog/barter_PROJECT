@@ -18,6 +18,7 @@
 .collection_wrapper {
   display: flex;
   justify-content: space-between;
+  overflow: hidden;
 }
 
 .item_icon {

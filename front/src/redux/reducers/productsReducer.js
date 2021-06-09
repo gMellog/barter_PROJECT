@@ -1,11 +1,11 @@
-import { GET_PROCUCTS } from "../types/productsType";
+import { GET_PRODUCTS } from "../types/productsType";
 
-const stuffReducer = (state = [], action) => {
+const productsReducer = (state = [], action) => {
   switch (action.type) {
-    case GET_PROCUCTS:
+    case GET_PRODUCTS:
       return action.payload;
     default:
       return state;
   }
 };
-export default stuffReducer;
+export default productsReducer;

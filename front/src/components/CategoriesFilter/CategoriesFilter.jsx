@@ -1,22 +1,22 @@
 import React from 'react'
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { getSearchCategoriesThunks } from "../../redux/actions/stuffAC"
 import styles from "./CategoriesFilter.module.css"
 
 export default function CategoriesFilter() {
+  const categories = useSelector((state) => state.categories);
+
   const dispatch = useDispatch()
-  const onSearchHandler = (e) => {
+  const onSearchHandler = async (e, id) => {
     e.preventDefault()
-    console.log(e.target.value);
-    dispatch(getSearchCategoriesThunks(e.target.value))
+    const productsCategory = await fetch(`http://localhost:4000/product/category/${id}`);
+  const products = await productsCategory.json();
+  console.log(products);
   }
 
   return (
     <div className={styles.wrapper}>
-      <div><input value="Техника" type="button" onClick={(e) => onSearchHandler(e)}/></div>
-      <div><input value="Одежда" type="button" onClick={(e) => onSearchHandler(e)}/></div>
-      <div><input value="Транспорт" type="button" onClick={(e) => onSearchHandler(e)}/></div>
-      <div><input value="Животные" type="button" onClick={(e) => onSearchHandler(e)}/></div>
+      {categories.map(category => <div key={category._id}><input value={category.name} type="button" onClick={(e) => onSearchHandler(e,category._id)}/></div>)}
     </div>
   )
 }
