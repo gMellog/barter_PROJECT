@@ -1,12 +1,18 @@
 import style from "./AddProduct.module.css";
 import plus_mini from "./svg/plus_small.svg";
 import { ReactSVG } from "react-svg";
+// import { ReactSVG } from "-";
 import { useEffect, useState, useRef } from "react";
 import init from "../YandexMap/ymaps";
 import YandexMap from "../YandexMap/YandexMap";
 import pencil from "./svg/bytesize_edit.svg";
+import { authHeader } from "../../helpers/authHeader";
+import { useSelector } from "react-redux";
+import { env } from "process";
+
 
 const AddProduct = () => {
+  const user = useSelector(state => state.user)
   const [switchMapText, setSwitchMapText] = useState(true);
   const [product_title, setProduct_title] = useState("Название товара");
   //Значения по умолчанию для полей и в случае ввода пустых данных
@@ -54,6 +60,7 @@ const AddProduct = () => {
   };
 
   //Флаги отвечающие за показ превью картинок
+
   const [img_main_flag, setImg_main_flag] = useState(true);
   const [img_mini_flag_1, setImg_mini_flag_1] = useState(true);
   const [img_mini_flag_2, setImg_mini_flag_2] = useState(true);
@@ -63,12 +70,17 @@ const AddProduct = () => {
   const [img1, setImg1] = useState('');
   const [img2, setImg2] = useState('');
   const [img3, setImg3] = useState('');
-
+  const [files, setFiles] = useState([])
   //Функция показывающая превью файла
   const previewFile = (e) => {
+
+
     const id = +e.target.dataset.id;
     const file = e.target.files[0];
     const reader = new FileReader();
+
+    setFiles(files => [...files, file])
+
 
     reader.addEventListener("load", function () {
       // convert image file to base64 string
@@ -80,11 +92,14 @@ const AddProduct = () => {
       }
       if (id == 2) {
         setImg2(reader.result);
+
       }
       if (id == 3) {
         setImg3(reader.result);
       }
     }, false);
+
+
 
     if (file) {
       reader.readAsDataURL(file);
@@ -103,7 +118,33 @@ const AddProduct = () => {
     }
   }
 
+  const addProduct = async () => {
 
+    let tagsId = []
+
+    tags.map(el => tagsId.push(el.id))
+
+    const formData = new FormData();
+
+
+    formData.append('image', files[0])
+    formData.append('image', files[1])
+    formData.append('image', files[2])
+    formData.append('image', files[3])
+    formData.append('image', product_title)
+    formData.append('image', describtion)
+    formData.append('image', tagsId)
+    formData.append('image', user.id)
+
+
+
+    const res = await fetch('http://localhost:4000/ad', {
+      method: 'POST',
+      headers: authHeader(),
+      body: formData,
+    });
+
+  }
 
 
   return (
@@ -123,6 +164,7 @@ const AddProduct = () => {
             </div>
           ) : (
             <input className={style.product_title_input}
+              required
               maxlength="26"
               onBlur={(e) => {
                 if (!e.target.value.trim()) { setProduct_title(defaultTitle) }
@@ -143,6 +185,7 @@ const AddProduct = () => {
                   type="file"
                   className={style.add_file_input}
                   onChange={(e) => { previewFile(e) }}
+                  required
                 />
                 <label for="field_max_file">
                   <i className={"fas fa-camera " + style.photo_icon} />
@@ -211,11 +254,11 @@ const AddProduct = () => {
           <div className={style.switch_wrapper}>
             {switchMapText ? (
               <i
-                class="fas fa-map-marked-alt"
+                classname="fas fa-map-marked-alt"
                 onClick={() => MapTextswitcher()}
               />
             ) : (
-              <i class="fas fa-keyboard" onClick={() => MapTextswitcher()} />
+              <i classname="fas fa-keyboard" onClick={() => MapTextswitcher()} />
             )}
           </div>
           {switchMapText ? (
@@ -230,6 +273,7 @@ const AddProduct = () => {
                 </div>
               ) : (
                 <textarea
+                  required
                   rows="8"
                   maxlength="430"
                   className={style.textarea_description}
@@ -299,7 +343,7 @@ const AddProduct = () => {
       {/* ------------------------------------- */}
       <div className={style.controls}>
         {/* <div className={style.delete_product + " " + style.control_btn}>Удалить все изменения</div> */}
-        <div className={style.save_product + " " + style.control_btn}>Сохранить изменения</div>
+        <div onClick={() => addProduct()} className={style.save_product + " " + style.control_btn}>Сохранить изменения</div>
       </div>
       {/* ------------------------------------- */}
     </div>

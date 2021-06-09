@@ -31,7 +31,6 @@ function dbConnect() {
        // const deals = await Deal.find({ "participants": { $elemMatch: { userID: '60bcf6ec14b8d3f4b48c8424' } } });
        const deals = await Deal.find().elemMatch('participants', { userID: '60bcf6ec14b8d3f4b48c8424'}) 
        //.elemMatch('participants', {userID: mongoose.Types.ObjectId('60bcf6ec14b8d3f4b48c8424')});//.populate('productID').elemMatch('participants', { "productID.name": "Корзина соломенная"});//, { participants: { productID: { $elemMatch: { name: "Корзина" } } } });
-        console.log(deals);
 
         mongoose.disconnect();
         //.elemMatch('productID', { name: 'Корзина соломенная'});// { productID: { $elemMatch: { infoOwner: mongoose.Types.ObjectId('60bcd681eb26cec589869726') } } });
