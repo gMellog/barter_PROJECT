@@ -164,7 +164,7 @@ app.post("/photo/avatar", (req, res) => {
 
 app.use("/user", userRouter);
 app.use("/chat", chatRouter);
-// app.use("/product", productRouter);
+app.use("/product", productRouter);
 app.use("/deal", dealRouter);
 
 io.on("connect", (socket) => {
