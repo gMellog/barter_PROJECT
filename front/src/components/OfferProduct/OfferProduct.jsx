@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import styles from "./OfferProduct.module.css";
 import { useSelector } from "react-redux";
 import { useBarterContext } from "../../context/barterContext"
+import { useHistory } from "react-router-dom";
 
 
 export default function OfferProduct({ id, offer, setOffer }) {
   const user = useSelector(state => state.user);
+  const history = useHistory();
 
   const stuffArray = useSelector((state) => state.stuffArray);
   const { count, setCount, selectMyProduct, addDealHandler } = useBarterContext();
@@ -13,6 +15,7 @@ export default function OfferProduct({ id, offer, setOffer }) {
   const dealMan = stuffArray?.filter(stuff => stuff.id === id)[0]
   const onOfferHandler = () => {
     addDealHandler({ userID: dealMan.infoOwner, productID: id }, { userID: user.id, productID: count[0] });
+    history.push("/offers");
   }
 
 
