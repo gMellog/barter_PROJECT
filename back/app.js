@@ -1,7 +1,8 @@
 const express = require("express");
-const { dbConnect } = require("./db/connect");
-const productsModel = require("./db/products");
-const Deal = require("./db/dealModel");
+const { dbConnect } = require("./db/connect")
+const productsModel = require('./db/products')
+const Deal = require('./db/dealModel')
+const categoriesModel = require("./db/categoryModel")
 
 const cors = require("cors");
 //Дла multer
@@ -23,6 +24,7 @@ const chatRouter = require("./routers/chatRouter");
 const productRouter = require("./routers/productRouter");
 const dealRouter = require("./routers/dealRouter");
 const { env } = require("process");
+const mongoose = require('mongoose');
 
 const server = http.createServer(app);
 const io = socketIo(server, {
@@ -261,15 +263,13 @@ app.post("/deal", async (req, res) => {
 
   const deal = new Deal({ participants: [dealOne, dealTwo] });
   await deal.save();
-  //await dealModel.create({participants: [{dealOne, dealTwo}]});
-});
+})
 
-app.get("/:category", async (req, res) => {
-  const { category } = req.params;
-  let categoryId = await categoriesModel.findOne({ name: category });
-  let products = await productsModel.find({ categories: categoryId._id });
-  res.json(products);
-});
+app.get("/category", async (req, res) => {
+  let categories = await categoriesModel.find()
+  console.log(categories);
+  res.json(categories)
+})
 
 // const PORT = process.env.NODE_ENV === 'production' ? (process.env.PORT || 80) : 4000;
 const PORT = 4000;
