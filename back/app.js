@@ -1,8 +1,15 @@
 const express = require("express");
+<<<<<<< HEAD
 const { dbConnect } = require("./db/connect");
 const Product = require("./db/productModel");
 const Deal = require("./db/dealModel");
 const categoriesModel = require("./db/categoryModel");
+=======
+const { dbConnect } = require("./db/connect")
+const Product = require('./db/productModel')
+const Deal = require('./db/dealModel')
+const categoriesModel = require("./db/categoryModel")
+>>>>>>> a24a4fab2a4cb8b21dc9bc0c7040285148183ff6
 
 const cors = require("cors");
 //Дла multer
@@ -76,10 +83,13 @@ app.get("/products", async (req, res) => {
   res.json(result);
 });
 
+<<<<<<< HEAD
 app.get("/product/:id", async (req, res) => {
   const result = await Product.findOne({ _id: req.params.id });
   res.json(result);
 });
+=======
+>>>>>>> a24a4fab2a4cb8b21dc9bc0c7040285148183ff6
 
 app.post("/ad", (req, res) => {
   upload(req, res, async (err) => {
@@ -259,7 +269,11 @@ io.on("connect", (socket) => {
 });
 
 app.get("/products", async (req, res) => {
+<<<<<<< HEAD
   let products = await Product.find();
+=======
+  let products = await Product.find()
+>>>>>>> a24a4fab2a4cb8b21dc9bc0c7040285148183ff6
   res.json(products);
 });
 
