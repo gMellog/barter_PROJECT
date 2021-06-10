@@ -40,9 +40,7 @@ export default function NavMenu() {
   //функция для раскрытия и закрытия меню 
   function toggleMenu(e) {
     let menu = e.parentNode;
-    console.log(menu.classList);
     menu.classList.toggle(`${style.close}`)
-    console.log(menu.classList);
   }
 
 

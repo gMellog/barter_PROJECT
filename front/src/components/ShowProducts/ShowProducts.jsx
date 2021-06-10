@@ -19,7 +19,6 @@ export default function ShowProducts() {
     dispatch(getAllProductsThunks());
   }, []);
 
-  console.log(stuffArray);
 
   return (
     <div className={style.wrapper}>

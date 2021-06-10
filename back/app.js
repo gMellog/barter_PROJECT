@@ -41,7 +41,6 @@ app.use(cors());
 app.use(jwt());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-console.log(process.env.PWD)
 app.use(express.static(path.join(process.env.PWD, 'public')));
 
 //Описание хранилища
@@ -55,11 +54,49 @@ const storage = multer.diskStorage({
     );
   },
 });
+const storageProduct = multer.diskStorage({
+  //Путь сохранения файла
+  destination: "./public/product/",
+  filename: function (req, file, cb) {
+    cb(
+      null,
+      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+    );
+  },
+});
+//Получение данных продавца  -------------------------------------------------------------------------------------------------
+
+app.post('/seller', async (req, res) => {
+  const product = await productsModel.findById(req.body.id)
+  const user = await User.findById(product.infoOwner);
+  res.json(user)
+})
+
+
+
 //Товары  -------------------------------------------------------------------------------------------------
 
 app.get('/products', async (req, res) => {
   const result = await productsModel.find()
   res.json(result)
+})
+
+
+
+
+app.post('/ad', (req, res) => {
+  upload(req, res, async (err) => {
+    if (err) {
+      res.status(300).send(err);
+      console.log(err);
+    } else {
+      
+      const fileName = req.files.map(el => `/product/` + el.filename)
+      console.log(req.body);
+      await productsModel.create({ name: req.body.title, description: req.body.describtion, photoUrl: fileName , exchange: req.body.tags, infoOwner: req.body.id })
+    }
+  });
+  res.status(200)
 })
 
 
@@ -70,6 +107,12 @@ const uploadOne = multer({
   limits: { fileSize: 10000000000 },
 }).single("image"); // подргрузка одного или большого кол изображений
 
+const upload = multer({
+  storage: storageProduct,
+  limits: { fileSize: 10000000000 },
+}).array("image", 4); // подргрузка одного или большого кол изображений
+
+const disc = multer().array(); // подргрузка одного или большого кол изображений
 
 // app.get('/photo/avatar', async (req, res) => {
 //   const result = await File.find();
@@ -80,7 +123,6 @@ const uploadOne = multer({
 
 
 app.get('/user', async (req, res) => {
-  console.log('555555');
   const result = await User.findById(req.user.id)
   res.json(result)
 })
@@ -88,7 +130,7 @@ app.get('/user', async (req, res) => {
 
 app.post('/photo/avatar', (req, res) => {
   try {
-    console.log(req.user.id);
+    // console.log(req.user.id);
     let imagePath = "abc";
     uploadOne(req, res, (err) => {
       if (err) {
@@ -123,8 +165,6 @@ app.use('/deal', dealRouter);
 
 io.on('connect', socket => {
   socket.on('join', async ({ id, roomID }, callback) => {
-
-    console.log('JOOOOIN13');
     const user = await User.findById(id);
     user.socketID = socket.id;
     user.roomID = roomID;
@@ -159,7 +199,6 @@ io.on('connect', socket => {
   socket.on('left', async () => {
     const user = await User.findOne({ socketID: socket.id });
     if (user) {
-      console.log('user left');
       user.socketID = null
       user.roomID = null;
       await user.save();
@@ -183,12 +222,11 @@ app.post("/search", async (req, res) => {
   console.log(products);
   res.json(products)
 })
-app.post("/deal", async (req,res) => {
-  const {dealOne, dealTwo} = req.body
+app.post("/deal", async (req, res) => {
+  const { dealOne, dealTwo } = req.body
 
-  console.log(dealOne, dealTwo);
 
-  const deal = new Deal({participants: [dealOne,dealTwo]} );
+  const deal = new Deal({ participants: [dealOne, dealTwo] });
   await deal.save();
 })
 

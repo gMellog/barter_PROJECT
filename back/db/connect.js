@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const config = require('../config.json');
+const { env } = require("process");
 
 const options = {
   useNewUrlParser: true, // говорим mongoose, что строка подключения будет в новом формате (новый формат должен обязательно содеражт порт)
