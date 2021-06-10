@@ -30,10 +30,10 @@ export default function ProductCard() {
   return (
     <div className={style.card_wrapper}>
       {stuffArray.map((stuff) => {
-        return (
-          <Link to={`/watch/${stuff.id}`}>
+        return (<>
+          
             <div className={style.card_title}>
-              {/* {product.title} */}Product Title
+              <Link to={`/watch/${stuff.id}`}>{/* {product.title} */}Product Title</Link>
             </div>
             <div className={style.card_mainImg}>
               <Carousel autoPlay={false}>
@@ -51,8 +51,8 @@ export default function ProductCard() {
             </div>
             {/* Только для зареганых пользователей */}
             <div className={style.control_area}>Предложить обмен</div>
-          </Link>
-        );
+          
+        </>);
       })}
     </div>
   );

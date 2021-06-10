@@ -42,10 +42,6 @@ function App() {
         <NavMenu />
         <ProductCarousel/>
         <div className="wrapperApp">
-          {/* <ProfilePanel /> */}
-          {/* <AddProduct />
-          
-           */}
           <ShowProducts />
           <Switch>
             <Route exact path="/product/:name" component={SearchResult} />
