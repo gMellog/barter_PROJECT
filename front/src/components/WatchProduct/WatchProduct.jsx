@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import styles from "./WatchProduct.module.css";
 import map from "./image/maps.png";
 import { useParams } from "react-router-dom";
 import OfferProduct from "../OfferProduct/OfferProduct"
 import { authHeader } from "../../helpers/authHeader";
+import UserPanel from "../NavMenu/UserPanel/UserPanel";
 
 export default function WatchProduct() {
   const [offer, setOffer] = useState(false)
@@ -56,10 +57,12 @@ export default function WatchProduct() {
                 })}
               </div>
             )}
+            {/* {product.infoOwner == user.id} */}
             <div onClick={() => setOffer(true)}
               className={`${styles.btn_changer_green} `}
             >{"Предложить"}
             </div>
+
           </div>
 
           <div className={styles.watch_ad_description}>
