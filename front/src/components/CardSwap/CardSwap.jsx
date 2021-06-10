@@ -12,7 +12,7 @@ import hand from './hand.svg'
 import del from './del.svg'
 
 
-export default function ProductCard({ socket, currUser, anotherUser, deal }) {
+export default function CardSwap({ socket, currUser, anotherUser, deal }) {
 
   const history = useHistory();
   const dispatch = useDispatch();

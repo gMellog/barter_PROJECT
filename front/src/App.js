@@ -11,6 +11,7 @@ import WatchProduct from "./components/WatchProduct/WatchProduct";
 import OfferProduct from "./components/OfferProduct/OfferProduct";
 import ProductCarousel from "./components/ProductCarousel/ProductCarousel";
 import CategoriesFilter from "./components/CategoriesFilter/CategoriesFilter";
+import CardSwap from "./components/CardSwap/CardSwap";
 
 import "dotenv";
 import Message from "./components/Message/Message";
