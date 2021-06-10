@@ -23,13 +23,11 @@ export default function Offers() {
   const user = useSelector(state => state.user);
   let deals = useSelector(state => state.deals);
   deals = [...deals.filter(deal => !deal.declined), ...deals.filter(deal => deal.declined)];
-  console.log('DEAAAAAAAAAAALS ', deals);
 
 
   const drawDeal = (deal) => {
       let currUser;
       let anotherUser;
-      console.log('DEALqweqweqweqwewq ', deal);
       if (deal.participants[0].userID.id === user.id) {
         currUser = bindUserAndProduct(deal.participants[0])
         anotherUser = bindUserAndProduct(deal.participants[1])
@@ -39,7 +37,6 @@ export default function Offers() {
         anotherUser = bindUserAndProduct(deal.participants[0])
       }
 
-      console.log(anotherUser.product);
 
       return (
         <div>
