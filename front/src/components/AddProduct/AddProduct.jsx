@@ -131,8 +131,7 @@ const AddProduct = () => {
   }
 
   const addProduct = async () => {
-    let tagsId = []
-    tags.map(el => tagsId.push(el.id))
+    const tagsId = tags.map(el => el.id)
     const formData = new FormData();
     for (let i = 0; i < files.length; i++) {
       formData.append('image', files[i])

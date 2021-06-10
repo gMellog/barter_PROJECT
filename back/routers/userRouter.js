@@ -7,6 +7,7 @@ const config = require('../config.json');
 const jwt = require('jsonwebtoken');
 const ChatHistory = require('../db/chatHistoryModel');
 const Deal = require('../db/dealModel');
+const Tag = require('../db/tagModel');
 const vonage = new Vonage({
     apiKey: "db1ab976",
     apiSecret: "iWmhmn3Jq2VyNUlr"
@@ -161,7 +162,9 @@ router.post('/login', async (req,res) => {
             {
                 const token = jwt.sign({ id: user.id }, config.secret, { expiresIn: '1d' });
                 console.log(token.id);
-                res.json({user, token});
+                const tags = await Tag.find()
+                res.json({user, token, tags});
+                
             }
             else
             {

@@ -5,7 +5,7 @@ import NavMenu from "./components/NavMenu/NavMenu";
 
 import AddProduct from "./components/AddProduct/AddProduct";
 import WatchProduct from "./components/WatchProduct/WatchProduct";
-
+import ShowProducts from "./components/ShowProducts/ShowProducts"
 import "dotenv";
 import Ad from "./components/Ad/Ad";
 import Offers from "./components/Offers/Offers";
@@ -29,7 +29,10 @@ function App() {
           <Switch>
             <Route exact path="/product/:name" component={SearchResult} />
             <Route exact path="/message" ><ProfilePanel /> <Chat /> </Route>
-            <Route exact path="/profile" component={ProfilePanel} />
+            <Route exact path="/profile/myAds">
+            <ProfilePanel/>
+            <ShowProducts toUser={true}/>
+            </Route>
             <Route exact path="/">
               <MainScreen />
             </Route>

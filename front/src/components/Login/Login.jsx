@@ -4,6 +4,7 @@ import style from "./style.module.css";
 import InputMask from "react-input-mask";
 import { useDispatch } from "react-redux";
 import { getUserThunks, setUser } from "../../redux/actions/userAC";
+import {setTags} from "../../redux/actions/tagsAC"
 
 //Simply checks Russian Number
 function isValidNumber(number) {
@@ -121,8 +122,9 @@ const ModalExample = ({ toggle }) => {
 
       fetch("http://localhost:4000/user/login", options).then(async (res) => {
         if (res.status === 200) {
-          const { user, token } = await res.json();
+          const { user, token, tags } = await res.json();
           dispatch(setUser(user));
+          dispatch(setTags(tags));
           localStorage.setItem("user", JSON.stringify({ id: user.id, token }));
           toggle();
         } else {

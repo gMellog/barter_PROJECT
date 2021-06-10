@@ -41,6 +41,7 @@ function dbConnect() {
             new Category({name: 'Садоводство'}),
             new Category({name: 'Все что угодно'}),
             new Category({name: 'Антиквариат'})
+            
         ];
 
         await Promise.all(categories.map(category => category.save()));        
