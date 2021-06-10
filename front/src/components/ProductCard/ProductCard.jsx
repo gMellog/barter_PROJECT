@@ -18,63 +18,42 @@ export default function ProductCard() {
   }, [name]);
   //Нужно при получении массива с картинками создать массив объектов с полем src и адресом до картинки
   // const items = arrOfImg.map(el => {src: el})
-  var items = [
-    {
-      src: "https://sobakevi4.ru/wp-content/uploads/2020/10/shelti_01.jpg",
-    },
-    {
-      src: "http://forumimage.ru/uploads/20200517/15897013366079418.jpg",
-    },
-  ];
 
   function Item(props) {
     return (
       <Paper>
-        <img src={props.item.src} />
+        <img src={props.photoUrl} />
       </Paper>
     );
   }
 
   return (
-    <div>
-      {stuffArray.map((stuff) => (
-        <Link to={`/watch/${stuff.id}`}>
-          <div key={stuff.id}>
-            <img src={stuff.photoUrl[0]} alt="item_icon" />
-            <h3>{stuff.name}</h3>
-          </div>
-        </Link>
-      ))}
+    <div className={style.card_wrapper}>
+      {stuffArray.map((stuff) => {
+        return (
+          <Link to={`/watch/${stuff.id}`}>
+            <div className={style.card_title}>
+              {/* {product.title} */}Product Title
+            </div>
+            <div className={style.card_mainImg}>
+              <Carousel autoPlay={false}>
+                {stuff.photoUrl.map((item, i) => (
+                  <Item key={i} item={item} />
+                ))}
+              </Carousel>
+            </div>
+            <div className={style.card_describtion}>
+              <p>
+                Выглядят как настоящий Паль-йот. Однако совсем не работают
+                Думаю можно починить рублей за 500.
+              </p>
+              {/* <p>{product.describtion}</p> */}
+            </div>
+            {/* Только для зареганых пользователей */}
+            <div className={style.control_area}>Предложить обмен</div>
+          </Link>
+        );
+      })}
     </div>
-    // <div>
-    //   {stuffArray.map((stuff) => (
-    //     <div key={stuff._id}>
-    //       <h3>{stuff.name}</h3>
-    //     </div>
-    //   ))}
-    // </div>
-    stuffArray.map((stuff) => {
-      return (
-        <div className={style.card_wrapper}>
-          <div className={style.card_title}>{/* {product.title} */}Product Title</div>
-          <div className={style.card_mainImg}>
-            <Carousel autoPlay={false}>
-              {items.map((item, i) => (
-                <Item key={i} item={item} />
-              ))}
-            </Carousel>
-          </div>
-          <div className={style.card_describtion}>
-            <p>
-              Выглядят как настоящий Паль-йот. Однако совсем не работают :(
-              Думаю можно починить рублей за 500.
-            </p>
-            {/* <p>{product.describtion}</p> */}
-          </div>
-          {/* Только для зареганых пользователей */}
-          <div className={style.control_area}>Предложить обмен</div>
-        </div>
-      );
-    })
   );
 }
