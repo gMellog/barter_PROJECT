@@ -11,7 +11,6 @@ import ProductCard from "../ProductCard/ProductCard";
 export default function ShowProducts({ toUser }) {
   const stuffArray = useSelector((state) => state.stuffArray);
   const user = useSelector((state) => state.user);
-  console.log("user", toUser);
   const dispatch = useDispatch();
   console.log(stuffArray);
   useEffect(() => {
@@ -22,18 +21,15 @@ export default function ShowProducts({ toUser }) {
 
   return (
     <div className={style.wrapper}>
-
-      {
-        user &&
-          toUser
-          ? stuffArray.filter(stuff => stuff.infoOwner === user.id).map(
-            (stuff) => (
-              <ProductCard item={stuff} />
-            ))
-          : stuffArray.map(
-            (stuff) => (
-              <ProductCard item={stuff} />
-            ))
+      { toUser
+        ? stuffArray.filter(stuff => stuff.infoOwner === user.id).map(
+          (stuff) => (
+            <ProductCard item={stuff} />
+          ))
+        : stuffArray.map(
+          (stuff) => (
+            <ProductCard item={stuff} />
+          ))
       }
 
     </div>

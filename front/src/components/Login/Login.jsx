@@ -17,12 +17,13 @@ function isValidCode(code) {
   return code.length === 4;
 }
 
+
 const ModalExample = ({ toggle }) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const [showRegistr, setShowRegistr] = useState(false);
-  const [showSms, setShowSms] = useState(false);
+  const [showRegistr, setShowRegistr] = useState(true);
+  const [showSms, setShowSms] = useState(true);
   const [formShowInfomatonUser, setFormShowInfomatonUser] = useState(false);
   const [forgotPasswordShow, setForgotPasswordShow] = useState(false);
   const [forgotPasswordShowSMS, setForgotPasswordShowSMS] = useState(false);

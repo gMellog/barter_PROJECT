@@ -1,15 +1,24 @@
+
+
 import ProductCarusel from "../ProductCarousel/ProductCarusel";
 import ShowProducts from "../ShowProducts/ShowProducts";
+import Login from '../Login/Login'
 import style from "./MainScreen.module.css";
-import {useRef, useEffect} from "react";
+import {useRef, useEffect, useState} from "react";
 import { useSelector } from "react-redux";
 
 
 export default function MainScreen() {
-const user = useSelector(state => state.user);
+
+
+
+  const user = useSelector(state => state.user);
+  const [modalShow, setModalShow] = useState(false);
+  const toggle = () => {
+    setModalShow(!modalShow)
+  };
 
   useEffect(() => {
-
       eval(
         `try {
            TagCanvas.Start(
@@ -25,18 +34,14 @@ const user = useSelector(state => state.user);
            );
          }
          catch(e) {
-          const canvas = document.getElementById('myCanvasContainer');
+           const canvas = document.getElementById('myCanvasContainer');
           if(canvas)
-             canvas.style.display = 'none';
-         }`
-       );
-
-  }, [])
-  
-    
-  
-  return (
-    <>
+          canvas.style.display = 'none';
+        }`
+        );
+      }, [])
+      return (
+        <>
     {user?
       <div className={style.main_screen_wrapper}>
       <ProductCarusel />
@@ -50,7 +55,8 @@ const user = useSelector(state => state.user);
         <h2>в приложении</h2>
         <h1>CHANGER</h1>
         <p>Для того что бы использовать приложение, пожалуйста, зарегистрируйтесь.</p>
-        <button className={style.button_register}>Зарегистрироваться</button>
+        {modalShow && <Login toggle={toggle} />}
+        <button onClick={() => { toggle() }} className={style.button_register}>Зарегистрироваться</button>
         </div>
         </div>
       <div className={style.tags_area}> 
@@ -90,7 +96,6 @@ const user = useSelector(state => state.user);
               </div>
       </div>
     }
-
 </>
   )
 }
