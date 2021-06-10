@@ -163,6 +163,7 @@ router.post('/login', async (req,res) => {
                 const token = jwt.sign({ id: user.id }, config.secret, { expiresIn: '1d' });
                 console.log(token.id);
                 const tags = await Tag.find()
+                console.log('tags are ', tags);
                 res.json({user, token, tags});
                 
             }

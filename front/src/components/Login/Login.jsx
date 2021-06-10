@@ -123,6 +123,7 @@ const ModalExample = ({ toggle }) => {
       fetch("http://localhost:4000/user/login", options).then(async (res) => {
         if (res.status === 200) {
           const { user, token, tags } = await res.json();
+          console.log('TAGS! ', tags);
           dispatch(setUser(user));
           dispatch(setTags(tags));
           localStorage.setItem("user", JSON.stringify({ id: user.id, token }));
