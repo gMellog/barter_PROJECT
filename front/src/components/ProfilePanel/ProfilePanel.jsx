@@ -28,7 +28,7 @@ const ProfilePanel = () => {
     e.preventDefault();
     const formData = new FormData();
     formData.append('image', e.target.files[0])
-    formData.append('id', user.id  )
+    formData.append('id', user.id)
     await fetch('http://localhost:4000/photo/avatar', {
       method: 'POST',
       headers: authHeader(),
@@ -37,12 +37,12 @@ const ProfilePanel = () => {
     dispatch(getUserThunks())
   }
 
-  const description = async (value,id)=> {
+  const description = async (value, id) => {
     let res = await fetch('http://localhost:4000/user/description', {
       method: 'POST',
-      headers:{
-      'Content-Type' :'application/json',
-      ...authHeader(),
+      headers: {
+        'Content-Type': 'application/json',
+        ...authHeader(),
       },
       body: JSON.stringify({
         value,
@@ -80,12 +80,24 @@ const ProfilePanel = () => {
       </div>
       {/* -------------------------------------------------------- */}
       <div className={style.stars_section}>
-        
+
+        <div className={style.rating_area}>
+          <input type="radio" id="star-5" name="rating" value="5" />
+          <label for="star-5" title="Оценка «5»"></label>
+          <input type="radio" id="star-4" name="rating" value="4" />
+          <label for="star-4" title="Оценка «4»"></label>
+          <input type="radio" id="star-3" name="rating" value="3" />
+          <label for="star-3" title="Оценка «3»"></label>
+          <input type="radio" id="star-2" name="rating" value="2" />
+          <label for="star-2" title="Оценка «2»"></label>
+          <input type="radio" id="star-1" name="rating" value="1" />
+          <label for="star-1" title="Оценка «1»"></label>
+        </div>
+        {/* <ReactSVG src={star} />
         <ReactSVG src={star} />
         <ReactSVG src={star} />
         <ReactSVG src={star} />
-        <ReactSVG src={star} />
-        <ReactSVG src={star} />
+        <ReactSVG src={star} /> */}
         <h6>5.0</h6>
       </div>
       {/* -------------------------------------------------------- */}
@@ -99,7 +111,7 @@ const ProfilePanel = () => {
         </div>
       ) : (
         <div className={style.text_section}>
-          <textarea 
+          <textarea
 
             rows="6"
             className={style.text_section_textarea}
