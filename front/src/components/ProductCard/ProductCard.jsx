@@ -1,15 +1,10 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-<<<<<<< HEAD
-import {getAllSearchThunk} from "../../redux/actions/stuffAC";
-import style from "./ProductCard.module.css";
-=======
 import { getAllSearchThunk } from "../../redux/actions/stuffAC";
 import style from "./ProductCard.module.css";
 import Carousel from "react-material-ui-carousel";
 import { Paper, Button } from "@material-ui/core";
->>>>>>> test
 
 export default function ProductCard() {
   const { name } = useParams();
