@@ -122,6 +122,13 @@ app.get("/user", async (req, res) => {
   res.json(result);
 });
 
+
+app.put("/user/avatar", async (req, res) => {
+  const user = await User.findByIdAndUpdate({ _id: req.body.id }, { avatar: '' })
+  res.json(user);
+});
+
+
 app.post("/photo/avatar", (req, res) => {
   try {
     // console.log(req.user.id);
@@ -134,7 +141,8 @@ app.post("/photo/avatar", (req, res) => {
         if (req.file == undefined) {
           res.status(301).send("image upload failed.");
         } else {
-          User.findById(req.user.id).then((r) => {
+          console.log(req.body);
+          User.findById(req.body.id).then((r) => {
             r.avatar = "/avatar/" + req.file.filename;
             r.save().then(() => res.status(200).json());
           });
@@ -206,8 +214,7 @@ io.on("connect", (socket) => {
     console.log('IN DEALS');
     const deals = await Deal.find().elemMatch('participants', { userID });
 
-    for(let deal of deals)
-    {
+    for (let deal of deals) {
       console.log(deal);
       socket.join(deal._id.toString());
     }
@@ -224,16 +231,14 @@ io.on("connect", (socket) => {
   socket.on('toggleReadyDeal', async (userID, dealID) => {
 
     const deal = await Deal.findById(dealID);
-    for(let i = 0; i < deal.participants.length; i += 1)
-    {
+    for (let i = 0; i < deal.participants.length; i += 1) {
       console.log(deal.participants[i].userID._id);
       console.log(userID);
 
-        if(deal.participants[i].userID._id.equals(userID))
-        {
-            deal.participants[i].ready = !deal.participants[i].ready;
-            break;
-        }
+      if (deal.participants[i].userID._id.equals(userID)) {
+        deal.participants[i].ready = !deal.participants[i].ready;
+        break;
+      }
     }
 
     await deal.save();

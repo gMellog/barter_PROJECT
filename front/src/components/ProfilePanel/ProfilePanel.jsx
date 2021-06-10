@@ -9,7 +9,7 @@ import pencil from "./bytesize_edit.svg";
 import { Link } from "react-router-dom";
 import { authHeader } from "../../helpers/authHeader";
 
-import { getUserThunks,logoutUser } from '../../redux/actions/userAC';
+import { getUserThunks, logoutUser, deleteAvatartUserThunks } from '../../redux/actions/userAC';
 import { useSelector, useDispatch } from 'react-redux';
 
 
@@ -28,6 +28,7 @@ const ProfilePanel = () => {
     e.preventDefault();
     const formData = new FormData();
     formData.append('image', e.target.files[0])
+    formData.append('id', user.id  )
     await fetch('http://localhost:4000/photo/avatar', {
       method: 'POST',
       headers: authHeader(),
@@ -43,7 +44,7 @@ const ProfilePanel = () => {
       <div className={style.avatar_area}>
         {/* Проверка на аватар и выставления стандартной позиции */}
         {user && user.avatar ?
-          <img src={`http://localhost:4000${user.avatar}`} />
+          <img onClick={() => dispatch(deleteAvatartUserThunks(user.id))} src={`http://localhost:4000${user.avatar}`} />
           // <img src={`http://localhost:4000/avatar/image-1623061042832.png`} />
           :
           <>
@@ -102,7 +103,7 @@ const ProfilePanel = () => {
       <div className={style.controls}>
         <Link to="/ad/add"><h5>Создать объявление</h5></Link>
         <div className={style.control_line}></div>
-        <Link to="/ad"><h5>Мои объявления</h5></Link>
+        <Link to="/profile/myAds"><h5>Мои объявления</h5></Link>
         <div className={style.control_line}></div>
 
         <Link to="/offers"><h5>Предложения</h5></Link>
@@ -110,11 +111,11 @@ const ProfilePanel = () => {
         <div className={style.control_line}></div>
         <Link to="/message"><h5>Сообщения</h5></Link>
         <div className={style.control_line}></div>
-        <Link onClick={()=>{
+        <Link onClick={() => {
           localStorage.removeItem('user');
           dispatch(logoutUser());
           window.location = '/'
-          }} to="/exit"><h5>Выйти</h5></Link>
+        }} to="/exit"><h5>Выйти</h5></Link>
       </div>
       {/* -------------------------------------------------------- */}
       {/* -------------------------------------------------------- */}

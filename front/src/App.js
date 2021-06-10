@@ -17,6 +17,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ProfilePanel from "./components/ProfilePanel/ProfilePanel";
 import SellerProfile from "./components/SellerProfile/SellerProfile";
 import SearchResult from "./components/SearchResult/SearchResult";
+import { CardGroup } from "reactstrap";
 import MainScreen from "./components/MainScreen/MainScreen";
 
 function App() {
@@ -27,8 +28,8 @@ function App() {
         <div className="wrapperApp">
           <Switch>
             <Route exact path="/product/:name" component={SearchResult} />
-            <Route exact path="/chat" component={Chat} />
-            <Route exact path="/profile">
+            <Route exact path="/message" ><ProfilePanel /> <Chat /> </Route>
+            <Route exact path="/profile/myAds">
             <ProfilePanel/>
             <ShowProducts toUser={true}/>
             </Route>
@@ -40,17 +41,15 @@ function App() {
               <Offers />
             </Route>
             <Route exact path="/ad/add">
-              {" "}
               <ProfilePanel /> <AddProduct />
             </Route>
             <Route exact path="/ad">
-              {" "}
               <ProfilePanel /> <Ad />
             </Route>
             <Route exact path="/watch/:id">
-              {" "}
               <SellerProfile /> <WatchProduct />{" "}
             </Route>
+            <Route exact path="/searchProduct/" component={SearchResult} />
           </Switch>
         </div>
       </Router>
