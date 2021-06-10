@@ -73,9 +73,15 @@ app.post("/seller", async (req, res) => {
 
 app.get("/products", async (req, res) => {
   const result = await productsModel.find();
-  console.log("fhfdhfd",result);
   res.json(result);
 });
+
+app.get("/product/:id", async (req, res) => {
+  const result = await productsModel.findOne({_id: req.params.id});
+  
+  res.json(result);
+});
+
 
 app.post("/ad", (req, res) => {
   upload(req, res, async (err) => {
