@@ -7,53 +7,57 @@ import style from "./ProductCard.module.css";
 import Carousel from "react-material-ui-carousel";
 import { Paper, Button } from "@material-ui/core";
 
-export default function ProductCard() {
-  const { name } = useParams();
-  const stuffArray = useSelector((state) => state.stuffArray);
-  console.log(stuffArray);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getAllSearchThunk(name));
-  }, [name]);
+export default function ProductCard({ item }) {
+  const { name, description, photoUrl, id } = item;
+  console.log("ghhg", item);
+  // const stuffArray = useSelector((state) => state.stuffArray);
+  // console.log(stuffArray);
   //Нужно при получении массива с картинками создать массив объектов с полем src и адресом до картинки
   // const items = arrOfImg.map(el => {src: el})
+  // var items = [
+  //   {
+  //     src: "https://sobakevi4.ru/wp-content/uploads/2020/10/shelti_01.jpg",
+  //   },
+  //   {
+  //     src: "http://forumimage.ru/uploads/20200517/15897013366079418.jpg",
+  //   },
+  // ];
+
+  const items = photoUrl.map(photo => ({src:photo}))
 
   function Item(props) {
     return (
       <Paper>
-        <img src={props.photoUrl} />
+        <img src={props.item.src} />
       </Paper>
     );
   }
 
   return (
     <div className={style.card_wrapper}>
-      {stuffArray.map((stuff) => {
-        return (<>
-          
-            <div className={style.card_title}>
-              <Link to={`/watch/${stuff.id}`}>{/* {product.title} */}Product Title</Link>
-            </div>
-            <div className={style.card_mainImg}>
-              <Carousel autoPlay={false}>
-                {stuff.photoUrl.map((item, i) => (
-                  <Item key={i} item={item} />
-                ))}
-              </Carousel>
-            </div>
-            <div className={style.card_describtion}>
-              <p>
-                Выглядят как настоящий Паль-йот. Однако совсем не работают
-                Думаю можно починить рублей за 500.
-              </p>
-              {/* <p>{product.describtion}</p> */}
-            </div>
-            {/* Только для зареганых пользователей */}
-            <div className={style.control_area}>Предложить обмен</div>
-          
-        </>);
-      })}
+    
+      <div className={style.card_title}>
+        <Link to={`/watch/${id}`}>
+          {name}
+        </Link>
+      </div>
+      <div className={style.card_mainImg}>
+        <Carousel autoPlay={false}>
+          {items.map((item, i) => (
+            <Item key={i} item={item} />
+          ))}
+        </Carousel>
+      </div>
+      <div className={style.card_describtion}>
+        <p>
+          {description}
+        </p>
+        {/* <p>{product.describtion}</p> */}
+      </div>
+      {/* Только для зареганых пользователей */}
+      <div className={style.control_area}>Предложить обмен</div>
+
+      {/* </>); */}
     </div>
   );
 }
