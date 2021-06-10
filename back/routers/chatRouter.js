@@ -6,6 +6,7 @@ const ChatHistory = require('../db/chatHistoryModel');
 const user = require('../db/user');
 module.exports = router;
 const mongoose = require('mongoose');
+const Deal = require('../db/dealModel');
 
 
 //ID room and name of other guy
@@ -13,12 +14,20 @@ const mongoose = require('mongoose');
 router.post('/', async (req, res) => {
 
     try{
-
-        console.log(req.body.userID);
-        const room = await Room.create({roomID: `${req.body.userID}${req.user.id}`});
+        //pass there deal id, check between chats is there any with that id, if not create it
+        const {userID, dealID} = req.body;
         
-        // const res = await Promise.allSettled([User.findById(req.body.userID), User.findById(req.user.id)]);
+        const deal = await Deal.findById(dealID);
+        if(deal.chatCreated)
+        {
+            res.json(null);
+            return;
+        }
 
+        deal.chatCreated = true;
+        await deal.save();
+
+        const room = await Room.create({roomID: `${req.body.userID}${req.user.id}`});
         const user1 = await User.findById(req.body.userID);
         const user2 = await User.findById(req.user.id);
 
@@ -40,19 +49,8 @@ router.post('/', async (req, res) => {
 
         await user1.save();
         await user2.save();
-        // res.forEach(user => {
-        //     if(!user.chatHistory)
-        //     {
-        //         user.chatHistory = new ChatHistory();
-        //     }
-        //     user.chatHistory.rooms.push(room);
-        // })
 
-        // console.log(res);
-
-        // await Promise.all(res.map(user => user.save()));
-
-        res.json();
+        res.json(deal.toJSON());
     }
     catch(e)
     {

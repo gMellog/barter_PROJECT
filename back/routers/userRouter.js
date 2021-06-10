@@ -8,8 +8,8 @@ const jwt = require('jsonwebtoken');
 const ChatHistory = require('../db/chatHistoryModel');
 const Deal = require('../db/dealModel');
 const vonage = new Vonage({
-    apiKey: "ca23dd22",
-    apiSecret: "fuTacPky0B7KPVyY"
+    apiKey: "db1ab976",
+    apiSecret: "iWmhmn3Jq2VyNUlr"
 });
 
 

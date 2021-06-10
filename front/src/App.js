@@ -41,11 +41,6 @@ function App() {
         {/* <CategoriesFilter/> */}
         <NavMenu />
         <div className="wrapperApp">
-          {/* <ProfilePanel /> */}
-          {/* <AddProduct />
-          
-           */}
-          <ShowProducts />
           <Switch>
             <Route exact path="/product/:name" component={ProductCard} />
             <Route exact path="/message" component={Chat} />
