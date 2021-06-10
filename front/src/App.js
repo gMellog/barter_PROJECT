@@ -41,18 +41,18 @@ function App() {
         {/* <CategoriesFilter/> */}
         <NavMenu />
         <div className="wrapperApp">
-          <ShowProducts />
+          {/* <ShowProducts /> */}
           <Switch>
             <Route exact path="/product/:name" component={ProductCard} />
             <Route exact path="/message" component={Chat} />
             <Route exact path="/notify/:id" component={Notify} />
-            <Route exact path="/offers/:id" component={Offers} />
+            {/* <Route exact path="/offers/:id" component={Offers} /> */}
             <Route exact path="/like/:id" component={Like} />
             <Route exact path="/profile" component={ProfilePanel} />
             <Route exact path="/" component={ShowProducts} />
             <Route exact path="/offers">
               <ProfilePanel />
-              <OfferProduct />
+              <Offers />
             </Route>
             <Route exact path="/ad/add">
               {" "}

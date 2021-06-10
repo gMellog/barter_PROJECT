@@ -18,28 +18,10 @@ export default function UserPanel({ user }) {
 
     <div className={style.row} >
 
-      <div className={style.notify, style.icon} >
-        <Link to='/notify/id'>
-          <ReactSVG src={like} />
-          <div className={style.counter} >
-            1
-              </div>
-        </Link>
-      </div>
-      <div className={style.like, style.icon} >
-        <Link to='/like/id' >
-          <ReactSVG src={like} />
-          <div className={style.counter} >
-            1
-              </div>
-        </Link>
-      </div>
+
       <div className={style.messgae, style.icon} >
         <Link to='/message/id'>
           <ReactSVG src={message} />
-          <div className={style.counter} >
-            1
-              </div>
         </Link>
       </div>
       <div className={style.profile, style.icon} >
