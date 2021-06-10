@@ -168,7 +168,7 @@
 /* //ЗВЕЗДЫ */
 .rating_area {
 	overflow: hidden;
-  width: 180px;
+  width: 190px;
 	margin: 0 auto;
 }
 .rating_area:not(:checked) > input {
