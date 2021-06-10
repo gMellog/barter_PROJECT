@@ -11,11 +11,7 @@ import WatchProduct from "./components/WatchProduct/WatchProduct";
 import OfferProduct from "./components/OfferProduct/OfferProduct";
 import ProductCarousel from "./components/ProductCarousel/ProductCarousel";
 import CategoriesFilter from "./components/CategoriesFilter/CategoriesFilter";
-<<<<<<< HEAD
-import CardSwap from "./components/CardSwap/CardSwap";
-=======
-import Input from "./components/Searcher/Searcher"
->>>>>>> 68d8c21ce8f30938b6c2e40577d70043cb021997
+import Input from "./components/Searcher/Searcher";
 
 import "dotenv";
 import Message from "./components/Message/Message";
@@ -44,7 +40,7 @@ function App() {
         {/* <Chat/> */}
         {/* <CategoriesFilter/> */}
         <NavMenu />
-        <ProductCarousel/>
+        <ProductCarousel />
         <div className="wrapperApp">
           {/* <ShowProducts /> */}
           <Switch>
@@ -72,7 +68,7 @@ function App() {
               <SellerProfile /> <WatchProduct />{" "}
             </Route>
             <Route exact path="/chat" component={Chat} />
-            <Route exact path="/searchProduct/" component={SearchResult}/>
+            <Route exact path="/searchProduct/" component={SearchResult} />
           </Switch>
         </div>
 
