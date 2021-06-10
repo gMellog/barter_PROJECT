@@ -254,6 +254,7 @@ app.get("/products", async (req, res) => {
   res.json(products);
 });
 
+
 app.post("/search", async (req, res) => {
   const { name } = req.body;
   let products = await productsModel.find({ name: name });

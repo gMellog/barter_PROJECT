@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import style from "./style.module.css";
 import ProductCard from "../ProductCard/ProductCard";
 
-export default function ShowProducts() {
+export default function ShowProducts({toUser}) {
   const stuffArray = useSelector((state) => state.stuffArray);
   const user = useSelector((state) => state.user);
 
@@ -24,27 +24,18 @@ export default function ShowProducts() {
   return (
     <div className={style.wrapper}>
       <div className={style.products}>
-        {stuffArray.map(
+        { toUser 
+        ? stuffArray.filter(stuff => stuff.infoOwner === user.id).map(
           (stuff) => (
             <ProductCard item={stuff} />
-          )
-          //   <>
-          //   <div className={style.product}>
-          //     <Link to={`/watch/${stuff.id}`}>
-          //       <img src={stuff.photoUrl[0]} alt="" />
-          //       <img
-          //         src={`http://localhost:4000/${stuff.photoUrl[0]}`}
-          //         alt=""
-          //       />
-          //       <div key={stuff.id}>
-          //         <h3>{stuff.name}</h3>
-          //       </div>
-          //     </Link>
-          //   </div>
-          // </>
-        )}
+          ))
+        : stuffArray.map(
+          (stuff) => (
+            <ProductCard item={stuff} />
+          ))
+        }
+        
       </div>
-      {/* {stuffArray.map((stuff) => (  } */}
     </div>
   );
 }

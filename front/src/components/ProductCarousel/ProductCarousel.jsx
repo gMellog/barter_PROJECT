@@ -1,29 +1,24 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import styles from "./ProductCarousel.module.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
+
 
 const CarouselProduct = () => {
   const stuffArray = useSelector((state) => state.stuffArray);
 
   return (
     <React.Fragment>
+      <div >
       <Swiper
-        spaceBetween={40}
+        spaceBetween={0}
         slidesPerView={5}
-        onInit={(swiper) => console.log("Swiper initialized!", swiper)}
-        onSlideChange={(swiper) => {
-          console.log("Slide index changed to: ", swiper.activeIndex);
-        }}
-        onReachEnd={() => console.log("Swiper end reached")}
-      ><div className={styles.wrapper_carousel}>
+      ><div >
         {stuffArray.map((stuff) => {
           return (
-            <SwiperSlide key={stuff.id} className={styles.item_wrapper}>
+            <SwiperSlide key={stuff.id} >
               <img
                 src={stuff.photoUrl[0]}
-                className={styles.item_icon}
                 alt="item_icon"
               />
             </SwiperSlide>
@@ -31,6 +26,7 @@ const CarouselProduct = () => {
         })}
         </div>
       </Swiper>
+      </div>
     </React.Fragment>
   );
 };

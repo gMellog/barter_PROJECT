@@ -4,6 +4,7 @@ const initState = {
   products:[],
   deals:[],
   categories:[],
+  tags: [],
 };
 
 export default initState;

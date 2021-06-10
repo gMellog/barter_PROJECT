@@ -1,6 +1,7 @@
 import React from "react";
 import { Autocomplete } from "@material-ui/lab";
 import style from "./ComboBox.module.css";
+import { useSelector } from "react-redux";
 
 const top100Films = [
   { title: "Шапка" },
@@ -16,12 +17,13 @@ const top100Films = [
 ];
 
 function ComboBox({ id, setFunction, actionOnBlur }) {
+  const tags = useSelector(state=> state.tags)
   console.log(`Combobox id = ${id}`);
   return (
     <Autocomplete
       id="combo-box-demo"
       onMouseOver={(e) => e.target.focus()}
-      options={top100Films}
+      options={tags}
       getOptionLabel={(option) => option.title}
       classes={{ root: style.main, input: style.input }}
       onChange={(e) => {

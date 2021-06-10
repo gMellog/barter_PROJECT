@@ -29,11 +29,14 @@ function App() {
           <Switch>
             <Route exact path="/product/:name" component={SearchResult} />
             <Route exact path="/chat" component={Chat} />
-            <Route exact path="/profile" component={ProfilePanel} />
+            <Route exact path="/profile">
+            <ProfilePanel/>
+            <ShowProducts toUser={true}/>
+            </Route>
             <Route exact path="/">
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <ProductCarousel />
-                <ShowProducts />
+                <ShowProducts/>
               </div>
             </Route>
             <Route exact path="/offers">
