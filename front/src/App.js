@@ -43,7 +43,6 @@ function App() {
         <NavMenu />
         <div className="wrapperApp">
 
-          <ProfilePanel />
           {/* <AddProduct /> */}
           <Switch>
             <Route exact path="/product/:name" component={ProductCard} />
@@ -54,7 +53,7 @@ function App() {
             <Route exact path="/profile" component={ProfilePanel} />
             <Route exact path="/" component={ShowProducts} />
             <Route exact path="/watch/:id" component={WatchProduct} />
-            <Route exact path="/offers" ><ProfilePanel/><OfferProduct/></Route>
+            <Route exact path="/offers" ><ProfilePanel/><Offers/></Route>
             <Route exact path="/ad/add" > <ProfilePanel/>  <AddProduct /></Route>
             <Route exact path="/ad" > <ProfilePanel/> <Ad/></Route>
             <Route exact path="/chat" component={Chat} />

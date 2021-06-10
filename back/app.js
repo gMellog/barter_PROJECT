@@ -168,6 +168,53 @@ io.on('connect', socket => {
     }
     socket.disconnect();
   })
+
+  socket.on('deals', async (userID, cb) => {
+
+    console.log('IN DEALS');
+    const deals = await Deal.find().elemMatch('participants', { userID });
+
+    for(let deal of deals)
+    {
+      console.log(deal);
+      socket.join(deal._id.toString());
+    }
+
+    cb(deals);
+  });
+
+  // socket.on('dealsJoin', (deals) => {
+  //   deals.forEach(deal => {
+  //     socket.join(deal.id);
+  //   })
+  // });
+
+  socket.on('toggleReadyDeal', async (userID, dealID) => {
+
+    const deal = await Deal.findById(dealID);
+    for(let i = 0; i < deal.participants.length; i += 1)
+    {
+      console.log(deal.participants[i].userID._id);
+      console.log(userID);
+
+        if(deal.participants[i].userID._id.equals(userID))
+        {
+            deal.participants[i].ready = !deal.participants[i].ready;
+            break;
+        }
+    }
+
+    await deal.save();
+
+    io.to(dealID.toString()).emit('dealChanged', deal);
+  })
+
+  socket.on('refuseDeal', async (dealID) => {
+    const deal = await Deal.findById(dealID);
+    deal.declined = true;
+    await deal.save();
+    io.to(dealID.toString()).emit('dealChanged', deal);
+  })
 });
 
 app.get("/products", async (req, res) => {

@@ -1,4 +1,4 @@
-import { SET_DEALS, SET_DEAL} from "../types/dealsTypes";
+import { SET_DEALS, SET_DEAL, CHANGE_DEAL} from "../types/dealsTypes";
 
 const dealsReducer = (state = [], action) => {
   switch (action.type) {
@@ -11,6 +11,16 @@ const dealsReducer = (state = [], action) => {
                 return action.payload;
             }
             return deal;
+        })
+      
+    case CHANGE_DEAL:
+        return state.map( deal => {
+          if(action.payload.id === deal.id)
+          {
+              return action.payload;
+          }
+
+          return deal;
         })
 
     default:

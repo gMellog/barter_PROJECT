@@ -1,5 +1,5 @@
 import { authHeader } from "../../helpers/authHeader";
-import { SET_DEAL,SET_DEALS } from "../types/dealsTypes";
+import { CHANGE_DEAL, SET_DEAL,SET_DEALS } from "../types/dealsTypes";
 
 export const setDeals = (deals) => {
     return {
@@ -13,6 +13,13 @@ export const setDeal = (deal) => {
         type: SET_DEAL,
         payload: deal
     }
+}
+
+export const changeDeal = (deal) => {
+  return {
+    type: CHANGE_DEAL,
+    payload: deal
+  }
 }
 
 export const getUserDeals = () => async (dispatch) => {
