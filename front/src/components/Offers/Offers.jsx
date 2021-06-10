@@ -31,17 +31,20 @@ export default function Offers() {
 
     //dispatch(getUserDeals());
 
-    socket = io(ENDPOINT, {
-      extraHeaders: authHeader()
-    });
-    
-        socket.on('dealChanged', deal => {
-          dispatch(changeDeal(deal));
-        });
+    if(user)
+    {
+      socket = io(ENDPOINT, {
+        extraHeaders: authHeader()
+      });
+      
+          socket.on('dealChanged', deal => {
+            dispatch(changeDeal(deal));
+          });
 
-    socket.emit('deals', user.id, (newDeals) => {
-      dispatch(setDeals(newDeals));
-    });
+      socket.emit('deals', user.id, (newDeals) => {
+        dispatch(setDeals(newDeals));
+      });
+    }
 
   },[]);
 

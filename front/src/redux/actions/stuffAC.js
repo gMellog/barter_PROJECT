@@ -16,13 +16,21 @@ export const searchAll = (stuff) => {
 };
 
 export const getSearchCategoriesThunks = (category) => async (dispatch) => {
-  const responseUser = await fetch(`http://localhost:3001/${category}`)
+  const responseUser = await fetch("http://localhost:4000/searchcategory", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      category,
+    }),
+  });
   const resultRes = await responseUser.json();
   dispatch(searchAll(resultRes));
 };
 
 export const getAllSearchThunk = (name) => async (dispatch) => {
-  const responseUser = await fetch("http://localhost:3001/search", {
+  const responseUser = await fetch("http://localhost:4000/search", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -40,7 +48,6 @@ export const getAllStuffThunk = () => async (dispatch) => {
     headers: authHeader(),
   });
   const stuff = await response.json();
-
 
   dispatch(getAllStuff(stuff));
 };

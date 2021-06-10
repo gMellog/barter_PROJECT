@@ -12,6 +12,12 @@ router.get("/:id", async (req,res) => {
   console.log(product);
 })
 
+router.get("/category/:id", async (req,res) => {
+  const {id} = req.params
+  const products = await productsModel.find({categories: id})
+  console.log(products);
+  res.json(products)
+})
 
 
 module.exports = router
