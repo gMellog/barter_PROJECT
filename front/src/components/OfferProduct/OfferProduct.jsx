@@ -1,64 +1,47 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./OfferProduct.module.css";
-import product_offer_1 from "./image/productOffer-1.png";
-import product_offer_2 from "./image/productOffer-2.png";
-import product_offer_3 from "./image/productOffer-3.png";
-import product_offer_4 from "./image/productOffer-4.png";
+import { useSelector } from "react-redux";
+import {useBarterContext} from "../../context/barterContext"
 
-export default function OfferProduct() {
+
+export default function OfferProduct({id, offer}) {
+  const user = useSelector(state => state.user);
+
+  const stuffArray = useSelector((state) => state.stuffArray);
+  const { count, setCount, selectMyProduct, addDealHandler } = useBarterContext();
+
+  const dealMan = stuffArray?.filter(stuff => stuff.id === id)[0]
+  const onOfferHandler = () => {
+    addDealHandler({userID: dealMan.infoOwner, productID: id}, {userID: user.id, productID: count[0]});
+  }
+
+
   return (
     <>
-        <div className={styles.wrapper_available_offer_products}>
+        <div className={(offer ? styles.wrapper_available_offer_products_show : styles.wrapper_available_offer_products_hide)}>
           <h3 className={styles.available_offer_title}>
             Доступны для предложения:
           </h3>
           <hr className={styles.watch_ad_change_line} />
           <div className={styles.wrapper_available_offer_product_content}>
-            <div className={styles.available_offer_product_item}>
-              <img
-                src={product_offer_1}
-                alt="product-icon"
-                className={styles.available_product_icon}
-              />
-              <span className={styles.available_product_sign}>
-                Джинсы Сomiks
-              </span>
-            </div>
-            <div className={styles.available_offer_product_item}>
-              <img
-                src={product_offer_2}
-                alt="product-icon"
-                className={styles.available_product_icon}
-              />
-              <span className={styles.available_product_sign}>
-                Шины Nichlen
-              </span>
-            </div>
-            <div className={styles.available_offer_product_item}>
-              <img
-                src={product_offer_3}
-                alt="product-icon"
-                className={styles.available_product_icon}
-              />
-              <span className={styles.available_product_sign}>
-                Часы PROLLIX
-              </span>
-            </div>
-            <div className={styles.available_offer_product_item}>
-              <img
-                src={product_offer_4}
-                alt="product-icon"
-                className={styles.available_product_icon}
-              />
-              <span className={styles.available_product_sign}>
-                Бампер для Mazda
-              </span>
-            </div>
+            {stuffArray.filter(stuff => stuff.infoOwner === user.id).map(stuff => {
+              return (<div onClick={(e) => selectMyProduct(e, stuff.id)} key={stuff.id} className={styles.available_offer_product_item}>
+                <img
+                  src={stuff.photoUrl[0]}
+                  alt="product-icon"
+                  className={styles.available_product_icon}
+                />
+                <span className={styles.available_product_sign}>
+                  {stuff.name}
+                </span>
+              </div>)
+            })}
+            
           </div>
           <span className={styles.available_product_sign_offer_text}>
-            предложено 2/3
+            предложено {count.length}/3
           </span>
-          <div className={styles.btn_changer_green}>Предложить</div>
+          <div  onClick={()=> onOfferHandler()} className={styles.btn_changer_green}>Предложить</div>
         </div>
     </>
   );

@@ -13,13 +13,13 @@ function jwt() {
       '/user/reg',
       '/user/login',
       /\/product\/[A-Za-z\d]+/,
-      /\/avatar\/[A-Za-z\d]+/
+      /\/avatar\/[A-Za-z\d]+/,
+      '/deal',
     ]
   });
 }
 
 async function isRevoked(req, payload, done) {
-  console.log('hello');
   const user = await User.findById(payload.id);
 
   if (!user) {

@@ -2,8 +2,9 @@
   margin: 0;
   padding: 0;
 }
-.wrapperApp {
-  display: flex;
+a{
+  color: whitesmoke;
+  text-decoration: none
 }
 
 /* Нетрогать!!!!!!!!!!!!!!!!!! */
@@ -67,4 +68,9 @@ a {
   to {
     transform: rotate(360deg);
   }
+}
+
+.wrapperApp {
+  display: flex;
+  flex-direction: row;
 }

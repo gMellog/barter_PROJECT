@@ -4,7 +4,6 @@ import Login from '../Login/Login'
 import Searcher from "../Searcher/Searcher"
 import UserPanel from "./UserPanel/UserPanel"
 
-
 //
 import { ReactSVG } from 'react-svg'
 import logoSvg from './img/Logo.svg'
@@ -40,15 +39,10 @@ export default function NavMenu() {
   //функция для раскрытия и закрытия меню 
   function toggleMenu(e) {
     let menu = e.parentNode;
-    console.log(menu.classList);
     menu.classList.toggle(`${style.close}`)
-    console.log(menu.classList);
   }
 
-
-
   return (
-
 
     <div className={style.header}>
       <div className={style.logo}>
@@ -57,22 +51,21 @@ export default function NavMenu() {
         </Link>
       </div>
       <div className={style.left} >
-
         <div className={style.row} >
+          {/* daladno753    79850592945 */}
+          { user ?
+              <UserPanel user={user} />
+            :
+            <>
+              <div className={style.linkReg} >
+                {/* Активатор и модальное окно */}
+                <span onClick={() => { toggle() }} >Вход и регистрация!</span>
+                {modal && <Login toggle={toggle} />}
+              </div>
 
-        {/* daladno753    79850592945 */}
+            </>
+          }
 
-
-
-            <div className={style.linkReg} >
-              {/* Активатор и модальное окно */}
-              <span onClick={() => { toggle() }} >Вход и регистрация!</span>
-              {modal && <Login toggle={toggle} />}
-            </div>
-            
-            <UserPanel user={user} />
-
-          
         </div>
         <Searcher />
       </div>

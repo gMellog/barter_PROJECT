@@ -43,7 +43,6 @@ const Chat = ({ location }) => {
 
   const setRoomHandler = (selectName,newRoomID) => {
 
-    console.log('hey');
     setSelectedName(selectName);
     socket = io(ENDPOINT, {
       extraHeaders: authHeader()
