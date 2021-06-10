@@ -32,7 +32,7 @@ function App() {
             <Route exact path="/profile">
             <ProfilePanel/>
             <ShowProducts toUser={true}/>
-            </Route>
+            </Route> 
             <Route exact path="/">
               <MainScreen />
             </Route>
