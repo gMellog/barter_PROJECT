@@ -1,27 +1,25 @@
-const expressJwt = require('express-jwt');
-const config = require('./config.json');
-const User = require('./db/user');
-
-
+const expressJwt = require("express-jwt");
+const config = require("./config.json");
+const User = require("./db/user");
 
 function jwt() {
   const secret = config.secret;
-  return expressJwt({ secret, algorithms: ['HS256'], isRevoked }).unless({
+  return expressJwt({ secret, algorithms: ["HS256"], isRevoked }).unless({
     path: [
       // public routes that don't require authentication
-      '/user/code',
-      '/user/reg',
-      '/user/login',
+      "/user/code",
+      "/user/reg",
+      "/user/login",
       "/profile/myAds",
       "/profile",
       /\/photoItems\/[A-Za-z\d]+/,
       /([\/A-Za-z\d]+)?\/avatar([\/A-Za-z\d]+)?/,
-      '/deal',
+      "/deal",
       /\/product\/category\/[A-Za-z\d]+/,
       /\/product\/[A-Za-z\d]+/,
       "/searchcategory",
-      "/search"
-    ]
+      "/search",
+    ],
   });
 }
 
@@ -33,6 +31,6 @@ async function isRevoked(req, payload, done) {
   }
 
   done();
-};
+}
 
 module.exports = jwt;

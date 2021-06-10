@@ -10,3 +10,7 @@ code {
 }
 
 
+.modal-content{
+  color: whitesmoke;
+  background-color: rgba(34, 37, 48, 1);
+}

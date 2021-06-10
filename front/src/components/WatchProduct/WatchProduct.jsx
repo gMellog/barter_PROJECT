@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import styles from "./WatchProduct.module.css";
 import map from "./image/maps.png";
 import { useParams } from "react-router-dom";
@@ -65,6 +65,7 @@ console.log(product);
                 })}
               </div>
             )}
+<<<<<<< HEAD
             {
               availableProducts ? 
               <div onClick={() => setOffer(true)}
@@ -74,6 +75,14 @@ console.log(product);
               :
               null
               }
+=======
+            {/* {product.infoOwner == user.id} */}
+            <div onClick={() => setOffer(true)}
+              className={`${styles.btn_changer_green} `}
+            >{"Предложить"}
+            </div>
+
+>>>>>>> test-khabarov
           </div>
 
           <div className={styles.watch_ad_description}>
