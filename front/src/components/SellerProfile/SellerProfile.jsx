@@ -26,10 +26,10 @@ const SellerProfile = () => {
   const [flag_edit_hello, setFlag_edit_hello] = useState(true);
   const [hello, setHello] = useState(helloDefault);
 
-  const {id} = useParams()
+  const { id } = useParams()
   useEffect(() => {
     getSaller(id);
-  },[])
+  }, [])
 
   return (
     <div className={style.profile_panel_wrapper}>
@@ -64,31 +64,13 @@ const SellerProfile = () => {
         <h6>5.0</h6>
       </div>
       {/* -------------------------------------------------------- */}
-      {flag_edit_hello ? (
-        <div
-          className={style.text_section}
-          onClick={() => setFlag_edit_hello(false)}
-        >
-          <p>{seller && seller.description}</p>
-          <ReactSVG src={pencil} className={style.pencil} />
-        </div>
-      ) : (
-        <div className={style.text_section}>
-          <textarea
-            rows="6"
-            className={style.text_section_textarea}
-            onChange={(e) => {
-              setHello(e.target.value);
-            }}
-            onBlur={(e) => {
-              setFlag_edit_hello(true);
-            }}
-            onMouseOver={(e) => e.target.focus()}
-          >
-            {hello}
-          </textarea>
-        </div>
-      )}
+
+       
+      <div>
+        <p>{seller && seller.description}</p>
+        <ReactSVG src={pencil} className={style.pencil} />
+      </div>
+
       {/* -------------------------------------------------------- */}
     </div>
   );
