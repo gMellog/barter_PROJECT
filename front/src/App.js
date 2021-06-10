@@ -11,6 +11,7 @@ import WatchProduct from "./components/WatchProduct/WatchProduct";
 import OfferProduct from "./components/OfferProduct/OfferProduct";
 import ProductCarousel from "./components/ProductCarousel/ProductCarousel";
 import CategoriesFilter from "./components/CategoriesFilter/CategoriesFilter";
+import Input from "./components/Searcher/Searcher"
 
 import "dotenv";
 import Message from "./components/Message/Message";
@@ -37,13 +38,13 @@ function App() {
     <div className="App">
       <Router>
         {/* <Chat/> */}
-        {/* <ProductCarousel/> */}
         {/* <CategoriesFilter/> */}
         <NavMenu />
+        <ProductCarousel/>
         <div className="wrapperApp">
           {/* <ShowProducts /> */}
           <Switch>
-            <Route exact path="/product/:name" component={ProductCard} />
+            <Route exact path="/product/:name" component={SearchResult} />
             <Route exact path="/message" component={Chat} />
             <Route exact path="/notify/:id" component={Notify} />
             {/* <Route exact path="/offers/:id" component={Offers} /> */}
@@ -67,6 +68,7 @@ function App() {
               <SellerProfile /> <WatchProduct />{" "}
             </Route>
             <Route exact path="/chat" component={Chat} />
+            <Route exact path="/searchProduct/" component={SearchResult}/>
           </Switch>
         </div>
 

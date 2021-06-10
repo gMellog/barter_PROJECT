@@ -1,109 +1,9 @@
 import style from "./SearchResult.module.css";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const SearchResult = () => {
-  const [buba, setBuba] = useState([
-    {
-      name: "Ершик туалетный",
-      photoUrl:
-        "https://lemikids.ru/upload/iblock/8d5/8d5d191e10c010b74f03ae516d40fcee.jpg",
-      address: "Москва, ул. Генерала Пилюли д.8",
-      infoOwner: "Саша",
-      exchange: "Вантус",
-      description:
-        "В хорошем состоянии. Почти не использовался, только по праздникам.",
-      actual: true,
-    },
-    {
-      name: "Ершик туалетный",
-      photoUrl:
-        "https://lemikids.ru/upload/iblock/8d5/8d5d191e10c010b74f03ae516d40fcee.jpg",
-      address: "Москва, ул. Генерала Пилюли д.8",
-      infoOwner: "Саша",
-      exchange: "Вантус",
-      description:
-        "В хорошем состоянии. Почти не использовался, только по праздникам.",
-      actual: true,
-    },
-    {
-      name: "Ершик туалетный",
-      photoUrl:
-        "https://lemikids.ru/upload/iblock/8d5/8d5d191e10c010b74f03ae516d40fcee.jpg",
-      address: "Москва, ул. Генерала Пилюли д.8",
-      infoOwner: "Саша",
-      exchange: "Вантус",
-      description:
-        "В хорошем состоянии. Почти не использовался, только по праздникам.",
-      actual: true,
-    },
-    {
-      name: "Ершик туалетный",
-      photoUrl:
-        "https://lemikids.ru/upload/iblock/8d5/8d5d191e10c010b74f03ae516d40fcee.jpg",
-      address: "Москва, ул. Генерала Пилюли д.8",
-      infoOwner: "Саша",
-      exchange: "Вантус",
-      description:
-        "В хорошем состоянии. Почти не использовался, только по праздникам.",
-      actual: true,
-    },
-    {
-      name: "Ершик туалетный",
-      photoUrl:
-        "https://lemikids.ru/upload/iblock/8d5/8d5d191e10c010b74f03ae516d40fcee.jpg",
-      address: "Москва, ул. Генерала Пилюли д.8",
-      infoOwner: "Саша",
-      exchange: "Вантус",
-      description:
-        "В хорошем состоянии. Почти не использовался, только по праздникам.",
-      actual: true,
-    },
-    {
-      name: "Ершик туалетный",
-      photoUrl:
-        "https://lemikids.ru/upload/iblock/8d5/8d5d191e10c010b74f03ae516d40fcee.jpg",
-      address: "Москва, ул. Генерала Пилюли д.8",
-      infoOwner: "Саша",
-      exchange: "Вантус",
-      description:
-        "В хорошем состоянии. Почти не использовался, только по праздникам.",
-      actual: true,
-    },
-    {
-      name: "Ершик туалетный",
-      photoUrl:
-        "https://lemikids.ru/upload/iblock/8d5/8d5d191e10c010b74f03ae516d40fcee.jpg",
-      address: "Москва, ул. Генерала Пилюли д.8",
-      infoOwner: "Саша",
-      exchange: "Вантус",
-      description:
-        "В хорошем состоянии. Почти не использовался, только по праздникам.",
-      actual: true,
-    },
-    {
-      name: "Ершик туалетный",
-      photoUrl:
-        "https://lemikids.ru/upload/iblock/8d5/8d5d191e10c010b74f03ae516d40fcee.jpg",
-      address: "Москва, ул. Генерала Пилюли д.8",
-      infoOwner: "Саша",
-      exchange: "Вантус",
-      description:
-        "В хорошем состоянии. Почти не использовался, только по праздникам.",
-      actual: true,
-    },
-    {
-      name: "Ершик туалетный",
-      photoUrl:
-        "https://lemikids.ru/upload/iblock/8d5/8d5d191e10c010b74f03ae516d40fcee.jpg",
-      address: "Москва, ул. Генерала Пилюли д.8",
-      infoOwner: "Саша",
-      exchange: "Вантус",
-      description:
-        "В хорошем состоянии. Почти не использовался, только по праздникам.",
-      actual: true,
-    },
-  ]);
-
+  const stuffArray = useSelector((state) => state.stuffArray);
   return (
     <div className={style.main_wrapper}>
       <div className={style.content_wrapper}>
@@ -117,11 +17,11 @@ const SearchResult = () => {
 
         <div className={style.search_result_wrapper}>
           {/* Центральная линия с выводом результата поиска */}
-          {buba.map((el) => {
+          {stuffArray.map((el) => {
             return (
               <div className={style.item_wrapper}>
                 <div className={style.image_area}>
-                  <img src={el.photoUrl} />
+                  <img src={el.photoUrl[0]} />
                 </div>
                 <div className={style.info_area}>
                   <h4>{el.name}</h4>
