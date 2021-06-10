@@ -27,7 +27,7 @@ export default function OfferProduct({ id, offer, setOffer }) {
           {stuffArray.filter(stuff => stuff.infoOwner === user.id).map(stuff => {
             return (<div onClick={(e) => selectMyProduct(e, stuff.id)} key={stuff.id} className={styles.available_offer_product_item}>
               <img
-                src={stuff.photoUrl[0]}
+                src={`http://localhost:4000/${stuff.photoUrl[0]}`}
                 alt="product-icon"
                 className={styles.available_product_icon}
               />
