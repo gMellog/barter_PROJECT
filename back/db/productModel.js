@@ -9,7 +9,6 @@ const schema = new Schema({
   description: String,  
   actual: Boolean,
   createdAt: {type: Date, default: Date.now},
-  categories: { type: Schema.Types.ObjectId, ref: 'Categories' }
 })
 
 schema.set('toJSON', {
@@ -20,4 +19,4 @@ schema.set('toJSON', {
   }
 });
 
-module.exports = model('Products', schema);
+module.exports = model('Product', schema);
