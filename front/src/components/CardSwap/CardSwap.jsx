@@ -87,9 +87,6 @@ export default function CardSwap({ socket, currUser, anotherUser, deal }) {
         </div>
 
         <div className={style.actions}>
-          <div className={style.data}>
-            29 апреля 2021
-            </div>
           <div className={style.message} style={{ opacity: readyToChat ? 1 : 0.1 }} onClick={makeChat}>
             <ReactSVG src={message}></ReactSVG>
           </div>
@@ -99,9 +96,8 @@ export default function CardSwap({ socket, currUser, anotherUser, deal }) {
         </div>
 
         <div className={style.user}>
-          <div className={style.img}>
+          <div className={style.img_wrapper}>
             <img src={`http://localhost:4000${anotherUser.product.photoUrl[0]}`} alt="" />
-            {/* console.log("=======>>>>>", anotherUser.product.photoUrl[0]); */}
           </div>
           <div className={`${style.avatar} ${style.avatar_left}`}>
             <img src={`http://localhost:4000${anotherUser.user.avatar}`} alt="" />

@@ -26,6 +26,11 @@
   object-fit: cover;
 }
 
+.img_wrapper:hover {
+  transform: scale(2, 2);
+  transition: 0.5s;
+}
+
 .avatar {
   position: absolute;
   top: -10%;
@@ -36,9 +41,15 @@
   border: 1px solid whitesmoke;
   overflow: hidden;
 }
+.avatar:hover {
+  transform: scale(2, 2);
+  transition: 0.5s;
+}
+
 .avatar img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 
 .avatar_left {
