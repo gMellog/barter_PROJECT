@@ -13,7 +13,7 @@ function jwt() {
       '/user/reg',
       '/user/login',
       /\/product\/[A-Za-z\d]+/,
-      /\/avatar\/[A-Za-z\d]+/,
+      /([\/A-Za-z\d]+)?\/avatar([\/A-Za-z\d]+)?/,
       '/deal',
       /\/product\/category\/[A-Za-z\d]+/,
       "/searchcategory",

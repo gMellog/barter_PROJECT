@@ -9,7 +9,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  z-index: 9999;
 }
 .avatar_area {
   position: absolute;
@@ -41,10 +40,24 @@
   z-index: 2;
 }
 .avatar_area img {
+  position: relative;
+  cursor: pointer;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: .3s all;
 }
+
+
+
+.avatar_area img:hover{
+  filter: opacity(50%) ;
+}
+
+
+
+
+
 
 .user_name {
   margin: 0 auto;

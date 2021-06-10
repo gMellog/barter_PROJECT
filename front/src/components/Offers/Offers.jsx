@@ -50,7 +50,10 @@ export default function Offers() {
 
   return (
     <>
-    {
+
+    {deals ?
+      <p>На данный момент предложений нет</p>
+      :
       deals.length >= 1 && deals.map(deal => {
 
         let currUser;

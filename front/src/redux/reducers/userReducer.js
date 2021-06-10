@@ -1,4 +1,4 @@
-import { LOGOUT_USER, SET_USER } from "../types/userTypes";
+import { LOGOUT_USER, SET_USER,DELETE_AVATAR_USER} from "../types/userTypes";
 
 const stuffReducer = (state = {}, action) => {
   switch (action.type) {
@@ -6,6 +6,8 @@ const stuffReducer = (state = {}, action) => {
       return action.payload;
     case LOGOUT_USER:
       return null;
+    case DELETE_AVATAR_USER:
+        return  action.payload;
     default:
       return state;
   }
