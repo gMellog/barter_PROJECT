@@ -15,7 +15,6 @@ router.get("/:id", async (req, res) => {
     console.log(e.message);
     res.status(400).json();
   }
-  console.log(product);
 });
 
 router.get("/category/:id", async (req, res) => {

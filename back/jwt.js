@@ -14,10 +14,11 @@ function jwt() {
       '/user/login',
       "/profile/myAds",
       "/profile",
-      /\/product\/[A-Za-z\d]+/,
+      /\/photoItems\/[A-Za-z\d]+/,
       /([\/A-Za-z\d]+)?\/avatar([\/A-Za-z\d]+)?/,
       '/deal',
       /\/product\/category\/[A-Za-z\d]+/,
+      /\/product\/[A-Za-z\d]+/,
       "/searchcategory",
       "/search"
     ]
