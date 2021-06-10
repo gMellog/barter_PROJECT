@@ -76,11 +76,6 @@ app.get("/products", async (req, res) => {
   res.json(result);
 });
 
-app.get("/product/:id", async (req, res) => {
-  const result = await Product.findOne({_id: req.params.id});
-  
-  res.json(result);
-});
 
 
 app.post("/ad", (req, res) => {
