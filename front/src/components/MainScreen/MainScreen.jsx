@@ -24,8 +24,8 @@ export default function MainScreen() {
            TagCanvas.Start(
              'myCanvas',
              '',
-             {textColour: 'orange',
-             outlineColour: '#0000', 
+             {textColour: 'goldenrod',
+             outlineColour: '#03bcf4', 
              zoom: 1.1,
              initial: [0.14, 0.08],
              weightMode: "outline",
@@ -51,12 +51,12 @@ export default function MainScreen() {
       <div className={style.main_screen_wrapper2}>
       <div className={style.greeting_area}>
         <div className={style.greeting_words}>
-        <h2>Приветствуем вас</h2>
-        <h2>в приложении</h2>
+        <h2>Приветствуем вас в приложении</h2>
+        {/* <h2></h2> */}
         <h1>CHANGER</h1>
-        <p>Для того что бы использовать приложение, пожалуйста, зарегистрируйтесь.</p>
         {modalShow && <Login toggle={toggle} />}
         <button onClick={() => { toggle() }} className={style.button_register}>Зарегистрироваться</button>
+        <p>Для того что бы использовать приложение, пожалуйста, зарегистрируйтесь.</p>
         </div>
         </div>
       <div className={style.tags_area}> 

@@ -1,14 +1,23 @@
 .modal {
+  border-radius: 30px;
   padding: 30px 50px;
+  background-color: #313340;
 }
 .modalRegistration {
+  border-radius: 30px;
   padding: 20px 50px;
-  background-color: black;
+  background-color: #313340;
 }
 .modalColor {
-  background-color: black;
+  background-color: rgb(123, 123, 123);
 }
-.title {
+
+.modal-content {
+  border-radius: 30px;
+}
+
+.title h2 {
+  color: whitesmoke;
   text-align: center;
 }
 .title h2 {
@@ -71,4 +80,28 @@
 .footer {
   width: 100%;
   text-align: center;
+}
+
+.footer p {
+  color: whitesmoke;
+}
+
+.footer p:hover {
+  text-shadow: 0 0 10px goldenrod;
+  color: whitesmoke;
+  transition: 0.5s;
+}
+
+.body button {
+  background-color: #313340;
+  border: 1px solid whitesmoke;
+  font-weight: 700;
+}
+
+.body button:hover {
+  background-color: goldenrod;
+  color: #313340;
+  transition: 0.5s;
+  border: 1px solid whitesmoke;
+  box-shadow: 0 0 10px goldenrod;
 }
