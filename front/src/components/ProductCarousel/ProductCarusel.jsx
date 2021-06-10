@@ -26,7 +26,7 @@ const ProductCarusel = () => {
             <SwiperSlide key={stuff.id} className={style.item_wrapper}>
               <Link to={`/watch/${stuff.id}`}>
                 <img
-                  src={`http://localhost:3000/${stuff.photoUrl[0]}`}
+                  src={`http://localhost:4000${stuff.photoUrl[0]}`}
                   alt="item_icon"
                 />
               </Link>

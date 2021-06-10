@@ -8,10 +8,10 @@ import { Link } from "react-router-dom";
 import style from "./ShowProducts.module.css";
 import ProductCard from "../ProductCard/ProductCard";
 
-export default function ShowProducts() {
+export default function ShowProducts({toUser}) {
   const stuffArray = useSelector((state) => state.stuffArray);
   const user = useSelector((state) => state.user);
-
+  console.log("user", toUser);
   const dispatch = useDispatch();
   console.log(stuffArray);
   useEffect(() => {
@@ -23,10 +23,17 @@ export default function ShowProducts() {
 
   return (
     <div className={style.wrapper}>
-        {stuffArray.map((stuff) => (
-          <ProductCard item={stuff}/>
-        ))}
-
+        { toUser 
+        ? stuffArray.filter(stuff => stuff.infoOwner === user.id).map(
+          (stuff) => (
+            <ProductCard item={stuff} />
+          ))
+        : stuffArray.map(
+          (stuff) => (
+            <ProductCard item={stuff} />
+          ))
+        }
+        
     </div>
   );
 }
