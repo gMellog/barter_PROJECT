@@ -135,7 +135,7 @@ const AddProduct = () => {
 
   const addProduct = async () => {
     
-    history.push('/profile/myAds');
+    history.push('/profile');
 
     const tagsId = tags.map(el => el.id)
     const formData = new FormData();

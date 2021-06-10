@@ -65,12 +65,15 @@ console.log(product);
                 })}
               </div>
             )}
-            {/* {product.infoOwner == user.id} */}
-            <div onClick={() => setOffer(true)}
-              className={`${styles.btn_changer_green} `}
-            >{"Предложить"}
-            </div>
-
+            {
+              availableProducts ? 
+              <div onClick={() => setOffer(true)}
+                className={`${styles.btn_changer_green} `}
+              >{"Предложить"}
+              </div>
+              :
+              null
+              }
           </div>
 
           <div className={styles.watch_ad_description}>

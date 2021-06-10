@@ -117,12 +117,6 @@ const disc = multer().array(); // подргрузка одного или бо�
 //   res.json(result)
 // })
 
-app.get("/user", async (req, res) => {
-  // console.log(req.user.id);
-  // const result = await User.findById(req.user.id);
-  // res.json(result);
-});
-
 app.put("/user/avatar", async (req, res) => {
   const user = await User.findByIdAndUpdate(
     { _id: req.body.id },

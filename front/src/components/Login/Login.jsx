@@ -329,7 +329,7 @@ const ModalExample = ({ toggle }) => {
           />
           <div className={style.bottomSettng}>
             <div className="form-check">
-              <input
+              {/* <input
                 className={`form-check-input ${style.checkbox}`}
                 type="checkbox"
                 value=""
@@ -337,7 +337,7 @@ const ModalExample = ({ toggle }) => {
               />
               <label className="form-check-label -10" for="flexCheckChecked">
                 Запомнить пароль
-              </label>
+              </label> */}
             </div>
             <div
               onClick={() => {
@@ -345,7 +345,7 @@ const ModalExample = ({ toggle }) => {
               }}
               className={style.forgotPassword}
             >
-              <p>Забыли пароль ?</p>
+              {/* <p>Забыли пароль ?</p> */}
             </div>
           </div>
           <button
