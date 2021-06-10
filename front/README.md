@@ -1,10 +1,11 @@
-# Getting Started with Create React App
+# Changer project
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## AddProduct
 
-In the project directory, you can run:
+Компонент добавления товара пользователем. Компонент позволяет добавить 3 фотографии, название продукта, описание продукта,
+панель добавления желаний, модуль отображающий Яндекс карты и позволяющий ставить метку.
 
 ### `yarn start`
 

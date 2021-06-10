@@ -76,7 +76,6 @@ const AddProduct = () => {
   };
 
   //Флаги отвечающие за показ превью картинок
-
   const [img_main_flag, setImg_main_flag] = useState(true);
   const [img_mini_flag_1, setImg_mini_flag_1] = useState(true);
   const [img_mini_flag_2, setImg_mini_flag_2] = useState(true);
@@ -90,12 +89,9 @@ const AddProduct = () => {
   console.log(files);
   //Функция показывающая превью файла
   const previewFile = (e) => {
-
-
     const id = +e.target.dataset.id;
     const file = e.target.files[0];
     const reader = new FileReader();
-
     setFiles(files => [...files, file])
     reader.addEventListener(
       "load",
@@ -135,14 +131,9 @@ const AddProduct = () => {
   }
 
   const addProduct = async () => {
-
     let tagsId = []
-
     tags.map(el => tagsId.push(el.id))
-
     const formData = new FormData();
-
-
     for (let i = 0; i < files.length; i++) {
       formData.append('image', files[i])
     }
@@ -150,8 +141,6 @@ const AddProduct = () => {
     formData.append('describtion', describtion)
     formData.append('tags', tagsId)
     formData.append('id', user.id)
-
-
 
     const res = await fetch('http://localhost:4000/ad', {
       method: 'POST',
@@ -167,7 +156,6 @@ const actionBlurCombo1 = useCallback(
   },
   [],
 )
-
 
 return (
   <div className={style.add_product_wrapper}>
@@ -307,7 +295,7 @@ return (
             onClick={() => MapTextswitcher()}
           />
         ) : (
-          <i classname="fas fa-keyboard" onClick={() => MapTextswitcher()} />
+          <i className="fas fa-keyboard" onClick={() => MapTextswitcher()} />
         )}
       </div>
       {switchMapText ? (
