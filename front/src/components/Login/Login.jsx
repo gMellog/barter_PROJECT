@@ -5,6 +5,7 @@ import InputMask from "react-input-mask";
 import { useDispatch } from "react-redux";
 import { getUserThunks, setUser } from "../../redux/actions/userAC";
 import {setTags} from "../../redux/actions/tagsAC"
+import { useHistory } from "react-router-dom";
 
 //Simply checks Russian Number
 function isValidNumber(number) {
@@ -17,6 +18,7 @@ function isValidCode(code) {
 
 const ModalExample = ({ toggle }) => {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const [showRegistr, setShowRegistr] = useState(false);
   const [showSms, setShowSms] = useState(false);
@@ -133,6 +135,7 @@ const ModalExample = ({ toggle }) => {
         }
       });
     }
+    history.push("/profile/myAds");
   };
 
   const changeNumberHandler = () => {
