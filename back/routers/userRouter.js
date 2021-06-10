@@ -164,7 +164,11 @@ router.post('/login', async (req,res) => {
                 console.log(token.id);
                 const tags = await Tag.find()
                 console.log('tags are ', tags);
-                res.json({user, token, tags});
+                const deals = await Deal.find().elemMatch('participants', { userID: user._id });
+
+                console.log('Deals ',deals);
+
+                res.json({user, token, tags, deals});
                 
             }
             else

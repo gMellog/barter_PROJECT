@@ -21,7 +21,32 @@ function bindUserAndProduct(participant) {
 
 export default function Offers() {
   const user = useSelector(state => state.user);
-  const deals = useSelector(state => state.deals);
+  let deals = useSelector(state => state.deals);
+  deals = [...deals.filter(deal => !deal.declined), ...deals.filter(deal => deal.declined)];
+
+
+  const drawDeal = (deal) => {
+      let currUser;
+      let anotherUser;
+      if (deal.participants[0].userID.id === user.id) {
+        currUser = bindUserAndProduct(deal.participants[0])
+        anotherUser = bindUserAndProduct(deal.participants[1])
+      }
+      else {
+        currUser = bindUserAndProduct(deal.participants[1])
+        anotherUser = bindUserAndProduct(deal.participants[0])
+      }
+
+
+      return (
+        <div>
+          <CardSwap socket={socket} currUser={currUser} anotherUser={anotherUser} deal={deal} ></CardSwap>
+        </div>
+      );
+  };
+
+  
+
   const dispatch = useDispatch();
 
 
@@ -52,26 +77,7 @@ export default function Offers() {
     !deals.length ?
       <p>На данный момент предложений нет</p>
       :
-      deals.map(deal => {
-
-        let currUser;
-        let anotherUser;
-
-        if (deal.participants[0].userID.id === user.id) {
-          currUser = bindUserAndProduct(deal.participants[0])
-          anotherUser = bindUserAndProduct(deal.participants[1])
-        }
-        else {
-          currUser = bindUserAndProduct(deal.participants[1])
-          anotherUser = bindUserAndProduct(deal.participants[0])
-        }
-
-        return (
-          <div>
-            <CardSwap socket={socket} currUser={currUser} anotherUser={anotherUser} deal={deal} ></CardSwap>
-          </div>
-        );
-      })
+      deals.map(deal => drawDeal(deal))
     }
     </div>
   )

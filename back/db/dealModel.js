@@ -3,7 +3,7 @@ const { Schema, model } = mongoose;
 
 const participantSchema = new Schema({
     userID: { type: Schema.Types.ObjectId, required: true, autopopulate: true, ref: 'User'},
-    productID: { type: Schema.Types.ObjectId, required: true, autopopulate: true, ref: 'Products' },
+    productID: { type: Schema.Types.ObjectId, required: true, autopopulate: true, ref: 'Product' },
     ready: { type: Boolean, default: false },
 });
 

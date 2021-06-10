@@ -9,6 +9,7 @@ import ComboBox from "./ComboBox/ComboBox";
 import { authHeader } from "../../helpers/authHeader";
 import { useSelector } from "react-redux";
 import { env } from "process";
+import { useHistory, useParams } from "react-router-dom";
 
 
 const AddProduct = () => {
@@ -27,6 +28,8 @@ const AddProduct = () => {
   const [tags, setTags] = useState([]);
   const [selectValue, setSelectValue] = useState("на все что угодно");
   const [productTitle, setProductTitle] = useState("Название товара");
+
+  const history = useHistory();
 
   console.log('PPPPPPproductTitle', productTitle);
   const [colors, setColors] = useState([
@@ -131,6 +134,9 @@ const AddProduct = () => {
   }
 
   const addProduct = async () => {
+    
+    history.push('/profile/myAds');
+
     const tagsId = tags.map(el => el.id)
     const formData = new FormData();
     for (let i = 0; i < files.length; i++) {

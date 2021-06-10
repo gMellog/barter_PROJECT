@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import style from "./ShowProducts.module.css";
 import ProductCard from "../ProductCard/ProductCard";
 
-export default function ShowProducts({toUser}) {
+export default function ShowProducts({ toUser }) {
   const stuffArray = useSelector((state) => state.stuffArray);
   const user = useSelector((state) => state.user);
   console.log("user", toUser);
@@ -16,23 +16,26 @@ export default function ShowProducts({toUser}) {
   console.log(stuffArray);
   useEffect(() => {
     dispatch(getAllStuffThunk());
-   // dispatch(getAllCategoriesThunk());
-    //dispatch(getAllProductsThunks());
+   dispatch(getAllCategoriesThunk());
+    dispatch(getAllProductsThunks());
   }, []);
 
   return (
     <div className={style.wrapper}>
-        { toUser 
-        ? stuffArray.filter(stuff => stuff.infoOwner === user.id).map(
-          (stuff) => (
-            <ProductCard item={stuff} />
-          ))
-        : stuffArray.map(
-          (stuff) => (
-            <ProductCard item={stuff} />
-          ))
-        }
-        
+
+      {
+        user &&
+          toUser
+          ? stuffArray.filter(stuff => stuff.infoOwner === user.id).map(
+            (stuff) => (
+              <ProductCard item={stuff} />
+            ))
+          : stuffArray.map(
+            (stuff) => (
+              <ProductCard item={stuff} />
+            ))
+      }
+
     </div>
   );
 }

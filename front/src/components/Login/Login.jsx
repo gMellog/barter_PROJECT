@@ -5,6 +5,8 @@ import InputMask from "react-input-mask";
 import { useDispatch } from "react-redux";
 import { getUserThunks, setUser } from "../../redux/actions/userAC";
 import {setTags} from "../../redux/actions/tagsAC"
+import { useHistory } from "react-router-dom";
+import { setDeals } from "../../redux/actions/dealsAC";
 
 //Simply checks Russian Number
 function isValidNumber(number) {
@@ -17,6 +19,7 @@ function isValidCode(code) {
 
 const ModalExample = ({ toggle }) => {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const [showRegistr, setShowRegistr] = useState(false);
   const [showSms, setShowSms] = useState(false);
@@ -122,10 +125,11 @@ const ModalExample = ({ toggle }) => {
 
       fetch("http://localhost:4000/user/login", options).then(async (res) => {
         if (res.status === 200) {
-          const { user, token, tags } = await res.json();
+          const { user, token, tags, deals } = await res.json();
           console.log('TAGS! ', tags);
           dispatch(setUser(user));
           dispatch(setTags(tags));
+          dispatch(setDeals(deals));
           localStorage.setItem("user", JSON.stringify({ id: user.id, token }));
           toggle();
         } else {

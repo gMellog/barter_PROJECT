@@ -1,15 +1,21 @@
 const express = require("express");
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 677e936ac9dc4a7fcf12b86e45fc8903b5de1584
 const { dbConnect } = require("./db/connect");
 const Product = require("./db/productModel");
 const Deal = require("./db/dealModel");
 const categoriesModel = require("./db/categoryModel");
+<<<<<<< HEAD
 =======
 const { dbConnect } = require("./db/connect")
 const Product = require('./db/productModel')
 const Deal = require('./db/dealModel')
 const categoriesModel = require("./db/categoryModel")
 >>>>>>> a24a4fab2a4cb8b21dc9bc0c7040285148183ff6
+=======
+>>>>>>> 677e936ac9dc4a7fcf12b86e45fc8903b5de1584
 
 const cors = require("cors");
 //Дла multer
@@ -84,6 +90,7 @@ app.get("/products", async (req, res) => {
 });
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 app.get("/product/:id", async (req, res) => {
   const result = await Product.findOne({ _id: req.params.id });
   res.json(result);
@@ -91,6 +98,8 @@ app.get("/product/:id", async (req, res) => {
 =======
 >>>>>>> a24a4fab2a4cb8b21dc9bc0c7040285148183ff6
 
+=======
+>>>>>>> 677e936ac9dc4a7fcf12b86e45fc8903b5de1584
 app.post("/ad", (req, res) => {
   upload(req, res, async (err) => {
     if (err) {
@@ -99,7 +108,7 @@ app.post("/ad", (req, res) => {
     } else {
       const fileName = req.files.map((el) => `/photoItems/` + el.filename);
       console.log(req.body);
-      await productsModel.create({
+      await Product.create({
         name: req.body.title,
         description: req.body.describtion,
         photoUrl: fileName,
@@ -132,7 +141,7 @@ const disc = multer().array(); // подргрузка одного или бо�
 // })
 
 app.get("/user", async (req, res) => {
-  console.log(req.user.id);
+  // console.log(req.user.id);
   // const result = await User.findById(req.user.id);
   // res.json(result);
 });
@@ -270,10 +279,14 @@ io.on("connect", (socket) => {
 
 app.get("/products", async (req, res) => {
 <<<<<<< HEAD
+<<<<<<< HEAD
   let products = await Product.find();
 =======
   let products = await Product.find()
 >>>>>>> a24a4fab2a4cb8b21dc9bc0c7040285148183ff6
+=======
+  let products = await Product.find();
+>>>>>>> 677e936ac9dc4a7fcf12b86e45fc8903b5de1584
   res.json(products);
 });
 
@@ -284,6 +297,9 @@ app.post("/search", async (req, res) => {
 });
 app.post("/deal", async (req, res) => {
   const { dealOne, dealTwo } = req.body;
+
+  console.log('DEEEAAL');
+
 
   const deal = new Deal({ participants: [dealOne, dealTwo] });
   await deal.save();
