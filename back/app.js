@@ -73,6 +73,7 @@ app.post("/seller", async (req, res) => {
 
 app.get("/products", async (req, res) => {
   const result = await productsModel.find();
+  console.log("fhfdhfd",result);
   res.json(result);
 });
 
@@ -149,7 +150,7 @@ app.post("/photo/avatar", (req, res) => {
 
 app.use("/user", userRouter);
 app.use("/chat", chatRouter);
-app.use("/product", productRouter);
+// app.use("/product", productRouter);
 app.use("/deal", dealRouter);
 
 io.on("connect", (socket) => {
