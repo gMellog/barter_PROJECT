@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllSearchThunk } from "../../redux/actions/stuffAC"
-import style from './style.module.css'
+import style from './CardSwap.module.css'
 import { changeDeal, getUserDeals, toggleDeal } from '../../redux/actions/dealsAC'
 import { authHeader } from "../../helpers/authHeader";
 import { ReactSVG } from 'react-svg'
@@ -78,8 +78,8 @@ export default function CardSwap({ socket, currUser, anotherUser, deal }) {
       <div className={style.card}>
 
         <div className={style.user}>
-          <div className={style.img}>
-            <img src={`${currUser.product.photoUrl[0]}`} alt="" />
+          <div className={style.img_wrapper}>
+            <img src={`http://localhost:4000${currUser.product.photoUrl[0]}`} alt="" />
           </div>
           <div className={style.avatar}>
             <img src={`http://localhost:4000${currUser.user.avatar}`} alt="" />
@@ -100,7 +100,8 @@ export default function CardSwap({ socket, currUser, anotherUser, deal }) {
 
         <div className={style.user}>
           <div className={style.img}>
-            <img src={`${anotherUser.product.photoUrl[0]}`} alt="" />
+            <img src={`http://localhost:4000${anotherUser.product.photoUrl[0]}`} alt="" />
+            {/* console.log("=======>>>>>", anotherUser.product.photoUrl[0]); */}
           </div>
           <div className={`${style.avatar} ${style.avatar_left}`}>
             <img src={`http://localhost:4000${anotherUser.user.avatar}`} alt="" />

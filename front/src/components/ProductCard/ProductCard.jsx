@@ -9,7 +9,7 @@ import { Paper, Button } from "@material-ui/core";
 
 export default function ProductCard({ item }) {
   const { name, description, photoUrl, id } = item;
-  const items = photoUrl.map(photo => ({src:photo}))
+  const items = photoUrl.map(photo => ({src:`http://localhost:4000${photo}`}))
   
   function Item(props) {
     return (

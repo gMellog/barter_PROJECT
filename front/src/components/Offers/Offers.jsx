@@ -1,12 +1,10 @@
 import CardSwap from '../CardSwap/CardSwap'
-
 import { authHeader } from "../../helpers/authHeader";
-
 import io from "socket.io-client";
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { changeDeal, getUserDeals, setDeals } from '../../redux/actions/dealsAC';
-
+import style from "./Offers.module.css"
 
 let socket;
 const ENDPOINT = 'http://localhost:4000/';
@@ -29,7 +27,6 @@ export default function Offers() {
 
   useEffect(() => {
 
-    //dispatch(getUserDeals());
 
     if(user)
     {
@@ -49,12 +46,13 @@ export default function Offers() {
   },[]);
 
   return (
-    <>
+    <div className={style.wrapper}>
 
-    {deals ?
+    {
+    !deals.length ?
       <p>На данный момент предложений нет</p>
       :
-      deals.length >= 1 && deals.map(deal => {
+      deals.map(deal => {
 
         let currUser;
         let anotherUser;
@@ -75,6 +73,6 @@ export default function Offers() {
         );
       })
     }
-    </>
+    </div>
   )
 }
