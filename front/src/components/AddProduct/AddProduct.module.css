@@ -21,6 +21,7 @@
   font-family: Montserrat;
   font-size: 20px;
   /* border: 1px solid tomato; */
+  color: whitesmoke;
 }
 .content_area {
   margin-top: 20px;
@@ -123,8 +124,8 @@
 
 .selector_area button {
   margin-left: 10px;
-  width: 23px;
-  height: 23px;
+  width: 33px;
+  height: 33px;
   background-color: #313340;
   border: 2px solid whitesmoke;
   border-radius: 50%;
@@ -195,6 +196,7 @@
   font-weight: 500;
   cursor: pointer;
   transition: 0.5s;
+  height: 28px;
 }
 .red_bg {
   background-color: #af5555;
@@ -233,6 +235,7 @@
 }
 
 .switch_wrapper {
+  height: 40px;
   display: flex;
   flex-direction: row;
   /* border: 1px solid whitesmoke; */
@@ -257,6 +260,10 @@
   position: relative;
 }
 
+.product_description p {
+  text-align: left;
+}
+
 .pencil {
   position: absolute;
   top: 0;
@@ -279,7 +286,7 @@
   background-color: #3e404b;
   color: whitesmoke;
   border-radius: 10px;
-  padding: 15px;
+  padding: 23px;
 }
 
 .controls {
@@ -287,6 +294,7 @@
   flex-direction: row;
   justify-content: flex-end;
   width: 100%;
+  padding-right: 30px;
 }
 
 .control_btn {
@@ -305,4 +313,10 @@
 .save_product:hover {
   background-color: #578153;
   transition: 0.5s;
+}
+
+.small_img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

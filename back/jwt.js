@@ -15,12 +15,14 @@ function jwt() {
       /\/product\/[A-Za-z\d]+/,
       /\/avatar\/[A-Za-z\d]+/,
       '/deal',
+      /\/product\/category\/[A-Za-z\d]+/,
+      "/searchcategory",
+      "/search"
     ]
   });
 }
 
 async function isRevoked(req, payload, done) {
-  console.log('hello');
   const user = await User.findById(payload.id);
 
   if (!user) {

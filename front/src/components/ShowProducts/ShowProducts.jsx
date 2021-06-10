@@ -1,32 +1,39 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllStuffThunk } from "../../redux/actions/stuffAC";
-import style from './style.module.css'
+import { getAllProductsThunks } from "../../redux/actions/productsAC";
+import { getAllCategoriesThunk } from "../../redux/actions/categoriesAC";
 
-import {
-  Link
-} from "react-router-dom";
+import { Link } from "react-router-dom";
+import style from './style.module.css';
+import ProductCard from "../ProductCard/ProductCard";
 
 export default function ShowProducts() {
   const stuffArray = useSelector((state) => state.stuffArray);
+  const user = useSelector((state) => state.user);
+
+  
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log('PRODUCTS');
+    // console.log('PRODUCTS');
     dispatch(getAllStuffThunk());
+    dispatch(getAllCategoriesThunk());
+    dispatch(getAllProductsThunks());
   }, []);
-
-  console.log(stuffArray);
 
   return (
     <div className={style.wrapper}>
       <div className={style.products}>
         {stuffArray.map((stuff) => (
           <>
-            <div className={style.product} >
+            <div className={style.product}>
               <Link to={`/watch/${stuff.id}`}>
-                
                 <img src={stuff.photoUrl[0]} alt="" />
+                <img
+                  src={`http://localhost:4000/${stuff.photoUrl[0]}`}
+                  alt=""
+                />
                 <div key={stuff.id}>
                   <h3>{stuff.name}</h3>
                 </div>
@@ -35,6 +42,8 @@ export default function ShowProducts() {
           </>
         ))}
       </div>
+      {/* {stuffArray.map((stuff) => (  } */}
+      {/* <ProductCard />  */}
     </div>
   );
 }

@@ -9,14 +9,14 @@ import styles from './Chat.module.css';
 import Chats from "./Chats/Chats";
 import { authHeader, getOnlyToken } from "../../helpers/authHeader";
 import { useSelector } from "react-redux";
-import { useHistory } from 'react-router-dom'
-
+import { Redirect, useHistory } from 'react-router-dom'
 
 const ENDPOINT = 'http://localhost:4000/';
 
 let socket;
 
-const Chat = ({ location }) => {
+
+const Chat = () => {
 
   const user = useSelector(state => state.user);
   const history = useHistory();
@@ -24,26 +24,8 @@ const Chat = ({ location }) => {
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
 
-  useEffect( () => {
-
-    return () => {
-      if(socket)
-      {
-        console.log('there is socket');
-        socket.emit('left');
-      }
-      else
-      {
-        console.log('no socket');
-      }
-      
-    }
-  }, []);
-
-
   const setRoomHandler = (selectName,newRoomID) => {
 
-    console.log('hey');
     setSelectedName(selectName);
     socket = io(ENDPOINT, {
       extraHeaders: authHeader()
@@ -71,14 +53,8 @@ const Chat = ({ location }) => {
     }
   }
 
-  if(!user)
-  {
-    history.push('/');
-    return;
-  }
-  
-
   return (
+    user ? 
     <div className={`${styles.outerContainer}`} onClick={ console.log('123')}>
     <Chats setRoomHandler = {setRoomHandler}/>
       <div className={`${styles.container}`}>
@@ -87,6 +63,8 @@ const Chat = ({ location }) => {
           <MessageInput message={message} setMessage={setMessage} sendMessage={sendMessage} />
       </div>
     </div>
+    :
+    <Redirect to='/'/>
   );
 }
 
