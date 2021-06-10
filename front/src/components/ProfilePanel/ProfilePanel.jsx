@@ -37,6 +37,20 @@ const ProfilePanel = () => {
     dispatch(getUserThunks())
   }
 
+  const description = async (value,id)=> {
+    let res = await fetch('http://localhost:4000/user/description', {
+      method: 'POST',
+      headers:{
+      'Content-Type' :'application/json',
+      ...authHeader(),
+      },
+      body: JSON.stringify({
+        value,
+        id
+      })
+    });
+  }
+
   return (
     <div className={style.profile_panel_wrapper}>
       {/* {JSON.stringify(user)} */}
@@ -52,7 +66,7 @@ const ProfilePanel = () => {
               <h1>One</h1>
               <input type="file" name="image" />
             </form> */}
-            <form onChange={e => uploadImageOne(e)}>
+            <form onB={e => uploadImageOne(e)}>
               <input type="file" name="image" size="1" />
               {/* <button type="submit">Upload</button> */}
             </form>
@@ -66,6 +80,7 @@ const ProfilePanel = () => {
       </div>
       {/* -------------------------------------------------------- */}
       <div className={style.stars_section}>
+        
         <ReactSVG src={star} />
         <ReactSVG src={star} />
         <ReactSVG src={star} />
@@ -84,13 +99,13 @@ const ProfilePanel = () => {
         </div>
       ) : (
         <div className={style.text_section}>
-          <textarea
+          <textarea 
+
             rows="6"
             className={style.text_section_textarea}
-            onChange={(e) => {
-              setHello(e.target.value);
-            }}
+
             onBlur={(e) => {
+              description(e.target.value, user.id);
               setFlag_edit_hello(true);
             }}
             onMouseOver={(e) => e.target.focus()}
