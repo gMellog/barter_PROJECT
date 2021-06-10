@@ -70,6 +70,7 @@
 }
 
 .card_describtion {
+  height: 130px;
   padding: 20px 20px;
   text-align: left;
 }
