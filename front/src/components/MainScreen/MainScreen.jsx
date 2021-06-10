@@ -84,6 +84,7 @@ const user = useSelector(state => state.user);
                       <li><a href="#">Гаечный ключ</a></li>
                       <li><a href="#">Стол</a></li>
                       <li><a href="#">Диван</a></li>
+                      <li><a href="#">Ярик-козел!</a></li>
                   </ul>
               </canvas>
               </div>
