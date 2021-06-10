@@ -21,7 +21,7 @@ export default function WatchProduct() {
   const thereIsPhotos = product.photoUrl && product.photoUrl.length;
   const moreThanOnePhoto = product.photoUrl && product.photoUrl.length > 1;
   const onlyOneProduct = product.photoUrl && product.photoUrl.length === 1;
-
+console.log(product);
 
   return (
     <>

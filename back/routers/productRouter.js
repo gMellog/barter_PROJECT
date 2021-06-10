@@ -1,13 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const productsModel = require("../db/productModel");
+const Product = require("../db/productModel");
 
 router.get("/:id", async (req, res) => {
   console.log('PRODUCT ROUTER ID');
   console.log(req.params);
   try{
   const { id } = req.params;
-  const product = await productsModel.findById(id);
+  const product = await Product.findById(id);
   res.json(product);
   }
   catch(e)
@@ -20,7 +20,7 @@ router.get("/:id", async (req, res) => {
 
 router.get("/category/:id", async (req, res) => {
   const { id } = req.params;
-  const products = await productsModel.find({ categories: id });
+  const products = await Product.find({ categories: id });
   console.log(products);
   res.json(products);
 });
