@@ -86,7 +86,7 @@ app.post("/ad", (req, res) => {
     } else {
       const fileName = req.files.map((el) => `/photoItems/` + el.filename);
       console.log(req.body);
-      await productsModel.create({
+      await Product.create({
         name: req.body.title,
         description: req.body.describtion,
         photoUrl: fileName,
