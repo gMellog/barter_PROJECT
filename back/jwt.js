@@ -12,6 +12,7 @@ function jwt() {
       "/user/login",
       "/profile/myAds",
       "/profile",
+      /\/user\/[A-Za-z\d]+/,
       /\/photoItems\/[A-Za-z\d]+/,
       /([\/A-Za-z\d]+)?\/avatar([\/A-Za-z\d]+)?/,
       "/deal",

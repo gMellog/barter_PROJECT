@@ -65,7 +65,6 @@ console.log(product);
                 })}
               </div>
             )}
-<<<<<<< HEAD
             {
               availableProducts ? 
               <div onClick={() => setOffer(true)}
@@ -75,14 +74,6 @@ console.log(product);
               :
               null
               }
-=======
-            {/* {product.infoOwner == user.id} */}
-            <div onClick={() => setOffer(true)}
-              className={`${styles.btn_changer_green} `}
-            >{"Предложить"}
-            </div>
-
->>>>>>> test-khabarov
           </div>
 
           <div className={styles.watch_ad_description}>

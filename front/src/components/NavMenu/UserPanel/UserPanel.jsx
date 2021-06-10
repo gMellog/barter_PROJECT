@@ -25,7 +25,7 @@ export default function UserPanel({ user }) {
         </Link>
       </div>
       <div className={style.profile, style.icon} >
-        <Link  to='/profile/myAds'>
+        <Link  to='/profile'>
           <div className={style.profileLink} >
             {user.avatar ?
 

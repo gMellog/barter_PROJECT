@@ -9,22 +9,30 @@ import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import initState from "./redux/initState";
-import BarterProvider from './context/barterContext';
+import BarterProvider from "./context/barterContext";
+import { setUser } from "./redux/actions/userAC";
 
 const store = createStore(
   rootReducer,
   initState,
   composeWithDevTools(applyMiddleware(thunk))
 );
+const user = JSON.parse(window.localStorage.getItem("user"));
+if (user) {
+  fetch(`http://localhost:4000/user/${user.id}`)
+    .then((res) => res.json())
+    .then((user) => {
+      store.dispatch(setUser(user));
+    });
+}
 
 ReactDOM.render(
   <React.StrictMode>
-   <BarterProvider>
-    <Provider store={store}>
-      <App />
-    </Provider>
-   </BarterProvider>
-
+    <BarterProvider>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </BarterProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
