@@ -1,4 +1,5 @@
 .wrapper_section_watch_ad {
+  position: relative;
   width: 872px;
   height: 547px;
   border-radius: 30px;
@@ -40,6 +41,8 @@
   width: 265px;
   height: 219px;
   border-radius: 10px;
+  min-width: 265px;
+  min-height: 219px;
 }
 
 .wrapper_visual_watch_ad_product {

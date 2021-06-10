@@ -20,16 +20,16 @@ export default function UserPanel({ user }) {
 
 
       <div className={style.messgae, style.icon} >
-        <Link to='/message/id'>
+        <Link to='/message'>
           <ReactSVG src={message} />
         </Link>
       </div>
       <div className={style.profile, style.icon} >
         <Link  to='/profile'>
           <div className={style.profileLink} >
-            {user ?
+            {user.avatar ?
 
-              <img src={`http://localhost:4000${user.avatar}`} alt="" />
+              <img  src={`http://localhost:4000${user.avatar}`} alt="" />
               :
               <i className={"fas fa-camera " + style.avatar_icon_mini} ></i>
             }
