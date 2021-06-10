@@ -245,6 +245,7 @@
 
 .switch_wrapper i {
   font-size: 2em;
+  color: whitesmoke;
   cursor: pointer;
 }
 .switch_wrapper i:hover {

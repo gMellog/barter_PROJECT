@@ -7,7 +7,7 @@ const config = require('../config.json');
 const jwt = require('jsonwebtoken');
 const ChatHistory = require('../db/chatHistoryModel');
 const Deal = require('../db/dealModel');
-const Tag = require('./tagModel');
+const Tag = require('../db/tagModel');
 const vonage = new Vonage({
     apiKey: "db1ab976",
     apiSecret: "iWmhmn3Jq2VyNUlr"

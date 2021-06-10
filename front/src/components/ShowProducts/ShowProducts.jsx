@@ -5,13 +5,13 @@ import { getAllProductsThunks } from "../../redux/actions/productsAC";
 import { getAllCategoriesThunk } from "../../redux/actions/categoriesAC";
 
 import { Link } from "react-router-dom";
-import style from "./style.module.css";
+import style from "./ShowProducts.module.css";
 import ProductCard from "../ProductCard/ProductCard";
 
 export default function ShowProducts({toUser}) {
   const stuffArray = useSelector((state) => state.stuffArray);
   const user = useSelector((state) => state.user);
-
+  console.log("user", toUser);
   const dispatch = useDispatch();
   console.log(stuffArray);
   useEffect(() => {
@@ -23,7 +23,6 @@ export default function ShowProducts({toUser}) {
 
   return (
     <div className={style.wrapper}>
-      <div className={style.products}>
         { toUser 
         ? stuffArray.filter(stuff => stuff.infoOwner === user.id).map(
           (stuff) => (
@@ -35,7 +34,6 @@ export default function ShowProducts({toUser}) {
           ))
         }
         
-      </div>
     </div>
   );
 }
