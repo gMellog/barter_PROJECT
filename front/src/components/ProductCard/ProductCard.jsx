@@ -9,22 +9,8 @@ import { Paper, Button } from "@material-ui/core";
 
 export default function ProductCard({ item }) {
   const { name, description, photoUrl, id } = item;
-  console.log("ghhg", item);
-  // const stuffArray = useSelector((state) => state.stuffArray);
-  // console.log(stuffArray);
-  //Нужно при получении массива с картинками создать массив объектов с полем src и адресом до картинки
-  // const items = arrOfImg.map(el => {src: el})
-  // var items = [
-  //   {
-  //     src: "https://sobakevi4.ru/wp-content/uploads/2020/10/shelti_01.jpg",
-  //   },
-  //   {
-  //     src: "http://forumimage.ru/uploads/20200517/15897013366079418.jpg",
-  //   },
-  // ];
-
   const items = photoUrl.map(photo => ({src:photo}))
-
+  
   function Item(props) {
     return (
       <Paper>
@@ -32,10 +18,8 @@ export default function ProductCard({ item }) {
       </Paper>
     );
   }
-
   return (
     <div className={style.card_wrapper}>
-    
       <div className={style.card_title}>
         <Link to={`/watch/${id}`}>
           {name}
@@ -56,8 +40,6 @@ export default function ProductCard({ item }) {
       </div>
       {/* Только для зареганых пользователей */}
       <div className={style.control_area}>Предложить обмен</div>
-
-      {/* </>); */}
     </div>
   );
 }

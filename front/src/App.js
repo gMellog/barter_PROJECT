@@ -2,10 +2,9 @@ import React from "react";
 
 import "./App.css";
 import NavMenu from "./components/NavMenu/NavMenu";
-import ShowProducts from "./components/ShowProducts/ShowProducts";
+
 import AddProduct from "./components/AddProduct/AddProduct";
 import WatchProduct from "./components/WatchProduct/WatchProduct";
-import ProductCarousel from "./components/ProductCarousel/ProductCarousel";
 
 import "dotenv";
 import Ad from "./components/Ad/Ad";
@@ -18,6 +17,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ProfilePanel from "./components/ProfilePanel/ProfilePanel";
 import SellerProfile from "./components/SellerProfile/SellerProfile";
 import SearchResult from "./components/SearchResult/SearchResult";
+import MainScreen from "./components/MainScreen/MainScreen";
 
 function App() {
   return (
@@ -30,10 +30,7 @@ function App() {
             <Route exact path="/chat" component={Chat} />
             <Route exact path="/profile" component={ProfilePanel} />
             <Route exact path="/">
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                <ProductCarousel />
-                <ShowProducts />
-              </div>
+              <MainScreen />
             </Route>
             <Route exact path="/offers">
               <ProfilePanel />

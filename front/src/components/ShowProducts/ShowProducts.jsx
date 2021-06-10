@@ -5,7 +5,7 @@ import { getAllProductsThunks } from "../../redux/actions/productsAC";
 import { getAllCategoriesThunk } from "../../redux/actions/categoriesAC";
 
 import { Link } from "react-router-dom";
-import style from "./style.module.css";
+import style from "./ShowProducts.module.css";
 import ProductCard from "../ProductCard/ProductCard";
 
 export default function ShowProducts() {
@@ -23,28 +23,10 @@ export default function ShowProducts() {
 
   return (
     <div className={style.wrapper}>
-      <div className={style.products}>
-        {stuffArray.map(
-          (stuff) => (
-            <ProductCard item={stuff} />
-          )
-          //   <>
-          //   <div className={style.product}>
-          //     <Link to={`/watch/${stuff.id}`}>
-          //       <img src={stuff.photoUrl[0]} alt="" />
-          //       <img
-          //         src={`http://localhost:4000/${stuff.photoUrl[0]}`}
-          //         alt=""
-          //       />
-          //       <div key={stuff.id}>
-          //         <h3>{stuff.name}</h3>
-          //       </div>
-          //     </Link>
-          //   </div>
-          // </>
-        )}
-      </div>
-      {/* {stuffArray.map((stuff) => (  } */}
+        {stuffArray.map((stuff) => (
+          <ProductCard item={stuff}/>
+        ))}
+
     </div>
   );
 }
