@@ -1,8 +1,8 @@
 const express = require("express");
-const { dbConnect } = require("./db/connect")
-const productsModel = require('./db/products')
-const Deal = require('./db/dealModel')
-const categoriesModel = require("./db/categoryModel")
+const { dbConnect } = require("./db/connect");
+const Product = require("./db/productModel");
+const Deal = require("./db/dealModel");
+const categoriesModel = require("./db/categoryModel");
 
 const cors = require("cors");
 //Дла multer
@@ -24,7 +24,7 @@ const chatRouter = require("./routers/chatRouter");
 const productRouter = require("./routers/productRouter");
 const dealRouter = require("./routers/dealRouter");
 const { env } = require("process");
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const server = http.createServer(app);
 const io = socketIo(server, {
@@ -53,7 +53,7 @@ const storage = multer.diskStorage({
 });
 const storageProduct = multer.diskStorage({
   //Путь сохранения файла
-  destination: "./public/product/",
+  destination: "./public/photoItems/",
   filename: function (req, file, cb) {
     cb(
       null,
@@ -64,7 +64,7 @@ const storageProduct = multer.diskStorage({
 //Получение данных продавца  -------------------------------------------------------------------------------------------------
 
 app.post("/seller", async (req, res) => {
-  const product = await productsModel.findById(req.body.id);
+  const product = await Product.findById(req.body.id);
   const user = await User.findById(product.infoOwner);
   res.json(user);
 });
@@ -72,16 +72,14 @@ app.post("/seller", async (req, res) => {
 //Товары  -------------------------------------------------------------------------------------------------
 
 app.get("/products", async (req, res) => {
-  const result = await productsModel.find();
+  const result = await Product.find();
   res.json(result);
 });
 
 app.get("/product/:id", async (req, res) => {
-  const result = await productsModel.findOne({_id: req.params.id});
-  
+  const result = await Product.findOne({ _id: req.params.id });
   res.json(result);
 });
-
 
 app.post("/ad", (req, res) => {
   upload(req, res, async (err) => {
@@ -89,7 +87,7 @@ app.post("/ad", (req, res) => {
       res.status(300).send(err);
       console.log(err);
     } else {
-      const fileName = req.files.map((el) => `/product/` + el.filename);
+      const fileName = req.files.map((el) => `/photoItems/` + el.filename);
       console.log(req.body);
       await productsModel.create({
         name: req.body.title,
@@ -124,16 +122,18 @@ const disc = multer().array(); // подргрузка одного или бо�
 // })
 
 app.get("/user", async (req, res) => {
-  const result = await User.findById(req.user.id);
-  res.json(result);
+  console.log(req.user.id);
+  // const result = await User.findById(req.user.id);
+  // res.json(result);
 });
-
 
 app.put("/user/avatar", async (req, res) => {
-  const user = await User.findByIdAndUpdate({ _id: req.body.id }, { avatar: '' })
+  const user = await User.findByIdAndUpdate(
+    { _id: req.body.id },
+    { avatar: "" }
+  );
   res.json(user);
 });
-
 
 app.post("/photo/avatar", (req, res) => {
   try {
@@ -164,7 +164,7 @@ app.post("/photo/avatar", (req, res) => {
 
 app.use("/user", userRouter);
 app.use("/chat", chatRouter);
-// app.use("/product", productRouter);
+app.use("/product", productRouter);
 app.use("/deal", dealRouter);
 
 io.on("connect", (socket) => {
@@ -213,12 +213,11 @@ io.on("connect", (socket) => {
       console.log("Cant disconnect empty user");
     }
     socket.disconnect();
-  })
+  });
 
-  socket.on('deals', async (userID, cb) => {
-
-    console.log('IN DEALS');
-    const deals = await Deal.find().elemMatch('participants', { userID });
+  socket.on("deals", async (userID, cb) => {
+    console.log("IN DEALS");
+    const deals = await Deal.find().elemMatch("participants", { userID });
 
     for (let deal of deals) {
       console.log(deal);
@@ -234,8 +233,7 @@ io.on("connect", (socket) => {
   //   })
   // });
 
-  socket.on('toggleReadyDeal', async (userID, dealID) => {
-
+  socket.on("toggleReadyDeal", async (userID, dealID) => {
     const deal = await Deal.findById(dealID);
     for (let i = 0; i < deal.participants.length; i += 1) {
       console.log(deal.participants[i].userID._id);
@@ -249,26 +247,25 @@ io.on("connect", (socket) => {
 
     await deal.save();
 
-    io.to(dealID.toString()).emit('dealChanged', deal);
-  })
+    io.to(dealID.toString()).emit("dealChanged", deal);
+  });
 
-  socket.on('refuseDeal', async (dealID) => {
+  socket.on("refuseDeal", async (dealID) => {
     const deal = await Deal.findById(dealID);
     deal.declined = true;
     await deal.save();
-    io.to(dealID.toString()).emit('dealChanged', deal);
-  })
+    io.to(dealID.toString()).emit("dealChanged", deal);
+  });
 });
 
 app.get("/products", async (req, res) => {
-  let products = await productsModel.find().populate("categories");
+  let products = await Product.find();
   res.json(products);
 });
 
-
 app.post("/search", async (req, res) => {
   const { name } = req.body;
-  let products = await productsModel.find({ name: name });
+  let products = await Product.find({ name });
   res.json(products);
 });
 app.post("/deal", async (req, res) => {
@@ -276,13 +273,13 @@ app.post("/deal", async (req, res) => {
 
   const deal = new Deal({ participants: [dealOne, dealTwo] });
   await deal.save();
-})
+});
 
 app.get("/category", async (req, res) => {
-  let categories = await categoriesModel.find()
+  let categories = await categoriesModel.find();
   console.log(categories);
-  res.json(categories)
-})
+  res.json(categories);
+});
 
 // const PORT = process.env.NODE_ENV === 'production' ? (process.env.PORT || 80) : 4000;
 const PORT = 4000;
