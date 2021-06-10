@@ -1,6 +1,6 @@
 const express = require("express");
 const { dbConnect } = require("./db/connect")
-const productsModel = require('./db/products')
+const Product = require('./db/productModel')
 const Deal = require('./db/dealModel')
 const categoriesModel = require("./db/categoryModel")
 
@@ -64,7 +64,7 @@ const storageProduct = multer.diskStorage({
 //Получение данных продавца  -------------------------------------------------------------------------------------------------
 
 app.post("/seller", async (req, res) => {
-  const product = await productsModel.findById(req.body.id);
+  const product = await Product.findById(req.body.id);
   const user = await User.findById(product.infoOwner);
   res.json(user);
 });
@@ -72,15 +72,10 @@ app.post("/seller", async (req, res) => {
 //Товары  -------------------------------------------------------------------------------------------------
 
 app.get("/products", async (req, res) => {
-  const result = await productsModel.find();
+  const result = await Product.find();
   res.json(result);
 });
 
-app.get("/product/:id", async (req, res) => {
-  const result = await productsModel.findOne({_id: req.params.id});
-  
-  res.json(result);
-});
 
 
 app.post("/ad", (req, res) => {
@@ -89,7 +84,7 @@ app.post("/ad", (req, res) => {
       res.status(300).send(err);
       console.log(err);
     } else {
-      const fileName = req.files.map((el) => `/product/` + el.filename);
+      const fileName = req.files.map((el) => `/photoItems/` + el.filename);
       console.log(req.body);
       await productsModel.create({
         name: req.body.title,
@@ -124,8 +119,9 @@ const disc = multer().array(); // подргрузка одного или бо�
 // })
 
 app.get("/user", async (req, res) => {
-  const result = await User.findById(req.user.id);
-  res.json(result);
+  console.log(req.user.id);
+  // const result = await User.findById(req.user.id);
+  // res.json(result);
 });
 
 
@@ -164,7 +160,7 @@ app.post("/photo/avatar", (req, res) => {
 
 app.use("/user", userRouter);
 app.use("/chat", chatRouter);
-// app.use("/product", productRouter);
+app.use("/product", productRouter);
 app.use("/deal", dealRouter);
 
 io.on("connect", (socket) => {
@@ -261,14 +257,14 @@ io.on("connect", (socket) => {
 });
 
 app.get("/products", async (req, res) => {
-  let products = await productsModel.find().populate("categories");
+  let products = await Product.find()
   res.json(products);
 });
 
 
 app.post("/search", async (req, res) => {
   const { name } = req.body;
-  let products = await productsModel.find({ name: name });
+  let products = await Product.find({ name });
   res.json(products);
 });
 app.post("/deal", async (req, res) => {

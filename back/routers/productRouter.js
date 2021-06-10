@@ -1,12 +1,20 @@
 const express = require("express");
 const router = express.Router();
-const productsModel = require("../db/products");
+const productsModel = require("../db/productModel");
 
 router.get("/:id", async (req, res) => {
+  console.log('PRODUCT ROUTER ID');
   console.log(req.params);
+  try{
   const { id } = req.params;
   const product = await productsModel.findById(id);
   res.json(product);
+  }
+  catch(e)
+  {
+    console.log(e.message);
+    res.status(400).json();
+  }
   console.log(product);
 });
 
