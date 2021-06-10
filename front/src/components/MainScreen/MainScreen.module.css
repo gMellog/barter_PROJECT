@@ -1,0 +1,5 @@
+.main_screen_wrapper {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
