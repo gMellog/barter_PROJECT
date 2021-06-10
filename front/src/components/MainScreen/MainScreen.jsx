@@ -1,10 +1,16 @@
 import ProductCarusel from "../ProductCarousel/ProductCarusel";
 import ShowProducts from "../ShowProducts/ShowProducts";
 import style from "./MainScreen.module.css";
-import {useRef, useEffect} from "react";
+import {useRef, useEffect, useState} from "react";
+import Login from '../Login/Login'
 
 
 export default function MainScreen() {
+  const [modalShow, setModalShow] = useState(false);
+  const toggle = () => {
+    setModalShow(!modalShow)
+  };
+
   useEffect(() => {
     eval(
       `try {
@@ -42,7 +48,8 @@ export default function MainScreen() {
       <h2>в приложении</h2>
       <h1>CHANGER</h1>
       <p>Для того что бы использовать приложение, пожалуйста, зарегистрируйтесь.</p>
-      <button className={style.button_register}>Зарегистрироваться</button>
+      {modalShow && <Login toggle={toggle} />}
+      <button onClick={() => { toggle() }} className={style.button_register}>Зарегистрироваться</button>
       </div>
       </div>
     <div className={style.tags_area}> 
