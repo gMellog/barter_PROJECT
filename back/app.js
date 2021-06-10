@@ -266,6 +266,9 @@ app.post("/search", async (req, res) => {
 app.post("/deal", async (req, res) => {
   const { dealOne, dealTwo } = req.body;
 
+  console.log('DEEEAAL');
+
+
   const deal = new Deal({ participants: [dealOne, dealTwo] });
   await deal.save();
 });

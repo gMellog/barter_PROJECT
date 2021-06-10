@@ -10,6 +10,7 @@ const BarterProvider = ({ children }) => {
   const [count, setCount] = useState([])
   const [seller, setSeller] = useState({})
 
+  console.log(' COUUUUUUUUNT ', count);
 
   const selectMyProduct = (e, id) => {
     const div = e.target.parentNode
@@ -21,8 +22,14 @@ const BarterProvider = ({ children }) => {
       setCount([...count.filter(el => el !== id)])
     }
   }
-  const addDealHandler = (dealOne, dealTwo) => {
-    axios.post('/deal', { dealOne, dealTwo })
+  const addDealHandler = (dealOne, userID) => {
+
+    for(const id of count)
+    {
+      const dealTwo = { userID, productID: id };
+      axios.post('/deal', { dealOne, dealTwo });
+    }
+
   }
   const getSaller = async (id) => {
     console.log("Saler start >>>>", id );

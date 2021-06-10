@@ -4,11 +4,20 @@ import map from "./image/maps.png";
 import { useParams } from "react-router-dom";
 import OfferProduct from "../OfferProduct/OfferProduct"
 import { authHeader } from "../../helpers/authHeader";
+import { useSelector } from "react-redux";
 
 export default function WatchProduct() {
+
+  const user = useSelector(state => state.user);
+  const stuffArray = useSelector(state => state.stuffArray);
+  const deals = useSelector(state => state.deals);
   const [offer, setOffer] = useState(false)
   const [product, setProduct] = useState({});
   const { id } = useParams();
+
+  console.log(deals);
+
+  const availableProducts = stuffArray.filter(stuff => stuff.infoOwner === user?.id && !deals.find(deal => !deal.declined && deal.participants.find(guy => guy.productID.id === stuff.id))).length;
 
 
   useEffect(() => {
@@ -56,10 +65,15 @@ console.log(product);
                 })}
               </div>
             )}
-            <div onClick={() => setOffer(true)}
-              className={`${styles.btn_changer_green} `}
-            >{"Предложить"}
-            </div>
+            {
+              availableProducts ? 
+              <div onClick={() => setOffer(true)}
+                className={`${styles.btn_changer_green} `}
+              >{"Предложить"}
+              </div>
+              :
+              null
+              }
           </div>
 
           <div className={styles.watch_ad_description}>

@@ -7,15 +7,28 @@ import { useHistory } from "react-router-dom";
 
 export default function OfferProduct({ id, offer, setOffer }) {
   const user = useSelector(state => state.user);
+  const stuffArray = useSelector((state) => state.stuffArray);
+  const deals = useSelector(state => state.deals);
+  const validDeals = deals.filter(deal => !deal.declined);
+
   const history = useHistory();
 
-  const stuffArray = useSelector((state) => state.stuffArray);
   const { count, setCount, selectMyProduct, addDealHandler } = useBarterContext();
 
-  const dealMan = stuffArray?.filter(stuff => stuff.id === id)[0]
+  const dealMan = stuffArray.filter(stuff => stuff.id === id)[0]
   const onOfferHandler = () => {
-    addDealHandler({ userID: dealMan.infoOwner, productID: id }, { userID: user.id, productID: count[0] });
+
+    //pass {dealMan, id} {user.id} { userID: user.id, productID: count[i] }
+
+    addDealHandler({ userID: dealMan.infoOwner, productID: id }, user.id);
+
+    // setCount([]);
+
     history.push("/offers");
+  }
+
+  const productInValidDeals = (product) => {
+    return validDeals.find(deal => deal.participants.find(guy => guy.productID.id === product.id));
   }
 
 
@@ -27,7 +40,7 @@ export default function OfferProduct({ id, offer, setOffer }) {
           </h3>
         <hr className={styles.watch_ad_change_line} />
         <div className={styles.wrapper_available_offer_product_content}>
-          {stuffArray.filter(stuff => stuff.infoOwner === user.id).map(stuff => {
+          {stuffArray.filter(stuff => (stuff.infoOwner === user.id && !productInValidDeals(stuff))).map(stuff => {
             return (<div onClick={(e) => selectMyProduct(e, stuff.id)} key={stuff.id} className={styles.available_offer_product_item}>
               <img
                 src={stuff.photoUrl[0]}
