@@ -235,6 +235,7 @@
 }
 
 .switch_wrapper {
+  height: 40px;
   display: flex;
   flex-direction: row;
   /* border: 1px solid whitesmoke; */

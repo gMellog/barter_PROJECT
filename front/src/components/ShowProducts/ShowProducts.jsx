@@ -6,6 +6,10 @@ import { getAllCategoriesThunk } from "../../redux/actions/categoriesAC";
 import style from "./style.module.css";
 
 import { Link } from "react-router-dom";
+import style from './style.module.css';
+import ProductCard from "../ProductCard/ProductCard";
+
+import {Link} from "react-router-dom";
 
 export default function ShowProducts() {
   const stuffArray = useSelector((state) => state.stuffArray);
@@ -19,15 +23,15 @@ export default function ShowProducts() {
     dispatch(getAllProductsThunks());
   }, []);
 
-
   return (
     <div className={style.wrapper}>
-      <div className={style.products}>
+      {/* <div className={style.products}>
         {stuffArray.map((stuff) => (
           <>
             <div className={style.product}>
               <Link to={`/watch/${stuff.id}`}>
                 <img src={stuff.photoUrl[0]} alt="" />
+                <img src={`http://localhost:4000/${stuff.photoUrl[0]}`} alt="" />
                 <div key={stuff.id}>
                   <h3>{stuff.name}</h3>
                 </div>
@@ -35,7 +39,8 @@ export default function ShowProducts() {
             </div>
           </>
         ))}
-      </div>
+      </div> */}
+    <ProductCard /> 
     </div>
   );
 }
