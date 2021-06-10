@@ -16,8 +16,8 @@ export default function ShowProducts({ toUser }) {
   console.log(stuffArray);
   useEffect(() => {
     dispatch(getAllStuffThunk());
-    // dispatch(getAllCategoriesThunk());
-    //dispatch(getAllProductsThunks());
+   dispatch(getAllCategoriesThunk());
+    dispatch(getAllProductsThunks());
   }, []);
 
   return (

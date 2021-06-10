@@ -29,7 +29,7 @@ function App() {
           <Switch>
             <Route exact path="/product/:name" component={SearchResult} />
             <Route exact path="/message" ><ProfilePanel /> <Chat /> </Route>
-            <Route exact path="/profile/myAds">
+            <Route exact path="/profile">
             <ProfilePanel/>
             <ShowProducts toUser={true}/>
             </Route>
