@@ -31,8 +31,23 @@ export default function ShowProducts({ toUser }) {
   //       dispatch(sortByOwner());
   //   }
   // }
+
+  let showArr;
+
+
+  if(toUser && user)
+  {
+    showArr = stuffArray
+    .filter((stuff) => stuff.infoOwner === user.id)
+    .map((stuff) => <ProductCard item={stuff} />);
+  }
+  else
+  {
+    showArr = stuffArray.map((stuff) => <ProductCard item={stuff} />);
+  }
+
   return (
-    user &&
+    user ?
     <div className={style.wrapper}>
       {/* <div className={style.filter_panel}>
         <div className={`${style.filter_btn} blue_bg`} onClick={() => {sortProducts("date")}}>по дате</div>
@@ -40,12 +55,12 @@ export default function ShowProducts({ toUser }) {
         <div className={`${style.filter_btn} green_bg`} onClick={() => {sortProducts("owner")}}>по владельцу</div>
       </div> */}
       <div className={style.products_area_wrapper}>
-        {toUser
-          ? stuffArray
-              .filter((stuff) => stuff.infoOwner === user.id)
-              .map((stuff) => <ProductCard item={stuff} />)
-          : stuffArray.map((stuff) => <ProductCard item={stuff} />)}
+        {
+         showArr.length >= 1 ? showArr : <div>Здесь должны быть ваши товары! Но их нет...</div>
+        }
       </div>
     </div>
-  );
+    :
+    null
+  )
 }
