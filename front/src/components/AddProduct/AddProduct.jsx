@@ -143,7 +143,7 @@ const AddProduct = () => {
     
     history.push('/profile');
 
-    const tagsId = tags.map(el => el.id)
+    const tagsId = tags.map(el => el.text)
     const formData = new FormData();
     for (let i = 0; i < files.length; i++) {
       formData.append('image', files[i])

@@ -1,6 +1,7 @@
 import style from "./SearchResult.module.css";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const SearchResult = () => {
   const stuffArray = useSelector((state) => state.stuffArray);
@@ -19,6 +20,7 @@ const SearchResult = () => {
           {/* Центральная линия с выводом результата поиска */}
           {stuffArray.map((el) => {
             return (
+              <Link to={`/watch/${el.id}`}>
               <div className={style.item_wrapper}>
                 <div className={style.image_area}>
                   <img src={`http://localhost:4000/${el.photoUrl[0]}`} />
@@ -26,11 +28,12 @@ const SearchResult = () => {
                 <div className={style.info_area}>
                   <h4>{el.name}</h4>
                   <p>{el.description}</p>
-                </div>
+              </div>
                 {/* <div className={style.control_panel}>
                   <button>Предложить</button>
                 </div> */}
               </div>
+              </Link>
             );
           })}
         </div>

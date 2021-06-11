@@ -48,7 +48,9 @@ router.post('/', async (req, res) => {
         await user2.chatHistory.save();
 
         await user1.save();
-        await user2.save();
+        await user2.save(); 
+
+        
 
         res.json(deal.toJSON());
     }

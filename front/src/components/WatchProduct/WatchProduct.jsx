@@ -89,12 +89,34 @@ export default function WatchProduct() {
             </h3>
             <hr className={styles.watch_ad_change_line} />
             <div className={styles.wrapper_watch_ad_changes}>
-              <div className={styles.watch_ad_change_item_blue}>велосипед</div>
-              <div className={styles.watch_ad_change_item_yellow}>книги</div>
-              <div className={styles.watch_ad_change_item_green}>кальян</div>
-              <div className={styles.watch_ad_change_item_red}>
-                на все что угодно
-              </div>
+
+              {product && product.exchange.map((tagText,i) => {
+
+                let divClass;
+
+                switch(i)
+                {
+                  case 0:
+                    divClass = styles.watch_ad_change_item_blue;
+                  break;
+
+                  case 1:
+                    divClass = styles.watch_ad_change_item_yellow;
+                  break;
+
+                  case 2:
+                    divClass = styles.watch_ad_change_item_green;
+                  break;
+
+                  case 3:
+                    divClass = styles.watch_ad_change_item_red;
+                  break;
+                }
+
+                return (
+                  <div className={divClass}>{ tagText }</div>
+                )
+              })}
             </div>
           </div>
         </div>
