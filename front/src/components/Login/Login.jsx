@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import style from "./style.module.css";
+import style from "./Login.module.css";
 import InputMask from "react-input-mask";
 import { useDispatch } from "react-redux";
 import { getUserThunks, setUser } from "../../redux/actions/userAC";
@@ -181,7 +181,7 @@ const ModalExample = ({ toggle }) => {
       </div>
       <ModalFooter>
         <div className={style.footer}>
-          <span>У вас уже есть профиль ?</span>
+          {/* <span>У вас уже есть профиль ?</span> */}
           <p onClick={toggleReg}>Войти</p>
         </div>
       </ModalFooter>
