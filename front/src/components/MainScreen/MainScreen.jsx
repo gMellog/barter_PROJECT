@@ -10,9 +10,10 @@ import { useSelector } from "react-redux";
 
 export default function MainScreen() {
 
-
-
-  const user = useSelector(state => state.user);
+  const userRedux = useSelector(state => state.user);
+  console.log('hey yo');
+  const user = localStorage.getItem('user');
+  console.log('user is ');
   const [modalShow, setModalShow] = useState(false);
   const toggle = () => {
     setModalShow(!modalShow)
@@ -26,7 +27,7 @@ export default function MainScreen() {
              '',
              {textColour: 'orange',
              outlineColour: '#0000', 
-             zoom: 1.1,
+             zoostorem: 1.1,
              initial: [0.14, 0.08],
              weightMode: "outline",
              weightSize: 3.0

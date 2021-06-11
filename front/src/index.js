@@ -11,6 +11,8 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import initState from "./redux/initState";
 import BarterProvider from "./context/barterContext";
 import { setUser } from "./redux/actions/userAC";
+import { setTags } from "./redux/actions/tagsAC";
+import { setDeals } from "./redux/actions/dealsAC";
 
 const store = createStore(
   rootReducer,
@@ -21,9 +23,12 @@ const user = JSON.parse(window.localStorage.getItem("user"));
 if (user) {
   fetch(`http://localhost:4000/user/${user.id}`)
     .then((res) => res.json())
-    .then((user) => {
+    .then(({user,tags,deals}) => {
       store.dispatch(setUser(user));
+      store.dispatch(setTags(tags));
+      store.dispatch(setDeals(deals));
     });
+
 }
 
 ReactDOM.render(

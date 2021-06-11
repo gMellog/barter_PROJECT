@@ -20,6 +20,7 @@ export default function ShowProducts({ toUser }) {
   }, []);
 
   return (
+    user &&
     <div className={style.wrapper}>
       { toUser
         ? stuffArray.filter(stuff => stuff.infoOwner === user.id).map(
