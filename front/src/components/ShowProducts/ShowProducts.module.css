@@ -4,6 +4,7 @@
   background-color: #313340;
   display: flex;
   flex-direction: column;
+  margin: 65px auto 0 65px;
 }
 
 .filter_panel {

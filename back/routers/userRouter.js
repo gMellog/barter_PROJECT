@@ -50,7 +50,7 @@ router.post("/reg", async (req, res) => {
           newUser = user;
         }
 
-        vonage.verify.request(
+        vonage.verify.request('/user/description',
           {
             number: onlyNumbers,
             brand: "CHANGER",
