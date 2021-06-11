@@ -73,6 +73,8 @@ export default function CardSwap({ socket, currUser, anotherUser, deal }) {
   }
 
 
+  console.log('curr user is ', currUser);
+
   return (
     <div>
       <div className={style.card}>
