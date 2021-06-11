@@ -13,7 +13,7 @@ const ProductCarusel = () => {
   const stuffArray = useSelector((state) => state.stuffArray);
   return (
     <div className={style.main_wrapper}>
-      <h5>Недавно добавленны:</h5>
+      { stuffArray.length && <h5>Недавно добавленны:</h5>}
       <Swiper
         spaceBetween={35}
         slidesPerView={5}

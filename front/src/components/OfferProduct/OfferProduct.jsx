@@ -15,6 +15,14 @@ export default function OfferProduct({ id, offer, setOffer }) {
 
   const { count, setCount, selectMyProduct, addDealHandler } = useBarterContext();
 
+
+  useEffect( () => {
+    return () => {
+      setCount([]);
+    }
+  }, []);
+
+
   const dealMan = stuffArray.filter(stuff => stuff.id === id)[0]
   const onOfferHandler = () => {
 
@@ -22,13 +30,26 @@ export default function OfferProduct({ id, offer, setOffer }) {
 
     addDealHandler({ userID: dealMan.infoOwner, productID: id }, user.id);
 
-    // setCount([]);
-
     history.push("/offers");
   }
 
   const productInValidDeals = (product) => {
     return validDeals.find(deal => deal.participants.find(guy => guy.productID.id === product.id));
+  }
+
+   let availableToChange = 3;
+   if(stuffArray.length)
+   {
+    validDeals.forEach(deal => {
+    
+      const guy = deal.participants.find(guy => guy.userID.id === stuffArray.find(stuff => stuff.id === id).infoOwner)
+    
+    if(guy)
+    {
+      availableToChange -= 1;
+    }
+
+  })
   }
 
 
@@ -55,7 +76,7 @@ export default function OfferProduct({ id, offer, setOffer }) {
 
         </div>
           <span className={styles.available_product_sign_offer_text}>
-            предложено {count.length}/3
+            предложено {count.length}/{availableToChange}
           </span>
         <div className={styles.button_group}>
           <div  onClick={() => offer ? setOffer(false) : setOffer(true)}

@@ -89,7 +89,9 @@ app.post("/ad", (req, res) => {
         name: req.body.title,
         description: req.body.describtion,
         photoUrl: fileName,
-        exchange: req.body.tags,
+        exchange: req.body.tags
+          .split(",")
+          .map((tag) => new mongoose.Types.ObjectId(tag)),
         infoOwner: req.body.id,
       });
     }
