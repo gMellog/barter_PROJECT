@@ -8,12 +8,11 @@ export const getAllCategories = (categories) => {
   };
 };
 
-
 export const getAllCategoriesThunk = () => async (dispatch) => {
   const response = await fetch("http://localhost:4000/category", {
     headers: authHeader(),
   });
   const categories = await response.json();
-console.log("jhfhjgf", categories);
+  // console.log("jhfhjgf", categories);
   dispatch(getAllCategories(categories));
-}
+};

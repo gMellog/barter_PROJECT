@@ -1,4 +1,4 @@
-import { GET_STUFF, SEARCH_STUFF } from "../types/stuffTypes";
+import { GET_STUFF, SEARCH_STUFF, SORT_BY_NAME } from "../types/stuffTypes";
 import { authHeader } from "../../helpers/authHeader";
 
 export const getAllStuff = (stuff) => {
@@ -12,6 +12,12 @@ export const searchAll = (stuff) => {
   return {
     type: SEARCH_STUFF,
     payload: stuff,
+  };
+};
+
+export const sortByName = () => {
+  return {
+    type: SORT_BY_NAME,
   };
 };
 

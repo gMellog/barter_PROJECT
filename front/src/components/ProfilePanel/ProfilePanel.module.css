@@ -45,19 +45,12 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: .3s all;
+  transition: 0.3s all;
 }
 
-
-
-.avatar_area img:hover{
-  filter: opacity(50%) ;
+.avatar_area img:hover {
+  filter: opacity(50%);
 }
-
-
-
-
-
 
 .user_name {
   margin: 0 auto;
@@ -97,6 +90,7 @@
   line-height: 20px;
   letter-spacing: 0em;
   text-align: center;
+  color: whitesmoke;
 }
 
 .controls h5:hover {
@@ -167,42 +161,45 @@
 
 /* //ЗВЕЗДЫ */
 .rating_area {
-	overflow: hidden;
+  overflow: hidden;
   width: 190px;
-	margin: 0 auto;
+  margin: 0 auto;
 }
 .rating_area:not(:checked) > input {
-	display: none;
+  display: none;
 }
 .rating_area:not(:checked) > label {
-	float: right;
-	width: 32px;
-	padding: 0;
-	cursor: pointer;
-	font-size: 32px;
-	line-height: 32px;
-	color: lightgrey;
-	text-shadow: 1px 1px #bbb;
+  float: right;
+  width: 32px;
+  padding: 0;
+  cursor: pointer;
+  font-size: 32px;
+  line-height: 32px;
+  color: lightgrey;
+  text-shadow: 1px 1px #bbb;
 }
 .rating_area:not(:checked) > label:before {
-	content: '★';
+  content: "★";
 }
 .rating_area > input:checked ~ label {
-	color: gold;
-	text-shadow: 1px 1px #c60;
+  color: gold;
+  text-shadow: 1px 1px #c60;
 }
 .rating_area:not(:checked) > label:hover,
 .rating_area:not(:checked) > label:hover ~ label {
-	color: gold;
+  color: gold;
 }
 .rating_area > input:checked + label:hover,
 .rating_area > input:checked + label:hover ~ label,
 .rating_area > input:checked ~ label:hover,
 .rating_area > input:checked ~ label:hover ~ label,
 .rating_area > label:hover ~ input:checked ~ label {
-	color: gold;
-	text-shadow: 1px 1px goldenrod;
+  color: gold;
+  text-shadow: 1px 1px goldenrod;
 }
 .rate_area > label:active {
-	position: relative;
+  position: relative;
+}
+.stars_section h6 {
+  color: whitesmoke;
 }

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getAllStuffThunk } from "../../redux/actions/stuffAC";
 import { getAllProductsThunks } from "../../redux/actions/productsAC";
 import { getAllCategoriesThunk } from "../../redux/actions/categoriesAC";
+import { sortByName, sortByDate, sortByOwner } from "../../redux/actions/stuffAC";
 
 import { Link } from "react-router-dom";
 import style from "./ShowProducts.module.css";
@@ -15,23 +16,35 @@ export default function ShowProducts({ toUser }) {
   console.log(stuffArray);
   useEffect(() => {
     dispatch(getAllStuffThunk());
-   dispatch(getAllCategoriesThunk());
+    dispatch(getAllCategoriesThunk());
     dispatch(getAllProductsThunks());
   }, []);
 
+  // function sortProducts(variable) {
+  //   if (variable === "name") {
+  //       dispatch(sortByName());
+  //   }
+  //   if (variable === "date") {
+  //       dispatch(sortByDate());
+  //   }
+  //   if (variable === "owner"){
+  //       dispatch(sortByOwner());
+  //   }
+  // }
   return (
     <div className={style.wrapper}>
-      { toUser
-        ? stuffArray.filter(stuff => stuff.infoOwner === user.id).map(
-          (stuff) => (
-            <ProductCard item={stuff} />
-          ))
-        : stuffArray.map(
-          (stuff) => (
-            <ProductCard item={stuff} />
-          ))
-      }
-
+      {/* <div className={style.filter_panel}>
+        <div className={`${style.filter_btn} blue_bg`} onClick={() => {sortProducts("date")}}>по дате</div>
+        <div className={`${style.filter_btn} yellow_bg`} onClick={() => {sortProducts("name")}}>по названию</div>
+        <div className={`${style.filter_btn} green_bg`} onClick={() => {sortProducts("owner")}}>по владельцу</div>
+      </div> */}
+      <div className={style.products_area_wrapper}>
+        {toUser
+          ? stuffArray
+              .filter((stuff) => stuff.infoOwner === user.id)
+              .map((stuff) => <ProductCard item={stuff} />)
+          : stuffArray.map((stuff) => <ProductCard item={stuff} />)}
+      </div>
     </div>
   );
 }
