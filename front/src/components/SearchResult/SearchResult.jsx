@@ -1,6 +1,7 @@
 import style from "./SearchResult.module.css";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const SearchResult = () => {
   const stuffArray = useSelector((state) => state.stuffArray);
@@ -21,7 +22,7 @@ const SearchResult = () => {
             return (
               <div className={style.item_wrapper}>
                 <div className={style.image_area}>
-                  <img src={`http://localhost:4000/${el.photoUrl[0]}`} />
+                <Link to={`/watch/${el.id}`}><img src={`http://localhost:4000/${el.photoUrl[0]}`} /></Link>
                 </div>
                 <div className={style.info_area}>
                   <h4>{el.name}</h4>
