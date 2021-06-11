@@ -52,4 +52,10 @@ body {
 
 .info_area {
   padding: 5px 10px;
+  display: flex;
+  padding: 5px 10px;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
