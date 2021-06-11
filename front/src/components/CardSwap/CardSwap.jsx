@@ -9,7 +9,7 @@ import { ReactSVG } from 'react-svg'
 import vector from './vector.svg'
 import message from './message.svg'
 import hand from './hand.svg'
-import del from './del.svg'
+
 
 
 export default function CardSwap({ socket, currUser, anotherUser, deal }) {
@@ -76,7 +76,7 @@ export default function CardSwap({ socket, currUser, anotherUser, deal }) {
   console.log('curr user is ', currUser);
 
   return (
-    <div>
+    
       <div className={style.card}>
 
         <div className={style.user}>
@@ -89,7 +89,9 @@ export default function CardSwap({ socket, currUser, anotherUser, deal }) {
         </div>
 
         <div className={style.actions}>
-          <div className={style.message} style={{ opacity: readyToChat ? 1 : 0.1 }} onClick={makeChat}>
+          <div className={style.message} style={{ opacity: readyToChat ? 1 : 0.1 }} 
+          onClick={makeChat}
+          >
             <ReactSVG src={message}></ReactSVG>
           </div>
           <div className={style.vector}>
@@ -106,14 +108,15 @@ export default function CardSwap({ socket, currUser, anotherUser, deal }) {
           </div>
         </div>
 
-        <div className={style.button}>
+        <div className={style.control_panel}>
           <div className={style.success} style={{ display: !deal.declined ? 'block' : 'none', opacity: currUser.ready || readyToChat ? 0.25 : 1 }} onClick={successClick}>
             <ReactSVG src={hand}></ReactSVG>
           </div>
           <div className={style.failing} style={{ display: !deal.declined ? 'block' : 'none', opacity: readyToChat ? 0.25 : 1 }} onClick={refuseClick}>
-            <ReactSVG src={del}></ReactSVG>
+          <i class="fas fa-times buba"></i>
           </div>
         </div>
       </div>
-    </div>);
+
+  );
 }

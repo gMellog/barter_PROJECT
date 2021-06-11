@@ -4,9 +4,10 @@
   position: relative;
   display: flex;
   justify-content: space-between;
-  background: #313340;
+  background: #222530;
   padding: 20px;
   border-radius: 10px;
+  margin: 40px;
 }
 
 .user {
@@ -57,8 +58,8 @@
 }
 .actions div svg {
   cursor: pointer;
-  width: 50px;
-  height: 50px;
+  width: 24px;
+  height: 27px;
   transition: 0.3s all;
   filter: opacity(80%);
 }
@@ -69,39 +70,39 @@
 .actions div {
   margin-bottom: 7px;
 }
-.button {
+.control_panel {
   display: flex;
   position: absolute;
-  left: 24%;
-  bottom: -10%;
+  left: 1%;
+  bottom: -40px;
 }
-.button div {
+.control_panel div {
   filter: opacity(80%);
   cursor: pointer;
   box-sizing: border-box;
   border-radius: 10px;
   transition: 0.3s all;
 }
-.button div:hover {
+.control_panel div:hover {
   filter: opacity(100%);
 }
 .success {
-  margin-right: 20px;
+  width: 120px;
+  margin-right: 2px;
   border: 2px solid #e5e5e5;
   background: rgba(79, 177, 1, 0.89);
 }
 .failing {
+  width: 120px;
   display: flex;
   justify-content: center;
   align-items: center;
   border: 2px solid #e5e5e5;
   background: #d30303;
+  padding-top: 4px;
 }
-.failing svg {
-  width: 50px;
-  height: 30px;
-}
+
 .success svg {
-  width: 50px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
 }

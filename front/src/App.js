@@ -1,19 +1,15 @@
 import React from "react";
-
 import "./App.css";
 import NavMenu from "./components/NavMenu/NavMenu";
-
 import AddProduct from "./components/AddProduct/AddProduct";
 import WatchProduct from "./components/WatchProduct/WatchProduct";
 import ShowProducts from "./components/ShowProducts/ShowProducts";
 import "dotenv";
 import Ad from "./components/Ad/Ad";
 import Offers from "./components/Offers/Offers";
-
 import Chat from "./components/Chat/Chat";
-
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
+import CardSwap from "./components/CardSwap/CardSwap";
 import ProfilePanel from "./components/ProfilePanel/ProfilePanel";
 import SellerProfile from "./components/SellerProfile/SellerProfile";
 import SearchResult from "./components/SearchResult/SearchResult";
@@ -33,7 +29,9 @@ function App() {
             </Route>
             <Route exact path="/profile">
               <ProfilePanel />
-              <ShowProducts toUser={true} />
+              <div className="obertka">
+                <ShowProducts toUser={true} />
+              </div>
             </Route>
             <Route exact path="/">
               <MainScreen />

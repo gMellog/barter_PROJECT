@@ -1,18 +1,26 @@
-
 .chats {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: #667792;
+  background: #313340;
   border-radius: 8px;
   height: 80%;
   width: 19%;
-  }
+}
 
-.chatsLabel{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    height: 60px;
+.chatsLabel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  height: 60px;
+  background: #313340;
+}
+
+.chatsLabel h3 {
+  color: whitesmoke;
+}
+
+.outerContainer {
+  width: 100%;
 }

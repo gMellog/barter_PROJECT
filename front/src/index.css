@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: 'Montserrat', sans-serif;  /* подключение шрифта монтсерат*/
+  font-family: "Montserrat", sans-serif; /* подключение шрифта монтсерат*/
   /* -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; */
 }
@@ -9,13 +9,22 @@ code {
     monospace;
 }
 
-
-.modal-content{
+.modal-content {
   color: whitesmoke;
   background-color: rgba(34, 37, 48, 1);
 }
 
-
-h5,p,a{
+h5,
+p,
+a {
   color: whitesmoke;
+}
+
+.obertka {
+  width: 75%;
+  margin: 50px auto;
+}
+.buba {
+  font-size: 1.6em;
+  opacity: 0.7;
 }
