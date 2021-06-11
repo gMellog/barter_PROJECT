@@ -79,10 +79,10 @@ export default function CardSwap({ socket, currUser, anotherUser, deal }) {
 
         <div className={style.user}>
           <div className={style.img_wrapper}>
-            <img src={`http://localhost:4000${currUser.product.photoUrl[0]}`} alt="" />
+            <img src={`http://localhost:4000${currUser.product?.photoUrl[0]}`} alt="" />
           </div>
           <div className={style.avatar}>
-            <img src={`http://localhost:4000${currUser.user.avatar}`} alt="" />
+            <img src={`http://localhost:4000${currUser.user?.avatar}`} alt="" />
           </div>
         </div>
 
@@ -100,7 +100,7 @@ export default function CardSwap({ socket, currUser, anotherUser, deal }) {
           <img src={`http://localhost:4000${anotherUser.product?.photoUrl[0]}`} alt="" />
           </div>
           <div className={`${style.avatar} ${style.avatar_left}`}>
-            <img src={`http://localhost:4000${anotherUser.user.avatar}`} alt="" />
+            <img src={`http://localhost:4000${anotherUser.user?.avatar}`} alt="" />
           </div>
         </div>
 

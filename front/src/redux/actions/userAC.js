@@ -48,7 +48,8 @@ export const getUserThunks = () => async (dispatch) => {
       headers: authHeader(),
     })
 
-    const {user} = await resUser.json();  
+    const {user} = await resUser.json();
+    console.log('USER =>>>>>>>', user);  
     dispatch(setUser(user));
   }
 };
