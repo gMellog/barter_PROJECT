@@ -30,7 +30,7 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  justify-content: space-around;
-  margin: 65px auto 0 auto;
+  justify-content: flex-start;
+  margin: 0 2%;
 
 }

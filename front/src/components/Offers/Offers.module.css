@@ -5,3 +5,11 @@
   width: 82%;
   margin: 65px auto 0 auto;
 }
+
+
+.wrapper h3{
+  text-align: center;
+  color: whitesmoke;
+  align-items: center;
+  margin: auto;
+}
