@@ -9,7 +9,7 @@ import pencil from "./bytesize_edit.svg";
 import { Link } from "react-router-dom";
 import { authHeader } from "../../helpers/authHeader";
 
-import { getUserThunks, logoutUser, deleteAvatartUserThunks } from '../../redux/actions/userAC';
+import { getUserThunks, logoutUser, deleteAvatartUserThunks, setUser } from '../../redux/actions/userAC';
 import { useSelector, useDispatch } from 'react-redux';
 
 
@@ -51,6 +51,8 @@ const ProfilePanel = () => {
     });
   }
 
+
+
   return (
     <div className={style.profile_panel_wrapper}>
       {/* {JSON.stringify(user)} */}
@@ -66,7 +68,7 @@ const ProfilePanel = () => {
               <h1>One</h1>
               <input type="file" name="image" />
             </form> */}
-            <form onB={e => uploadImageOne(e)}>
+            <form onChange={e => { console.log('CALLED'); uploadImageOne(e); }}>
               <input type="file" name="image" size="1" />
               {/* <button type="submit">Upload</button> */}
             </form>

@@ -12,25 +12,30 @@ export default function WatchProduct() {
   const stuffArray = useSelector(state => state.stuffArray);
   const deals = useSelector(state => state.deals);
   const [offer, setOffer] = useState(false)
-  const [product, setProduct] = useState({});
+  const [product, setProduct] = useState(null);
+  const [isUserProduct, setIsUserProduct] = useState(false);
   const { id } = useParams();
 
   console.log(deals);
 
   const availableProducts = stuffArray.filter(stuff => stuff.infoOwner === user?.id && !deals.find(deal => !deal.declined && deal.participants.find(guy => guy.productID.id === stuff.id))).length;
 
-
   useEffect(() => {
     fetch(`http://localhost:4000/product/${id}`)
       .then(res => res.json())
-      .then(res => setProduct(res))
+      .then(res => 
+        {
+          setIsUserProduct(res.infoOwner === user?.id);
+          setProduct(res);
+        })
   }, []);
 
   // product.photoUrl = [...new Set(product.photoUrl)]
-  const thereIsPhotos = product.photoUrl && product.photoUrl.length;
-  const moreThanOnePhoto = product.photoUrl && product.photoUrl.length > 1;
-  const onlyOneProduct = product.photoUrl && product.photoUrl.length === 1;
-console.log(product);
+  const thereIsPhotos = product && product.photoUrl && product.photoUrl.length;
+  const moreThanOnePhoto = product && product.photoUrl && product.photoUrl.length > 1;
+//  const onlyOneProduct = product.photoUrl && product.photoUrl.length === 1;
+
+
 
   return (
     <>
@@ -39,7 +44,7 @@ console.log(product);
         <hr className={styles.title_ad_line} />
         <div className={styles.watch_ad_content}>
           <div className={styles.watch_ad_content_product}>
-            <div className={styles.watch_ad_product_title}>{product.name}</div>
+            <div className={styles.watch_ad_product_title}>{product && product.name}</div>
 
             <img
               src={
@@ -66,7 +71,7 @@ console.log(product);
               </div>
             )}
             {
-              availableProducts ? 
+              product && !isUserProduct && availableProducts ? 
               <div onClick={() => setOffer(true)}
                 className={`${styles.btn_changer_green} `}
               >{"Предложить"}
@@ -77,7 +82,7 @@ console.log(product);
           </div>
 
           <div className={styles.watch_ad_description}>
-            <p className={styles.watch_ad_text}>{product.description}</p>
+            <p className={styles.watch_ad_text}>{product && product.description}</p>
 
             <h3 className={styles.watch_ad_change_title}>
               Готов поменяться на:

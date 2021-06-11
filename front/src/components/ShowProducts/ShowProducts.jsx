@@ -32,6 +32,7 @@ export default function ShowProducts({ toUser }) {
   //   }
   // }
   return (
+    user &&
     <div className={style.wrapper}>
       {/* <div className={style.filter_panel}>
         <div className={`${style.filter_btn} blue_bg`} onClick={() => {sortProducts("date")}}>по дате</div>
