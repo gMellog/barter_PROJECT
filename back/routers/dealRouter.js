@@ -41,4 +41,13 @@ router.patch("/:id", async (req,res) => {
 
 })
 
+router.post("/", async (req, res) => {
+    const { dealOne, dealTwo } = req.body;
+    const deal = new Deal({ participants: [dealOne, dealTwo] });
+    await deal.save();
+
+    res.json(deal);
+  });
+  
+
 module.exports = router

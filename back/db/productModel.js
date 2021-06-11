@@ -4,9 +4,9 @@ const schema = new Schema({
   name: String,
   photoUrl: Array,
   address: String,
-  infoOwner: { type: Schema.Types.ObjectId, ref: "User" },
-  exchange: [{ type: Schema.Types.ObjectId, ref: "Tag" }], // There should be special type which consists of objectids
-  description: String,
+  infoOwner: { type: Schema.Types.ObjectId, ref: 'User' },
+  exchange: [{ type: Schema.Types.ObjectId, ref: 'Tag' }], // There should be special type which consists of objectids
+  description: String,  
   actual: Boolean,
   createdAt: { type: Date, default: Date.now },
 });
