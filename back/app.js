@@ -89,7 +89,7 @@ app.post("/ad", (req, res) => {
         name: req.body.title,
         description: req.body.describtion,
         photoUrl: fileName,
-        exchange: req.body.tags,
+        exchange: req.body.tags.split(',').map(tag => new mongoose.Types.ObjectId(tag)),
         infoOwner: req.body.id,
       });
     }
@@ -258,14 +258,6 @@ app.post("/search", async (req, res) => {
   const { name } = req.body;
   let products = await Product.find({ name });
   res.json(products);
-});
-app.post("/deal", async (req, res) => {
-  const { dealOne, dealTwo } = req.body;
-
-  console.log("DEEEAAL");
-
-  const deal = new Deal({ participants: [dealOne, dealTwo] });
-  await deal.save();
 });
 
 app.get("/category", async (req, res) => {
