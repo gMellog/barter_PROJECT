@@ -37,6 +37,9 @@ export default function Offers() {
         anotherUser = bindUserAndProduct(deal.participants[0])
       }
 
+      console.log('currUser is ', currUser);
+      console.log('anotherUser is ', anotherUser);
+
 
       return (
         <div>
@@ -59,9 +62,10 @@ export default function Offers() {
         extraHeaders: authHeader()
       });
       
-          socket.on('dealChanged', deal => {
-            dispatch(changeDeal(deal));
-          });
+      socket.on('dealChanged', deal => {
+        console.log('DEAL CHANGED FRONT');
+        dispatch(changeDeal(deal));
+      });
 
       socket.emit('deals', user.id, (newDeals) => {
         dispatch(setDeals(newDeals));

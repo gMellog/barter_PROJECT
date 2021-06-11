@@ -8,9 +8,10 @@ import Carousel from "react-material-ui-carousel";
 import { Paper, Button } from "@material-ui/core";
 
 export default function ProductCard({ item }) {
+  const user = useSelector(state => state.user);
   const { name, description, photoUrl, id } = item;
-  const items = photoUrl.map(photo => ({src:`http://localhost:4000${photo}`}))
-  
+  const items = photoUrl.map(photo => ({ src: `http://localhost:4000${photo}` }))
+
   function Item(props) {
     return (
       <Paper>
@@ -39,7 +40,7 @@ export default function ProductCard({ item }) {
         {/* <p>{product.describtion}</p> */}
       </div>
       {/* Только для зареганых пользователей */}
-      <div className={style.control_area}><Link to={`/watch/${id}`}>Предложить обмен</Link></div>
+      {user && user.id !== item.infoOwner ? <div className={style.control_area}><Link to={`/watch/${id}`}>Предложить обмен</Link></div> : null}
     </div>
   );
 }

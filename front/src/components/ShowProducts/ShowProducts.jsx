@@ -56,7 +56,7 @@ export default function ShowProducts({ toUser }) {
       </div> */}
       <div className={style.products_area_wrapper}>
         {
-         showArr.length >= 1 ? showArr : <div>Здесь должны быть ваши товары! Но их нет...</div>
+         showArr.length >= 1 ? showArr : <h3>Здесь должны быть ваши товары! Но их нет...</h3>
         }
       </div>
     </div>

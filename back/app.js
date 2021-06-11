@@ -85,18 +85,18 @@ app.post("/ad", (req, res) => {
     } else {
       const fileName = req.files.map((el) => `/photoItems/` + el.filename);
       console.log(req.body);
-      await Product.create({
+      const product123 = await Product.create({
         name: req.body.title,
         description: req.body.describtion,
         photoUrl: fileName,
-        exchange: req.body.tags
-          .split(",")
-          .map((tag) => new mongoose.Types.ObjectId(tag)),
+        exchange: req.body.tags.split(','),
         infoOwner: req.body.id,
       });
+
+      res.json(product123);
+
     }
   });
-  res.status(200);
 });
 
 //Multer---------------------------------------------------------------------------
@@ -208,11 +208,10 @@ io.on("connect", (socket) => {
   });
 
   socket.on("deals", async (userID, cb) => {
-    console.log("IN DEALS");
+    console.log("IN DEALS 123123123123213123");
     const deals = await Deal.find().elemMatch("participants", { userID });
 
     for (let deal of deals) {
-      console.log(deal);
       socket.join(deal._id.toString());
     }
 
@@ -226,6 +225,8 @@ io.on("connect", (socket) => {
   // });
 
   socket.on("toggleReadyDeal", async (userID, dealID) => {
+    console.log("toggleReadyDeal 123445556666");
+
     const deal = await Deal.findById(dealID);
     for (let i = 0; i < deal.participants.length; i += 1) {
       console.log(deal.participants[i].userID._id);
@@ -243,6 +244,9 @@ io.on("connect", (socket) => {
   });
 
   socket.on("refuseDeal", async (dealID) => {
+
+    console.log("refuseDeal 123445556666");
+
     const deal = await Deal.findById(dealID);
     deal.declined = true;
     await deal.save();

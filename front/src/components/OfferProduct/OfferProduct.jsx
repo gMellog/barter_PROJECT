@@ -19,11 +19,10 @@ export default function OfferProduct({ id, offer, setOffer }) {
 
   const dealMan = stuffArray.filter(stuff => stuff.id === id)[0]
   const onOfferHandler = () => {
-    console.log('onOfferHandler 123123123');
 
-    for (const id of selectedItems) {
+    for (const userId of selectedItems) {
       const dealOne = {userID: dealMan.infoOwner, productID: id};
-      const dealTwo = {userID: user.id, productID: id };
+      const dealTwo = {userID: user.id, productID: userId };
       axios.post('/deal', { dealOne, dealTwo} )
       .then( res => { 
         console.log('DEAL IS ', res.data);

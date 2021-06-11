@@ -58,16 +58,17 @@ export default function CardSwap({ socket, currUser, anotherUser, deal }) {
         const res = await fetch('http://localhost:4000/chat', options);
         if (res.ok) {
           const deal = await res.json();
+          console.log('DEAL IS123123123213123 ', deal);
           if(deal)
           {
             dispatch(changeDeal(deal));
           }
-          history.push('/chat')
+          history.push('/message')
         }
       }
       else 
       {
-        history.push('/chat');
+        history.push('/message');
       }
     }
   }
