@@ -75,7 +75,7 @@ export default function Offers() {
 
     {
     !deals.length ?
-      <p>На данный момент предложений нет</p>
+      <h3>На данный момент предложений нет</h3>
       :
       deals.map(deal => drawDeal(deal))
     }

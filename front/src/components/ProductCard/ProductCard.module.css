@@ -8,6 +8,7 @@
   flex-direction: column;
   border-radius: 30px;
   overflow: hidden;
+  margin-right: 1%;
 }
 
 .card_title {
