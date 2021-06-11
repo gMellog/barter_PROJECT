@@ -9,30 +9,31 @@ axios.defaults.baseURL = "http://localhost:4000";
 const BarterProvider = ({ children }) => {
   const [count, setCount] = useState([])
   const [seller, setSeller] = useState({})
-
-  console.log(' COUUUUUUUUNT ', count);
+  console.log('COUNT IS 123', count);
 
   const selectMyProduct = (e, id) => {
     const div = e.target.parentNode
-    if (count.length < 3 && !div.classList.contains("OfferProduct_select__ihF85")) {
+    console.log('hey yo!!!!!!!');
+    if (count.length < 3) {
       div.classList.toggle(`${styles.select}`)
-      setCount([...count, id])
-    } else {
-      div.classList.toggle(`${styles.select}`)
-      setCount([...count.filter(el => el !== id)])
+      if (!div.classList.contains(styles.select)) {
+        setCount([...count, id])
+      
+      } else {
+        setCount([...count.filter(el => el !== id)])
+      }
     }
   }
   const addDealHandler = (dealOne, userID) => {
 
-    for(const id of count)
-    {
+    for (const id of count) {
       const dealTwo = { userID, productID: id };
       axios.post('/deal', { dealOne, dealTwo });
     }
 
   }
   const getSaller = async (id) => {
-    console.log("Saler start >>>>", id );
+    console.log("Saler start >>>>", id);
     const res = await fetch('http://localhost:4000/seller', {
       method: 'POST',
       headers: {
@@ -42,6 +43,8 @@ const BarterProvider = ({ children }) => {
       body: JSON.stringify({ id })
     })
     const response = await res.json()
+
+    console.log('SELLLER ', response);
     setSeller(response);
   }
 

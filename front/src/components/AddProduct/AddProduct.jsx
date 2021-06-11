@@ -29,6 +29,8 @@ const AddProduct = () => {
   const [selectValue, setSelectValue] = useState("на все что угодно");
   const [productTitle, setProductTitle] = useState("Название товара");
 
+  const realTags = useSelector(state => state.tags);
+
   const history = useHistory();
 
   console.log('PPPPPPproductTitle', productTitle);
@@ -62,11 +64,12 @@ const AddProduct = () => {
     e.preventDefault();
     if (tags.length < 4) {
       let index = randomInteger(0, colors.length - 1);
-
+        console.log('tags ', tags);
       if (!tags.find((el) => el.text == selectValue)) {
+        
         setTags((prev) => [
           ...prev,
-          { id: Date.now(), text: selectValue, style: colors[index] },
+          { id: realTags.find(realTag => realTag.name === selectValue).id, text: selectValue, style: colors[index] },
         ]);
         setColors(colors.filter((el) => el != colors[index]));
       }
