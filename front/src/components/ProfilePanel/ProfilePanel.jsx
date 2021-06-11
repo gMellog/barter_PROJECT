@@ -17,7 +17,7 @@ const ProfilePanel = () => {
 
   const user = useSelector(state => state.user);
   const dispatch = useDispatch();
-
+  
   const helloDefault =
     "Привет всем! Часто меняю всяческие вещички. Рад открытым людям, пишите лучше в сообщения!";
   const [flag_edit_hello, setFlag_edit_hello] = useState(true);
@@ -38,7 +38,7 @@ const ProfilePanel = () => {
   }
 
   const description = async (value, id) => {
-    await fetch('http://localhost:4000/user/description', {
+    let result = await fetch('http://localhost:4000/user/description', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -49,8 +49,11 @@ const ProfilePanel = () => {
         id
       })
     });
+    result = await result.json()
+    console.log('USER,,,,,,,,,,,,,,,,,,,,,,,', result);
+    dispatch(setUser(result))
     // if (res.ok) {
-      dispatch(getUserThunks())
+      // dispatch(getUserThunks())
     // }
 
 

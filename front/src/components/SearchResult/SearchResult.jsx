@@ -7,13 +7,13 @@ const SearchResult = () => {
   return (
     <div className={style.main_wrapper}>
       <div className={style.content_wrapper}>
-        <div className={style.filter_wrapper}>
+        {/* <div className={style.filter_wrapper}> */}
           {/* Левая панель с фильтрами */}
-          <ul>
+          {/* <ul>
             <li>По дате размещения</li>
             <li></li>
           </ul>
-        </div>
+        </div>  */}
 
         <div className={style.search_result_wrapper}>
           {/* Центральная линия с выводом результата поиска */}
@@ -21,15 +21,15 @@ const SearchResult = () => {
             return (
               <div className={style.item_wrapper}>
                 <div className={style.image_area}>
-                  <img src={el.photoUrl[0]} />
+                  <img src={`http://localhost:4000/${el.photoUrl[0]}`} />
                 </div>
                 <div className={style.info_area}>
                   <h4>{el.name}</h4>
                   <p>{el.description}</p>
                 </div>
-                <div className={style.control_panel}>
+                {/* <div className={style.control_panel}>
                   <button>Предложить</button>
-                </div>
+                </div> */}
               </div>
             );
           })}

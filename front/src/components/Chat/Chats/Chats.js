@@ -7,7 +7,7 @@ export default function Chats({setRoomHandler}){
     return (
         <div className={`${styles.chats}`}>
             <div className={`${styles.chatsLabel}`}>
-                <h3>Chats</h3>
+                <h3>Чаты</h3>
             </div>
             <Conversations setRoomHandler={setRoomHandler}/>
         </div>

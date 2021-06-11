@@ -1,3 +1,4 @@
+// module.exports = router;
 const express = require("express");
 const router = express.Router();
 const User = require("../db/user");
@@ -8,17 +9,16 @@ const jwt = require("jsonwebtoken");
 const ChatHistory = require("../db/chatHistoryModel");
 const Deal = require("../db/dealModel");
 const Tag = require("../db/tagModel");
-const Product = require('../db/productModel')
+const Product = require('../db/productModel');
+const { useHistory } = require("react-router");
 const vonage = new Vonage({
     apiKey: "db1ab976",
     apiSecret: "iWmhmn3Jq2VyNUlr",
 });
-
 function checkNumber(number) {
     const numberRegex = /\+7\(?\d{3}\)?-?\d{3}-?\d{2}-?\d{2}/;
     return numberRegex.exec(number) !== null;
 }
-
 function getOnlyNumbers(number) {
     return number
         .split("")
@@ -26,15 +26,13 @@ function getOnlyNumbers(number) {
         .join("");
 }
 
-
 router.post("/description", async (req, res) => {
   console.log(req.body);
-  await User.findOneAndUpdate({ _id: req.body.id }, { description: req.body.value })
-  // res.json(user);
-  res.status(200)
+  const user = await User.findById( req.body.id )
+  user.description = req.body.value
+  await user.save()
+  res.json(user)
 });
-
-
 router.get("/:id", async (req, res) => {
     const user = await User.findById(req.params.id);
     const tags = await Tag.find();
@@ -42,30 +40,24 @@ router.get("/:id", async (req, res) => {
         userID: user._id,
     });
     const products = await Product.find();
-
     res.json({ user, tags, deals, products });
 });
-
 router.post("/reg", async (req, res) => {
     const { number, password, name } = req.body;
-
     if (number && !password) {
         if (checkNumber(number)) {
             const onlyNumbers = getOnlyNumbers(number);
             const user = await User.findOne({ phone: onlyNumbers });
-
             if (user && user.hash !== undefined) {
                 console.log("THERE IS USER WITH THIS NUMBER");
                 res.status(409).json();
             } else {
                 let newUser;
-
                 if (!user) {
                     newUser = await User.create({ phone: onlyNumbers });
                 } else {
                     newUser = user;
                 }
-
                 vonage.verify.request(
                     {
                         number: onlyNumbers,
@@ -86,24 +78,9 @@ router.post("/reg", async (req, res) => {
         } else {
             res.status(400).json();
         }
-
-        vonage.verify.request(user/description
-          {
-            number: onlyNumbers,
-            brand: "CHANGER",
-          },
-          async (err, result) => {
-            if (err) {
-              console.error(err);
-              res.status(500).json();
-            } else {
-              newUser.verifyID = result.request_id;
-              await newUser.save();
-              res.json(newUser._id);
     } else if (number && password) {
         const onlyNumbers = getOnlyNumbers(number);
         const user = await User.findOne({ phone: onlyNumbers });
-
         if (user) {
             try {
                 const hash = await bcrypt.hash(password, config.saltRounds);
@@ -124,21 +101,16 @@ router.post("/reg", async (req, res) => {
         res.status(409).json();
     }
 });
-
 router.post("/code", async (req, res) => {
     const { number, code } = req.body;
-
     if (number && code) {
         const user = await User.findOne({ phone: getOnlyNumbers(number) });
-
         if (!user) {
             res.status(401);
             return;
         }
-
         console.log(user);
         console.log(code);
-
         vonage.verify.check(
             {
                 request_id: user.verifyID,
@@ -161,10 +133,8 @@ router.post("/code", async (req, res) => {
         res.status(400).json("no data");
     }
 });
-
 router.post("/login", async (req, res) => {
     const { login, password } = req.body;
-
     if (login && password) {
         let user;
         if (checkNumber(login)) {
@@ -172,7 +142,6 @@ router.post("/login", async (req, res) => {
         } else {
             user = await User.findOne({ email: login });
         }
-
         if (user) {
             const verifiedPass = await bcrypt.compare(password, user.hash);
             if (verifiedPass) {
@@ -185,7 +154,6 @@ router.post("/login", async (req, res) => {
                 const deals = await Deal.find().elemMatch("participants", {
                     userID: user._id,
                 });
-
                 const products = await Product.find();
                 res.json({ user, token, tags, deals, products });
             } else {
@@ -198,14 +166,10 @@ router.post("/login", async (req, res) => {
         res.status(400).json();
     }
 });
-
-
 router.delete("/:id", (req, res) => {
     const { id } = req.params;
-
     console.log(id);
 });
-
 router.get("/deals", async (req, res) => {
     try {
         const userDeals = await Deal.find().elemMatch("participants", {
@@ -216,5 +180,4 @@ router.get("/deals", async (req, res) => {
         res.status(400).json({ errorMessage: e.message });
     }
 });
-
 module.exports = router;
