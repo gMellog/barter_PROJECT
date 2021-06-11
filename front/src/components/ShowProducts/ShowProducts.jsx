@@ -20,24 +20,24 @@ export default function ShowProducts({ toUser }) {
     dispatch(getAllProductsThunks());
   }, []);
 
-  function sortProducts(variable) {
-    if (variable === "name") {
-        dispatch(sortByName());
-    }
-    if (variable === "date") {
-        dispatch(sortByDate());
-    }
-    if (variable === "owner"){
-        dispatch(sortByOwner());
-    }
-  }
+  // function sortProducts(variable) {
+  //   if (variable === "name") {
+  //       dispatch(sortByName());
+  //   }
+  //   if (variable === "date") {
+  //       dispatch(sortByDate());
+  //   }
+  //   if (variable === "owner"){
+  //       dispatch(sortByOwner());
+  //   }
+  // }
   return (
     <div className={style.wrapper}>
-      <div className={style.filter_panel}>
+      {/* <div className={style.filter_panel}>
         <div className={`${style.filter_btn} blue_bg`} onClick={() => {sortProducts("date")}}>по дате</div>
         <div className={`${style.filter_btn} yellow_bg`} onClick={() => {sortProducts("name")}}>по названию</div>
         <div className={`${style.filter_btn} green_bg`} onClick={() => {sortProducts("owner")}}>по владельцу</div>
-      </div>
+      </div> */}
       <div className={style.products_area_wrapper}>
         {toUser
           ? stuffArray
