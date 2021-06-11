@@ -39,7 +39,7 @@ export default function ProductCard({ item }) {
         {/* <p>{product.describtion}</p> */}
       </div>
       {/* Только для зареганых пользователей */}
-      <div className={style.control_area}>Предложить обмен</div>
+      <div className={style.control_area}><Link to={`/watch/${id}`}>Предложить обмен</Link></div>
     </div>
   );
 }
