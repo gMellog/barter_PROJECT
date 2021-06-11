@@ -85,7 +85,7 @@
   height: 100%;
 }
 .avatar_icon_mini{
-
+  color: aliceblue;
   font-size: 1.5em;
   position: absolute;
   top: 25%;
@@ -121,6 +121,9 @@
 .icon {
   margin-right: 4%;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .icon a:hover{
   color: none;
