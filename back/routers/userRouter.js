@@ -1,4 +1,4 @@
-// module.exports = router;
+
 const express = require("express");
 const router = express.Router();
 const User = require("../db/user");
@@ -10,7 +10,6 @@ const ChatHistory = require("../db/chatHistoryModel");
 const Deal = require("../db/dealModel");
 const Tag = require("../db/tagModel");
 const Product = require('../db/productModel');
-const { useHistory } = require("react-router");
 const vonage = new Vonage({
     apiKey: "db1ab976",
     apiSecret: "iWmhmn3Jq2VyNUlr",

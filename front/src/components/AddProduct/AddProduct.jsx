@@ -7,9 +7,10 @@ import YandexMap from "../YandexMap/YandexMap";
 import pencil from "./svg/bytesize_edit.svg";
 import ComboBox from "./ComboBox/ComboBox";
 import { authHeader } from "../../helpers/authHeader";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { env } from "process";
 import { useHistory, useParams } from "react-router-dom";
+import { getAllStuff } from "../../redux/actions/stuffAC";
 
 
 const AddProduct = () => {
@@ -30,8 +31,10 @@ const AddProduct = () => {
   const [productTitle, setProductTitle] = useState("Название товара");
 
   const realTags = useSelector(state => state.tags);
-
+  const stuffArr = useSelector(state => state.stuffArray);
   const history = useHistory();
+  const dispatch = useDispatch();
+
 
   console.log('PPPPPPproductTitle', productTitle);
   const [colors, setColors] = useState([
@@ -155,6 +158,10 @@ const AddProduct = () => {
       headers: authHeader(),
       body: formData,
     });
+
+    const adFromBack = await res.json();
+    
+    dispatch(getAllStuff([...stuffArr, adFromBack])); 
 
   }
 
