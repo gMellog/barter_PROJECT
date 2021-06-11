@@ -38,7 +38,7 @@ const ProfilePanel = () => {
   }
 
   const description = async (value, id) => {
-    let res = await fetch('http://localhost:4000/user/description', {
+    await fetch('http://localhost:4000/user/description', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -49,6 +49,11 @@ const ProfilePanel = () => {
         id
       })
     });
+    // if (res.ok) {
+      dispatch(getUserThunks())
+    // }
+
+
   }
 
   return (

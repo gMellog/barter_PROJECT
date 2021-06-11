@@ -8,6 +8,7 @@ const jwt = require("jsonwebtoken");
 const ChatHistory = require("../db/chatHistoryModel");
 const Deal = require("../db/dealModel");
 const Tag = require("../db/tagModel");
+
 const vonage = new Vonage({
   apiKey: "db1ab976",
   apiSecret: "iWmhmn3Jq2VyNUlr",
@@ -24,6 +25,15 @@ function getOnlyNumbers(number) {
     .filter((ch) => !isNaN(Number(ch)))
     .join("");
 }
+
+
+router.post("/description", async (req, res) => {
+  console.log(req.body);
+  await User.findOneAndUpdate({ _id: req.body.id }, { description: req.body.value })
+  // res.json(user);
+  res.status(200)
+});
+
 
 router.get("/:id", async (req, res) => {
   const user = await User.findById(req.params.id);
@@ -50,7 +60,7 @@ router.post("/reg", async (req, res) => {
           newUser = user;
         }
 
-        vonage.verify.request('/user/description',
+        vonage.verify.request('/description',
           {
             number: onlyNumbers,
             brand: "CHANGER",

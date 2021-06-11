@@ -40,12 +40,13 @@ export const deleteAvatartUserThunks = (id) => async (dispatch) => {
 }
 
 export const getUserThunks = () => async (dispatch) => {
+  console.log('rerewrewrew');
   const resUser = await fetch('http://localhost:4000/user', {
     headers: authHeader(),
   })
 
   const resultUser = await resUser.json();
-  console.log(resultUser);
+  
   dispatch(setUser(resultUser));
 };
 
